@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { teal } from "@mui/material/colors";
 import Box from "@mui/material/Box";
 import { FormControl, InputLabel, Link, MenuItem, Select } from "@mui/material";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
@@ -28,7 +27,7 @@ export default function BottomSheetCalendar() {
           height: "100px",
           right: 0,
           left: 0,
-          bgcolor: teal[100],
+          bgcolor: "#e5f9f9",
           zIndex: 1300,
           padding: 2,
           display: "flex",

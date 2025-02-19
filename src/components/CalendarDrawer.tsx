@@ -1,4 +1,5 @@
 import { Box, SwipeableDrawer } from "@mui/material";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import WeekdayCalendar from "./WeekdayCalendar";
 
@@ -36,7 +37,17 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
           flexDirection: "column",
         }}
       >
-        <ClearIcon onClick={onToggleDrawer(false)} sx={{ margin: "5px" }} />
+        <Box
+          sx={{
+            margin: "5px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <ClearIcon onClick={onToggleDrawer(false)} fontSize="large" />
+          <FilterAltOutlinedIcon color="primary" fontSize="large" />
+        </Box>
         <Box flex="1" overflow="auto">
           <WeekdayCalendar />
         </Box>

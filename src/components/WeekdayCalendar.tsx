@@ -1,5 +1,4 @@
 import {
-  Box,
   Table,
   TableBody,
   TableCell,
@@ -8,6 +7,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
+import ClassCell from "./ClassCell";
 
 const weekdays = ["一", "二", "三", "四", "五"];
 const weekends = ["六", "日"];
@@ -78,16 +78,37 @@ const classSchedule = [
     day: "日",
     startTime: "09:00",
   },
+  {
+    name: "國小書寫",
+    color: "#fff1af",
+    day: "日",
+    startTime: "10:10",
+  },
+  {
+    name: "4-6人際",
+    color: "#ffdca9",
+    day: "日",
+    startTime: "10:10",
+  },
+  {
+    name: "2-4專＋感",
+    color: "#e0fcf6",
+    day: "日",
+    startTime: "10:10",
+  },
+  {
+    name: "2-3核心",
+    color: "#a0e9fd",
+    day: "日",
+    startTime: "10:10",
+  },
+  {
+    name: "1.5-2核心",
+    color: "#ffdca9",
+    day: "日",
+    startTime: "10:10",
+  },
 ];
-
-const getClass = (day: string, startTime: string) => {
-  const resultClass =
-    classSchedule.filter(
-      (schedule) => schedule.day === day && schedule.startTime === startTime
-    ) || [];
-
-  return resultClass;
-};
 
 const CustomTableCell = styled(TableCell)(() => ({
   padding: 0,
@@ -129,26 +150,12 @@ export default function WeekdayCalendar() {
             </CustomTableCell>
 
             {weekdays.map((weekday) => (
-              <CustomTableCell
+              <ClassCell
                 key={weekday}
-                width="12.5%"
-                sx={{ height: "100px" }}
-              >
-                <Box height="100%" display="flex" flexDirection="column">
-                  {getClass(weekday, time.start).map((c) => (
-                    <Box
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      fontSize="12px"
-                      bgcolor={c.color}
-                      flex="1"
-                    >
-                      {c.name}
-                    </Box>
-                  ))}
-                </Box>
-              </CustomTableCell>
+                weekday={weekday}
+                time={time}
+                classes={classSchedule}
+              />
             ))}
 
             <CustomTableCell sx={{ textAlign: "center" }} width="6.25%">
@@ -163,63 +170,16 @@ export default function WeekdayCalendar() {
               </Typography>
             </CustomTableCell>
             {weekends.map((weekend) => (
-              <CustomTableCell key={weekend} width="12.5%">
-                <Box height="100%" display="flex" flexDirection="column">
-                  {getClass(weekend, weekendClassSchedule[index].start).map(
-                    (c) => (
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                        fontSize="12px"
-                        bgcolor={c.color}
-                        flex="1"
-                      >
-                        {c.name}
-                      </Box>
-                    )
-                  )}
-                </Box>
-              </CustomTableCell>
+              <ClassCell
+                key={weekend}
+                weekday={weekend}
+                time={weekendClassSchedule[index]}
+                classes={classSchedule}
+              />
             ))}
           </TableRow>
         ))}
       </TableBody>
     </Table>
-    // <Box display="grid" gridTemplateColumns="repeat(16,1fr)">
-    //   <Typography gridColumn="span 1" />
-
-    //   {weekdays.map((weekday) => (
-    //     <Typography key={weekday} gridColumn="span 2" textAlign="center">
-    //       {weekday}
-    //     </Typography>
-    //   ))}
-
-    //   <Typography gridColumn="span 1" />
-
-    //   {weekends.map((weekend) => (
-    //     <Typography key={weekend} gridColumn="span 2" textAlign="center">
-    //       {weekend}
-    //     </Typography>
-    //   ))}
-
-    //   {weekdayClassSchedule.map((time, index) => (
-    //     <>
-    //       <Typography key={index} gridColumn="span 1" textAlign="center">
-    //         {time}
-    //       </Typography>
-    //       <Typography gridColumn="span 2" />
-    //       <Typography gridColumn="span 2" />
-    //       <Typography gridColumn="span 2" />
-    //       <Typography gridColumn="span 2" />
-    //       <Typography gridColumn="span 2" />
-    //       <Typography gridColumn="span 1" textAlign="center">
-    //         {weekendClassSchedule[index]}
-    //       </Typography>
-    //       <Typography gridColumn="span 2" />
-    //       <Typography gridColumn="span 2" />
-    //     </>
-    //   ))}
-    // </Box>
   );
 }
