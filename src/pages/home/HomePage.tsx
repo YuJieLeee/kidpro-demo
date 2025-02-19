@@ -48,22 +48,22 @@ const categories = [
 
 const products = [
   {
-    productImg: "/product1.png",
+    productImg: "/kidpro-demo/product1.png",
     originalPrice: 2000,
     specialPrice: 1000,
   },
   {
-    productImg: "/product2.png",
+    productImg: "/kidpro-demo/product2.png",
     originalPrice: 2000,
     specialPrice: 1000,
   },
   {
-    productImg: "/product3.png",
+    productImg: "/kidpro-demo/product3.png",
     originalPrice: 2000,
     specialPrice: 1000,
   },
   {
-    productImg: "/product4.png",
+    productImg: "/kidpro-demo/product4.png",
     originalPrice: 2000,
     specialPrice: 1000,
   },
@@ -72,7 +72,7 @@ const products = [
 export default function Homepage() {
   return (
     <Box>
-      <img src="/banner.png" width="100%" />
+      <img src="/kidpro-demo/banner.png" width="100%" />
       <Swiper categories={categories} />
       <Box display="flex" flexDirection="column" gap="20px" padding="10px">
         <Typography variant="h4">線上育兒課程</Typography>

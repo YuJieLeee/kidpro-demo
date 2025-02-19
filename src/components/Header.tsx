@@ -45,7 +45,11 @@ export default function Header() {
         transition: "transform 0.3s ease-out",
       }}
     >
-      <img src="/kidpro-logo.png" alt="Logo" style={{ height: "60px" }} />
+      <img
+        src="/kidpro-demo/kidpro-logo.png"
+        alt="Logo"
+        style={{ height: "60px" }}
+      />
       <Box>
         <SearchIcon
           color="primary"
