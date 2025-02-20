@@ -2,8 +2,10 @@ import { Box, Chip, SwipeableDrawer } from "@mui/material";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import WeekdayCalendar from "./WeekdayCalendar";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import FilterModal, { FilterModalRef } from "./FilterModal";
+import ClassSelection from "./ClassSelection";
+import classSchedule from "../const/classes";
 
 type Props = {
   open: boolean;
@@ -14,6 +16,37 @@ const drawerBleeding = 56;
 
 export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
   const filterModalRef = useRef<FilterModalRef>(null);
+  const [step, setStep] = useState(0);
+  const [selectedCell, setSelectedCell] = useState<{
+    day: string;
+    start: string;
+    end: string;
+  }>();
+
+  const selectedClass = classSchedule.filter(
+    (schedule) =>
+      schedule.day === selectedCell?.day &&
+      schedule.start === selectedCell?.start
+  );
+
+  const handleSelectedCell = (selectedCell: {
+    day: string;
+    start: string;
+    end: string;
+  }) => {
+    const selectedClass = classSchedule.filter(
+      (schedule) =>
+        schedule.day === selectedCell?.day &&
+        schedule.start === selectedCell?.start
+    );
+    setSelectedCell(selectedCell);
+    setStep(() => (!!selectedCell && selectedClass.length > 1 ? 1 : 0));
+  };
+
+  const handlePrevStep = () => {
+    setStep((prev) => (prev > 0 ? prev - 1 : prev));
+    setSelectedCell(undefined);
+  };
 
   return (
     <SwipeableDrawer
@@ -107,10 +140,43 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
             }}
           />
         </Box>
-        <Box flex="1" overflow="auto">
-          <WeekdayCalendar />
-          <FilterModal ref={filterModalRef} />B
+
+        <Box
+          flex="1"
+          display="flex"
+          sx={{ overflowY: "auto", overflowX: "hidden", position: "relative" }}
+        >
+          <Box
+            sx={{
+              width: "100vw",
+              position: "absolute",
+              left: 0,
+              transition: "transform 0.3s ease-in-out",
+              transform: step === 1 ? "translateX(-100%)" : "translateX(0)",
+            }}
+          >
+            <WeekdayCalendar onHandleSelectedCell={handleSelectedCell} />
+          </Box>
+
+          <Box
+            sx={{
+              width: "100vw",
+              position: "absolute",
+              left: "100%",
+              transition: "transform 0.3s ease-in-out",
+              transform: step === 1 ? "translateX(-100%)" : "translateX(0)",
+            }}
+          >
+            <ClassSelection
+              onHandlePreviousStep={handlePrevStep}
+              selectedCell={selectedCell || { day: "", start: "", end: "" }}
+              selectedClasses={selectedClass}
+            />
+          </Box>
+
+          <FilterModal ref={filterModalRef} />
         </Box>
+
         <Box height="100px" />
       </Box>
     </SwipeableDrawer>

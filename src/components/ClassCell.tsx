@@ -10,8 +10,9 @@ type Props = {
     name: string;
     color: string;
     day: string;
-    startTime: string;
+    start: string;
   }[];
+  onClick?: () => void;
 };
 
 const CustomTableCell = styled(TableCell)(() => ({
@@ -19,28 +20,20 @@ const CustomTableCell = styled(TableCell)(() => ({
   height: "30px",
 }));
 
-export default function ClassCell({ classes, weekday, time }: Props) {
-  const getClass = (day: string, startTime: string) => {
-    const resultClass =
-      classes.filter(
-        (schedule) => schedule.day === day && schedule.startTime === startTime
-      ) || [];
+export default function ClassCell({ classes, weekday, onClick }: Props) {
+  const isClassMoreThanFour = classes.length > 4;
 
-    return resultClass;
-  };
+  const firstGroup = isClassMoreThanFour ? classes.slice(0, 3) : classes;
 
-  const classesInThisCell = getClass(weekday, time.start);
-
-  const isClassMoreThanFour = classesInThisCell.length > 4;
-
-  const firstGroup = isClassMoreThanFour
-    ? classesInThisCell.slice(0, 3)
-    : classesInThisCell;
-
-  const secondGroup = isClassMoreThanFour ? classesInThisCell.slice(3) : [];
+  const secondGroup = isClassMoreThanFour ? classes.slice(3) : [];
 
   return (
-    <CustomTableCell key={weekday} width="12.5%" sx={{ height: "100px" }}>
+    <CustomTableCell
+      key={weekday}
+      width="12.5%"
+      sx={{ height: "100px" }}
+      onClick={onClick}
+    >
       <Box height="100%" display="flex" flexDirection="column">
         {firstGroup.map((c) => (
           <Box

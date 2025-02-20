@@ -8,6 +8,7 @@ import {
   styled,
 } from "@mui/material";
 import ClassCell from "./ClassCell";
+import classSchedule from "../const/classes";
 
 const weekdays = ["一", "二", "三", "四", "五"];
 const weekends = ["六", "日"];
@@ -35,87 +36,29 @@ const weekendClassSchedule = [
   { start: "19:40", end: "20:30" },
 ];
 
-const classSchedule = [
-  {
-    name: "2-3核心",
-    color: "#a0e9fd",
-    day: "一",
-    startTime: "09:00",
-  },
-  {
-    name: "3-6專注",
-    color: "#ffdca9",
-    day: "一",
-    startTime: "09:00",
-  },
-  {
-    name: "2-3核心",
-    color: "#a0e9fd",
-    day: "五",
-    startTime: "09:00",
-  },
-  {
-    name: "4-6人際",
-    color: "#ffdca9",
-    day: "六",
-    startTime: "10:10",
-  },
-  {
-    name: "2-4專＋感",
-    color: "#e0fcf6",
-    day: "六",
-    startTime: "10:10",
-  },
-  {
-    name: "2-3核心",
-    color: "#a0e9fd",
-    day: "六",
-    startTime: "10:10",
-  },
-  {
-    name: "國小書寫",
-    color: "#fff1af",
-    day: "日",
-    startTime: "09:00",
-  },
-  {
-    name: "國小書寫",
-    color: "#fff1af",
-    day: "日",
-    startTime: "10:10",
-  },
-  {
-    name: "4-6人際",
-    color: "#ffdca9",
-    day: "日",
-    startTime: "10:10",
-  },
-  {
-    name: "2-4專＋感",
-    color: "#e0fcf6",
-    day: "日",
-    startTime: "10:10",
-  },
-  {
-    name: "2-3核心",
-    color: "#a0e9fd",
-    day: "日",
-    startTime: "10:10",
-  },
-  {
-    name: "1.5-2核心",
-    color: "#ffdca9",
-    day: "日",
-    startTime: "10:10",
-  },
-];
-
 const CustomTableCell = styled(TableCell)(() => ({
   padding: 0,
   height: "30px",
 }));
 
-export default function WeekdayCalendar() {
+type Props = {
+  onHandleSelectedCell: (selectedCell: {
+    day: string;
+    start: string;
+    end: string;
+  }) => void;
+};
+
+export default function WeekdayCalendar({ onHandleSelectedCell }: Props) {
+  const getClass = (day: string, startTime: string) => {
+    const resultClass =
+      classSchedule.filter(
+        (schedule) => schedule.day === day && schedule.start === startTime
+      ) || [];
+
+    return resultClass;
+  };
+
   return (
     <Table>
       <TableHead>
@@ -154,7 +97,14 @@ export default function WeekdayCalendar() {
                 key={weekday}
                 weekday={weekday}
                 time={time}
-                classes={classSchedule}
+                classes={getClass(weekday, time.start)}
+                onClick={() =>
+                  onHandleSelectedCell({
+                    day: weekday,
+                    start: time.start,
+                    end: time.end,
+                  })
+                }
               />
             ))}
 
@@ -169,12 +119,20 @@ export default function WeekdayCalendar() {
                 {weekendClassSchedule[index].end}
               </Typography>
             </CustomTableCell>
+
             {weekends.map((weekend) => (
               <ClassCell
                 key={weekend}
                 weekday={weekend}
                 time={weekendClassSchedule[index]}
-                classes={classSchedule}
+                classes={getClass(weekend, weekendClassSchedule[index].start)}
+                onClick={() =>
+                  onHandleSelectedCell({
+                    day: weekend,
+                    start: weekendClassSchedule[index].start,
+                    end: weekendClassSchedule[index].end,
+                  })
+                }
               />
             ))}
           </TableRow>
