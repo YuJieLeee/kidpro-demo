@@ -7,8 +7,8 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import ClassCell from "./ClassCell";
-import classSchedule from "../const/classes";
+import ClassCell from "./_ClassCell";
+import classSchedule from "../../const/classes";
 
 const weekdays = ["一", "二", "三", "四", "五"];
 const weekends = ["六", "日"];

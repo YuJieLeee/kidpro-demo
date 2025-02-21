@@ -1,12 +1,12 @@
 import { Box, Chip, SwipeableDrawer } from "@mui/material";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
-import WeekdayCalendar from "./WeekdayCalendar";
+import WeekdayCalendar from "../WeekdayCalendar";
 import { useRef, useState } from "react";
-import FilterModal, { FilterModalRef } from "./FilterModal";
-import ClassSelection from "./ClassSelection";
-import classSchedule from "../const/classes";
-import MonthCalendar from "./MonthCalendar";
+import FilterModal, { FilterModalRef } from "../FilterModal";
+import ClassSelection from "../ClassSelection";
+import classSchedule from "../../const/classes";
+import MonthCalendar from "../MonthCalendar";
 
 type Props = {
   open: boolean;
