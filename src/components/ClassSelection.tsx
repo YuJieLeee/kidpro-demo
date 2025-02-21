@@ -3,6 +3,12 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 type Props = {
   onHandlePreviousStep: () => void;
+  onHandleSelectedClass: (selectedClass: {
+    name: string;
+    color: string;
+    day: string;
+    start: string;
+  }) => void;
   selectedCell: {
     day: string;
     start: string;
@@ -20,6 +26,7 @@ export default function ClassSelection({
   onHandlePreviousStep,
   selectedCell,
   selectedClasses,
+  onHandleSelectedClass,
 }: Props) {
   return (
     <Box padding="4px">
@@ -31,7 +38,6 @@ export default function ClassSelection({
       <Typography textAlign="center">
         {selectedCell.day} {selectedCell.start} - {selectedCell.end}
       </Typography>
-
       <Box>
         {selectedClasses.map((c) => (
           <Box
@@ -45,6 +51,7 @@ export default function ClassSelection({
             borderRadius="5px"
             margin="1px"
             height="60px"
+            onClick={() => onHandleSelectedClass(c)}
           >
             <Typography>{c.name}</Typography>
           </Box>

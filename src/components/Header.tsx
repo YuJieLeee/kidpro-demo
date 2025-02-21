@@ -4,11 +4,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function Header() {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(window.pageYOffset);
+
   const [test, setTest] = useState(false);
+  const navigate = useNavigate();
 
   const handleScroll = () => {
     const currentScrollY = window.pageYOffset;
@@ -49,6 +52,7 @@ export default function Header() {
         src="/kidpro-demo/kidpro-logo.png"
         alt="Logo"
         style={{ height: "60px" }}
+        onClick={() => navigate("/home")}
       />
       <Box>
         <SearchIcon

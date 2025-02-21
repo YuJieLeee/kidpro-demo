@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import Swiper from "../../components/Swiper";
+import { useNavigate } from "react-router";
 
 const categories = [
   {
@@ -70,6 +71,7 @@ const products = [
 ];
 
 export default function Homepage() {
+  const navigate = useNavigate();
   return (
     <Box>
       <img src="/kidpro-demo/banner.png" width="100%" />
@@ -89,7 +91,12 @@ export default function Homepage() {
               flexDirection="column"
               alignItems="center"
             >
-              <img src={product.productImg} alt="product" width="100%" />
+              <img
+                src={product.productImg}
+                alt="product"
+                width="100%"
+                onClick={() => navigate("/product")}
+              />
 
               <Box display="flex" alignItems="end" gap="5px">
                 {product.specialPrice && (

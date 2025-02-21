@@ -15,16 +15,7 @@ function App() {
             <Route path="/" element={<HomePage />}>
               <Route path=":categoryId" element={<HomePage />} />
             </Route>
-            <Route path="product" element={<ProductPage />} />
-            {/* <Route path="/bars" element={<BarsPage />} />
-        <Route path="/grape" element={<GrapeJsPage />} />
-        <Route path="/craft" element={<CraftJsPage />} /> */}
-            {/* <Route path="/swiper" element={<SwiperPage categories={categories} />}>
-          <Route
-            path=":categoryId"
-            element={<SwiperPage categories={categories} />}
-          />
-        </Route> */}
+            <Route path="/product" element={<ProductPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

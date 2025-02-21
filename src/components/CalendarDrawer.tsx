@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import FilterModal, { FilterModalRef } from "./FilterModal";
 import ClassSelection from "./ClassSelection";
 import classSchedule from "../const/classes";
+import MonthCalendar from "./MonthCalendar";
 
 type Props = {
   open: boolean;
@@ -22,8 +23,14 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
     start: string;
     end: string;
   }>();
+  const [selectedClass, setSelectedClass] = useState<{
+    name: string;
+    color: string;
+    day: string;
+    start: string;
+  }>();
 
-  const selectedClass = classSchedule.filter(
+  const selectedClasses = classSchedule.filter(
     (schedule) =>
       schedule.day === selectedCell?.day &&
       schedule.start === selectedCell?.start
@@ -43,9 +50,21 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
     setStep(() => (!!selectedCell && selectedClass.length > 1 ? 1 : 0));
   };
 
+  const handleSelectedClass = (selectedClass: {
+    name: string;
+    color: string;
+    day: string;
+    start: string;
+  }) => {
+    setSelectedClass(selectedClass);
+    setStep(2);
+  };
+
   const handlePrevStep = () => {
-    setStep((prev) => (prev > 0 ? prev - 1 : prev));
-    setSelectedCell(undefined);
+    setStep((prev) => {
+      if (prev === 1) setSelectedClass(undefined);
+      return prev > 0 ? prev - 1 : prev;
+    });
   };
 
   return (
@@ -152,7 +171,7 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
               position: "absolute",
               left: 0,
               transition: "transform 0.3s ease-in-out",
-              transform: step === 1 ? "translateX(-100%)" : "translateX(0)",
+              transform: step === 0 ? "translateX(0)" : "translateX(-100%)",
             }}
           >
             <WeekdayCalendar onHandleSelectedCell={handleSelectedCell} />
@@ -164,13 +183,35 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
               position: "absolute",
               left: "100%",
               transition: "transform 0.3s ease-in-out",
-              transform: step === 1 ? "translateX(-100%)" : "translateX(0)",
+              transform:
+                step === 1
+                  ? "translateX(-100%)"
+                  : step === 2
+                  ? "translateX(-200%)"
+                  : "translateX(0)",
             }}
           >
             <ClassSelection
               onHandlePreviousStep={handlePrevStep}
               selectedCell={selectedCell || { day: "", start: "", end: "" }}
-              selectedClasses={selectedClass}
+              selectedClasses={selectedClasses}
+              onHandleSelectedClass={handleSelectedClass}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              width: "100vw",
+              height: "100%",
+              position: "absolute",
+              left: "200%",
+              transition: "transform 0.3s ease-in-out",
+              transform: step === 2 ? "translateX(-200%)" : "translateX(0)",
+            }}
+          >
+            <MonthCalendar
+              onHandlePreviousStep={handlePrevStep}
+              selectedClass={selectedClass!}
             />
           </Box>
 
