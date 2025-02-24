@@ -44,7 +44,7 @@ export default function BottomSheetCalendar() {
     <Box>
       <Box
         sx={{
-          position: "absolute",
+          position: "fixed",
           bottom: 0,
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,

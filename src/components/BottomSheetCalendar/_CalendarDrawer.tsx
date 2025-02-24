@@ -91,6 +91,9 @@ export default function CalendarDrawer({
         onHandleSelectedClass(undefined);
         handleSelectedCell(undefined);
       }}
+      onTouchStart={(event: any) =>
+        (event.nativeEvent.defaultMuiPrevented = true)
+      }
       onOpen={() => {}}
       swipeAreaWidth={drawerBleeding}
       disableSwipeToOpen={false}

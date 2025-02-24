@@ -60,7 +60,8 @@ export default function Swiper({ categories }: Props) {
       loopAdditionalSlides={1}
       onSlideChange={(swiper) => {
         setCurrentSlide(swiper.realIndex);
-        navigate("/" + categories[currentSlide].categoryId);
+        if (!window.location.pathname.includes("product"))
+          navigate("/" + categories[currentSlide].categoryId);
       }}
       style={{ height: "150px" }}
     >
