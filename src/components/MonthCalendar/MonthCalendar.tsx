@@ -18,6 +18,7 @@ type Props = {
     day: string;
     start: string;
   };
+  selectedCell: { day: string; start: string; end: string } | undefined;
 };
 
 const CustomCalendar = styled(DateCalendar)({
@@ -67,10 +68,30 @@ function CustomDate(
   );
 }
 
-export default function MonthCalendar({ onHandlePreviousStep }: Props) {
+export default function MonthCalendar({
+  onHandlePreviousStep,
+  selectedClass,
+  selectedCell,
+}: Props) {
   return (
     <Box position="relative" height="100%">
-      <ArrowBackIosNewIcon onClick={onHandlePreviousStep} fontSize="small" />
+      <ArrowBackIosNewIcon
+        onClick={onHandlePreviousStep}
+        fontSize="small"
+        sx={{ cursor: "pointer", position: "absolute", left: "5px" }}
+      />
+      <Typography textAlign="center">
+        {selectedCell?.day} {selectedCell?.start} - {selectedCell?.end}
+      </Typography>
+      <Typography
+        marginX="5px"
+        padding="5px"
+        borderRadius="5px"
+        textAlign="center"
+        bgcolor={selectedClass?.color}
+      >
+        {selectedClass?.name}
+      </Typography>
 
       <Box
         display="grid"

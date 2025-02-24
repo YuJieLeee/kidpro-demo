@@ -138,13 +138,21 @@ export default function WeekdayCalendar({
                 weekday={weekend}
                 time={weekendClassSchedule[index]}
                 classes={getClass(weekend, weekendClassSchedule[index].start)}
-                onClick={() =>
+                onClick={() => {
                   onHandleSelectedCell({
                     day: weekend,
                     start: weekendClassSchedule[index].start,
                     end: weekendClassSchedule[index].end,
-                  })
-                }
+                  });
+
+                  if (
+                    getClass(weekend, weekendClassSchedule[index].start)
+                      .length === 1
+                  )
+                    onHandleSelectedClass(
+                      getClass(weekend, weekendClassSchedule[index].start)[0]
+                    );
+                }}
               />
             ))}
           </TableRow>

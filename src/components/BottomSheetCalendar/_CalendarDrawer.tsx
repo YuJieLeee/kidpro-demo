@@ -188,6 +188,7 @@ export default function CalendarDrawer({
             <MonthCalendar
               onHandlePreviousStep={handlePrevStep}
               selectedClass={selectedClass!}
+              selectedCell={selectedCell}
             />
           </Box>
           <FilterModal ref={filterModalRef} />
