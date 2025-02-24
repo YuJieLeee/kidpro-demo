@@ -61,6 +61,15 @@ const FilterModal = forwardRef<FilterModalRef>((_, ref) => {
           </Typography>
           <Typography>小孩生日</Typography>
           <DatePicker sx={{ width: "100%" }} />
+          <FormControlLabel
+            control={<Checkbox />}
+            label={
+              <Box display="flex" gap="5px">
+                <Typography fontWeight="700">王大寶</Typography>
+                <Typography fontWeight="700">2020/11/25（3歲5個月）</Typography>
+              </Box>
+            }
+          />
           <Typography
             sx={{ textDecoration: "underline", cursor: "pointer" }}
             color="secondary"
