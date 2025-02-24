@@ -47,9 +47,18 @@ type Props = {
     start: string;
     end: string;
   }) => void;
+  onHandleSelectedClass: (selectedClass: {
+    name: string;
+    color: string;
+    day: string;
+    start: string;
+  }) => void;
 };
 
-export default function WeekdayCalendar({ onHandleSelectedCell }: Props) {
+export default function WeekdayCalendar({
+  onHandleSelectedCell,
+  onHandleSelectedClass,
+}: Props) {
   const getClass = (day: string, startTime: string) => {
     const resultClass =
       classSchedule.filter(
@@ -98,13 +107,16 @@ export default function WeekdayCalendar({ onHandleSelectedCell }: Props) {
                 weekday={weekday}
                 time={time}
                 classes={getClass(weekday, time.start)}
-                onClick={() =>
+                onClick={() => {
                   onHandleSelectedCell({
                     day: weekday,
                     start: time.start,
                     end: time.end,
-                  })
-                }
+                  });
+
+                  if (getClass(weekday, time.start).length === 1)
+                    onHandleSelectedClass(getClass(weekday, time.start)[0]);
+                }}
               />
             ))}
 

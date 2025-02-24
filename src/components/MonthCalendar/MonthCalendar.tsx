@@ -174,6 +174,3 @@ export default function MonthCalendar({ onHandlePreviousStep }: Props) {
     </Box>
   );
 }
-
-{
-}

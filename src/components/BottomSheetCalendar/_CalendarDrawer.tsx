@@ -1,33 +1,49 @@
-import { Box, Chip, SwipeableDrawer } from "@mui/material";
+import { Box, SwipeableDrawer } from "@mui/material";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import WeekdayCalendar from "../WeekdayCalendar";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FilterModal, { FilterModalRef } from "../FilterModal";
 import ClassSelection from "../ClassSelection";
 import classSchedule from "../../const/classes";
 import MonthCalendar from "../MonthCalendar";
+import FilterConditionDemo from "./_FilterConditionDemo";
 
 type Props = {
   open: boolean;
   onToggleDrawer: (newOpen: boolean) => () => void;
+  onHandleSelectedClass: (
+    c:
+      | {
+          name: string;
+          color: string;
+          day: string;
+          start: string;
+        }
+      | undefined
+  ) => void;
+  selectedClass?: {
+    name: string;
+    color: string;
+    day: string;
+    start: string;
+  };
 };
 
 const drawerBleeding = 56;
 
-export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
+export default function CalendarDrawer({
+  open,
+  onToggleDrawer,
+  onHandleSelectedClass,
+  selectedClass,
+}: Props) {
   const filterModalRef = useRef<FilterModalRef>(null);
   const [step, setStep] = useState(0);
   const [selectedCell, setSelectedCell] = useState<{
     day: string;
     start: string;
     end: string;
-  }>();
-  const [selectedClass, setSelectedClass] = useState<{
-    name: string;
-    color: string;
-    day: string;
-    start: string;
   }>();
 
   const selectedClasses = classSchedule.filter(
@@ -36,11 +52,15 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
       schedule.start === selectedCell?.start
   );
 
-  const handleSelectedCell = (selectedCell: {
-    day: string;
-    start: string;
-    end: string;
-  }) => {
+  const handleSelectedCell = (
+    selectedCell:
+      | {
+          day: string;
+          start: string;
+          end: string;
+        }
+      | undefined
+  ) => {
     const selectedClass = classSchedule.filter(
       (schedule) =>
         schedule.day === selectedCell?.day &&
@@ -50,28 +70,27 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
     setStep(() => (!!selectedCell && selectedClass.length > 1 ? 1 : 0));
   };
 
-  const handleSelectedClass = (selectedClass: {
-    name: string;
-    color: string;
-    day: string;
-    start: string;
-  }) => {
-    setSelectedClass(selectedClass);
-    setStep(2);
-  };
-
   const handlePrevStep = () => {
     setStep((prev) => {
-      if (prev === 1) setSelectedClass(undefined);
+      if (prev === 1) onHandleSelectedClass(undefined);
+      if (selectedClasses.length === 1) return 0;
       return prev > 0 ? prev - 1 : prev;
     });
   };
+
+  useEffect(() => {
+    if (selectedClass) setStep(2);
+  }, [selectedClass, setStep]);
 
   return (
     <SwipeableDrawer
       anchor="bottom"
       open={open}
-      onClose={onToggleDrawer(false)}
+      onClose={() => {
+        onToggleDrawer(false)();
+        onHandleSelectedClass(undefined);
+        handleSelectedCell(undefined);
+      }}
       onOpen={() => {}}
       swipeAreaWidth={drawerBleeding}
       disableSwipeToOpen={false}
@@ -113,52 +132,8 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
             onClick={() => filterModalRef.current?.openModal()}
           />
         </Box>
-        <Box display="flex" gap="5px" flexWrap="wrap" padding="5px">
-          <Chip
-            label="3歲"
-            onDelete={() => {}}
-            sx={{
-              color: "white",
-              bgcolor: "#28c8c8",
-              ".MuiChip-deleteIcon": {
-                color: "white",
-              },
-            }}
-          />
-          <Chip
-            label="國小書寫"
-            onDelete={() => {}}
-            sx={{
-              color: "white",
-              bgcolor: "#28c8c8",
-              ".MuiChip-deleteIcon": {
-                color: "white",
-              },
-            }}
-          />
-          <Chip
-            label="感覺統合"
-            onDelete={() => {}}
-            sx={{
-              color: "white",
-              bgcolor: "#28c8c8",
-              ".MuiChip-deleteIcon": {
-                color: "white",
-              },
-            }}
-          />
-          <Chip
-            label="2025/02/01 - 2025/02/15"
-            onDelete={() => {}}
-            sx={{
-              color: "white",
-              bgcolor: "#28c8c8",
-              ".MuiChip-deleteIcon": {
-                color: "white",
-              },
-            }}
-          />
-        </Box>
+
+        <FilterConditionDemo />
 
         <Box
           flex="1"
@@ -174,9 +149,11 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
               transform: step === 0 ? "translateX(0)" : "translateX(-100%)",
             }}
           >
-            <WeekdayCalendar onHandleSelectedCell={handleSelectedCell} />
+            <WeekdayCalendar
+              onHandleSelectedCell={handleSelectedCell}
+              onHandleSelectedClass={onHandleSelectedClass}
+            />
           </Box>
-
           <Box
             sx={{
               width: "100vw",
@@ -195,10 +172,9 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
               onHandlePreviousStep={handlePrevStep}
               selectedCell={selectedCell || { day: "", start: "", end: "" }}
               selectedClasses={selectedClasses}
-              onHandleSelectedClass={handleSelectedClass}
+              onHandleSelectedClass={onHandleSelectedClass}
             />
           </Box>
-
           <Box
             sx={{
               width: "100vw",
@@ -214,7 +190,6 @@ export default function CalendarDrawer({ open, onToggleDrawer }: Props) {
               selectedClass={selectedClass!}
             />
           </Box>
-
           <FilterModal ref={filterModalRef} />
         </Box>
 

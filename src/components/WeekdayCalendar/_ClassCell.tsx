@@ -63,35 +63,6 @@ export default function ClassCell({ classes, weekday, onClick }: Props) {
             ))}
           </Box>
         )}
-
-        {/* {isClassMoreThanFour
-          ? ""
-          : classesInThisCell.map((c) => (
-              <Box
-                key={c.name}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                fontSize="12px"
-                bgcolor={c.color}
-                flex="1"
-              >
-                {c.name}
-              </Box>
-            ))} */}
-        {/* {classesInThisCell.map((c) => (
-          <Box
-            key={c.name}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            fontSize="12px"
-            bgcolor={c.color}
-            flex="1"
-          >
-            {c.name}
-          </Box>
-        ))} */}
       </Box>
     </CustomTableCell>
   );

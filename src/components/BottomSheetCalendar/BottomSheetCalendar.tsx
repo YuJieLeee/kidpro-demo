@@ -1,7 +1,14 @@
 import { useState } from "react";
 
 import Box from "@mui/material/Box";
-import { FormControl, InputLabel, Link, MenuItem, Select } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  Link,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
 import CalendarDrawer from "./_CalendarDrawer";
@@ -9,6 +16,24 @@ import CalendarDrawer from "./_CalendarDrawer";
 export default function BottomSheetCalendar() {
   const [open, setOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("");
+
+  const [selectedClass, setSelectedClass] = useState<{
+    name: string;
+    color: string;
+    day: string;
+    start: string;
+  }>();
+
+  const handleSelectedClass = (
+    c:
+      | {
+          name: string;
+          color: string;
+          day: string;
+          start: string;
+        }
+      | undefined
+  ) => setSelectedClass(c);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     if (newOpen === false) setSelectedLocation("");
@@ -55,80 +80,16 @@ export default function BottomSheetCalendar() {
           <MapOutlinedIcon color="secondary" />
           <Link color="secondary">依地圖選取</Link>
         </Box>
+
+        {selectedClass && <Button color="secondary">加入購物車</Button>}
       </Box>
 
-      <CalendarDrawer open={open} onToggleDrawer={toggleDrawer} />
+      <CalendarDrawer
+        open={open}
+        onToggleDrawer={toggleDrawer}
+        onHandleSelectedClass={handleSelectedClass}
+        selectedClass={selectedClass}
+      />
     </Box>
   );
 }
-
-// const drawerWidth = 240;
-
-// const openedMixin = (theme: Theme): CSSObject => ({
-//   height: drawerWidth,
-//   transition: theme.transitions.create("height", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.enteringScreen,
-//   }),
-//   overflowX: "hidden",
-// });
-
-// const closedMixin = (theme: Theme): CSSObject => ({
-//   transition: theme.transitions.create("height", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   overflowX: "hidden",
-//   height: "80px",
-// });
-
-// const CustomDrawer = styled(Drawer, {
-//   shouldForwardProp: (prop) => prop !== "open",
-// })(({ theme }) => ({
-//   height: drawerWidth,
-//   flexShrink: 0,
-//   whiteSpace: "nowrap",
-//   boxSizing: "border-box",
-//   variants: [
-//     {
-//       props: ({ open }) => open,
-//       style: {
-//         ...openedMixin(theme),
-//         "& .MuiDrawer-paper": openedMixin(theme),
-//       },
-//     },
-//     {
-//       props: ({ open }) => !open,
-//       style: {
-//         ...closedMixin(theme),
-//         "& .MuiDrawer-paper": closedMixin(theme),
-//       },
-//     },
-//   ],
-// }));
-
-// export default function BottomSheetCalendar() {
-//   const [open, setOpen] = useState(false);
-
-//   return (
-//     <Box width="100%">
-//       <Button onClick={() => setOpen(true)}>open</Button>
-//       <Button onClick={() => setOpen(false)}>close</Button>
-//       <CustomDrawer
-//         anchor="bottom"
-//         open={open}
-//         onClose={() => setOpen(false)}
-//         variant="permanent"
-//       >
-//         <Box>
-//           <FormControl>
-//             <Select>
-//               <MenuItem>華山中心</MenuItem>
-//               <MenuItem>板橋中心</MenuItem>
-//             </Select>
-//           </FormControl>
-//         </Box>
-//       </CustomDrawer>
-//     </Box>
-//   );
-// }
