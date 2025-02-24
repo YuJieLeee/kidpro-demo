@@ -81,7 +81,9 @@ export default function BottomSheetCalendar() {
           <Link color="secondary">依地圖選取</Link>
         </Box>
 
-        {selectedClass && <Button color="secondary">加入購物車</Button>}
+        <Button color="secondary" sx={{ flexShrink: 0 }}>
+          加入購物車
+        </Button>
       </Box>
 
       <CalendarDrawer
