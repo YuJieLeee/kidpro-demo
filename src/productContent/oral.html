@@ -1,0 +1,2486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .expand-checkbox {
+        display: none;
+      }
+
+      .expand-label {
+        display: block;
+        padding: 4px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-left: 6px solid white;
+        transition: transform 0.3s ease;
+      }
+
+      .expand-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: all 0.5s ease;
+        font-size: 14px;
+        flex-direction: column;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0px 10px;
+      }
+
+      .expand-checkbox:checked + .expand-label + .expand-content {
+        max-height: 3000px;
+        padding: 12px 10px;
+      }
+
+      .expand-checkbox:checked + .expand-label .triangle {
+        transform: rotate(90deg);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        position: relative;
+      }
+
+      .close-btn {
+        color: black;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        padding: 2px 5px 4px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-btn:hover,
+      .close-btn:focus {
+        color: #ffc83c;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid #ffc83c;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div>https://kid-pro.com/product/oral-2-12/</div> -->
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+        color: #2f4858;
+        padding: 10px;
+        line-height: 24px;
+      "
+    >
+      <a href="https://kid-pro.com/product/lec-simple-consultation-service/">
+        <img
+          width="640"
+          height="235"
+          src="https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png         640w,
+            https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2-300x110.png 300w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="max-width: 100%; height: auto; margin: auto"
+        />
+      </a>
+
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          height: 0;
+          overflow: hidden;
+        "
+      >
+        <iframe
+          src="https://player.vimeo.com/video/844456062?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479?&amp;autoplay=1"
+          frameborder="0"
+          allowfullscreen="1"
+          allow="autoplay;encrypted-media;"
+          data-gtm-yt-inspected-18="true"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+        ></iframe>
+      </div>
+
+      <div style="padding: 10px">
+        <ul style="font-size: 12px; color: #666666; margin-left: -40px">
+          <li>
+            國內教具免運費，另有
+            <a
+              href="/oral-2-12_freight"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              style="color: #666666"
+            >
+              海外方案
+            </a>
+          </li>
+          <li>完成付款後，可立即觀看課程</li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <picture decoding="async" class="alignnone wp-image-109634 size-full">
+            <source
+              type="image/webp"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png.webp
+              "
+            />
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+
+          <span style="font-weight: 700; font-size: 13px">開課日期</span>
+          <span style="font-size: 12px">已開課</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px">
+          <picture decoding="async" class="alignnone wp-image-125540 size-full">
+            <source
+              type="image/webp"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png.webp
+              "
+            />
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+          <span style="font-weight: 700; font-size: 13px">課程長度</span>
+          <span style="font-size: 14px">2小時46分</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px">
+          <picture decoding="async" class="alignnone wp-image-125541 size-full">
+            <source
+              type="image/webp"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png.webp
+              "
+            />
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+          <span style="font-weight: 700; font-size: 13px">總單元數</span>
+          <span style="font-size: 14px">7章45節</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px">
+          <picture decoding="async" class="alignnone wp-image-109218">
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_stdt.png.webp"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+          <span style="font-weight: 700; font-size: 13px">課程學員</span>
+          <span style="font-size: 14px">1551人</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px">
+          <picture decoding="async" class="alignnone wp-image-109219 size-full">
+            <img
+              decoding="async"
+              src="	https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_watch.png.webp"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+          <span style="font-weight: 700; font-size: 13px">觀看方式</span>
+          <span style="font-size: 14px">透過網站</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px">
+          <picture decoding="async" class="alignnone wp-image-125542">
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/05/massage_unlimited.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+          <span style="font-weight: 700; font-size: 13px">觀看期限</span>
+          <span style="font-size: 14px"
+            >無期限
+            <span
+              id="openModalBtn"
+              style="font-size: 8px; color: #fa9600; cursor: pointer"
+            >
+              （說明）
+            </span></span
+          >
+
+          <div id="myModal" class="modal">
+            <div
+              class="modal-content"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 20px;
+              "
+            >
+              <div class="close-btn">&times;</div>
+
+              <div
+                style="text-align: center; line-height: 25px; font-weight: 500"
+              >
+                消費者權益保障<br />
+
+                《無限期觀看說明》
+              </div>
+              <div>非信用卡付款：（∞）</div>
+              <div style="text-align: center">享無限期觀看權益。</div>
+              <div>信用卡付款：（１＋∞）</div>
+              <div style="text-align: center; color: #f26419">
+                【消費者亦享無限期觀看權益】
+              </div>
+              <div style="line-height: 25px">
+                惟根據國際信用卡組織規定，產品及服務交付期限為一個月內，因此本公司僅可聲明保障一個月內使用期限。本公司針對信用卡付費之消費者，贈送後續『無限期觀看』權益。此贈送之權益無涉信用卡公司。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            課程適合誰
+          </div>
+        </div>
+
+        <div style="line-height: 30px">
+          ● 2歲以上的大人小孩<br />● 幼教相關工作人員<br />●
+          專業人員(醫師、牙醫師、治療師、護理師)
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            什麼樣的孩子，適合這堂課
+          </div>
+        </div>
+
+        <div style="line-height: 30px">
+          ● 想要漂亮臉型、牙齒排列整齊<br />● 幫咀嚼、發音清晰度打好發展基礎<br />●
+          咀嚼進食慢，一餐要吃超過30分鐘以上；愛挑食，吃軟不吃硬，含飯或不咬直接吞<br />●
+          2歲以上仍會流口水<br />● 發音不清楚，講話含糊不清，舌頭外吐的孩子<br />●
+          臉型變長，小下巴，齒列不正、暴牙，<br />●
+          嘴巴常常開開，口呼吸的孩子<br />●
+          夜醒、打呼、磨牙、睡覺翻來覆去，導致的專注力不足、過動、衝動
+        </div>
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: absolute;
+            background: #e9fafa;
+            height: 75%;
+            width: 100%;
+            z-index: -1;
+            bottom: 0;
+            border-radius: 40px;
+          "
+        ></div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <p
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            課程特色
+          </p>
+        </div>
+
+        <div>
+          <img
+            decoding="async"
+            src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_39.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_39.png         541w,
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_39-300x229.png 300w
+            "
+            style="width: 100%"
+          />
+          <strong style="color: #1e8c96"
+            ><img
+              decoding="async"
+              src="http://b.blog.xuite.net/ba/c9/11910634/blog_2853/txt/3405431/3405431_8.gif"
+            />
+            搭配專業的口肌訓練教具包以及常見的生活物品，就可以直接上手。</strong
+          >
+          <img
+            decoding="async"
+            src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_28.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_28.png         541w,
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_28-300x223.png 300w
+            "
+            style="width: 100%; margin-bottom: 40px"
+          />
+        </div>
+      </div>
+
+      <img
+        decoding="async"
+        width="391"
+        height="272"
+        src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_01.png"
+        alt=""
+        srcset="
+          https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_01.png         391w,
+          https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_01-300x209.png 300w
+        "
+        style="width: 100%; height: auto"
+      />
+
+      <p style="color: #2396a0; font-size: 15px">
+        <img
+          decoding="async"
+          class=""
+          src="https://pic.pimg.tw/omega110/4aa1d09d80c88.gif"
+          alt="素材"
+          width="29"
+          height="17"
+        />
+        著重感知覺處理，透過3種口腔按摩手法，避免口腔敏感，挑食、不肯刷牙
+      </p>
+
+      <div
+        style="
+          background-color: #fff5df;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          align-items: center;
+          border-radius: 50px;
+        "
+      >
+        <img
+          decoding="async"
+          width="279"
+          height="109"
+          src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_03.png"
+          alt=""
+          style="max-width: 75%; height: auto"
+        />
+        <p style="color: #fa9600; font-size: 15px">
+          涵蓋六大口臉肌運動面向<br />幫助孩子兼顧臉型、唇形、咬字清晰、咀嚼有效率、改善打呼和流口水問題<br />一次解決<img
+            decoding="async"
+            src="http://www.silvitablanco.com.ar/avatares/avatar5/Hjerter.gif"
+          />
+        </p>
+      </div>
+
+      <div style="position: relative">
+        <img
+          decoding="async"
+          width="466"
+          height="135"
+          src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_10.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_10.png        466w,
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_10-300x87.png 300w
+          "
+          sizes="(max-width: 466px) 100vw, 466px"
+          style="width: 100%; height: auto"
+        />
+
+        <div
+          style="
+            background-color: #e9fafa;
+            position: absolute;
+            width: 95%;
+            height: 70%;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+          "
+        ></div>
+
+        <div
+          style="
+            padding: 20px;
+            font-size: 15px;
+            color: #33658a;
+            font-weight: 600;
+          "
+        >
+          <div style="display: flex; align-items: center">
+            <img
+              decoding="async"
+              src="https://pic.pimg.tw/yuer0305155/1431172531-279283155.gif"
+              alt="7_faith0515.gif"
+            />利用簡易有趣好執行的肌肉訓練活動，
+          </div>
+          讓孩子有美麗臉型、正確呼吸的方式、進食咀嚼有效率、發音清晰不大舌頭，
+          <br />以及好的身體姿勢型態、不駝背
+        </div>
+
+        <img
+          decoding="async"
+          width="467"
+          height="136"
+          src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_32.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_32.png        467w,
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_32-300x87.png 300w
+          "
+          sizes="(max-width: 467px) 100vw, 467px"
+          style="width: 100%; height: auto"
+        />
+      </div>
+
+      <div
+        style="
+          background-color: #ffe3a4;
+          border-radius: 50px;
+          padding: 20px;
+          padding-top: 40px;
+          padding-bottom: 40px;
+        "
+      >
+        <div
+          style="
+            margin-bottom: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: black;
+          "
+        >
+          提供簡易評估方式，包括
+          <div>
+            感覺處理異常評估，口面肌評估及口呼吸評估，讓使用者可以快速抓到孩子發展現況&nbsp;
+            <img
+              decoding="async"
+              class=""
+              src="https://pic.pimg.tw/smilerein12/1345135616-776139284.gif"
+              alt="EntryImageCAFBYMPL"
+              width="27"
+              height="27"
+            />
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 60px">
+          <img
+            decoding="async"
+            width="541"
+            height="406"
+            src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_21.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_21.png         541w,
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_21-300x225.png 300w
+            "
+            style="width: 60%; height: auto; margin-left: -45px"
+          />
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              align-items: center;
+              flex-shrink: 0;
+            "
+          >
+            <strong>口腔檢核表</strong>
+            <img
+              decoding="async"
+              width="29"
+              height="29"
+              src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_08.png"
+              alt=""
+            />
+            <strong>口呼吸檢測法</strong>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          background-color: #e9fafa;
+          padding: 40px;
+          padding-left: 20px;
+          padding-right: 20px;
+          border-radius: 50px;
+          font-weight: 600;
+          width: 80%;
+          margin-left: auto;
+        "
+      >
+        <p
+          style="
+            text-align: left;
+            color: #33658a;
+            font-size: 15px;
+            margin-bottom: 20px;
+          "
+        >
+          活動做法明確，提供客製化的套餐<br />(依年齡分級，調整時間、頻率及強度，人人都可輕鬆上手)
+        </p>
+
+        <img
+          decoding="async"
+          width="380"
+          height="245"
+          src="https://kid-pro.com/wp-content/uploads/2023/05/三個月練習總表.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2023/05/三個月練習總表.png         380w,
+            https://kid-pro.com/wp-content/uploads/2023/05/三個月練習總表-300x193.png 300w
+          "
+          style="width: 100%; height: auto"
+        />
+        <p style="text-align: center; color: #1e8c96">
+          <strong>⬆隨課程附3個月練習菜單</strong>
+        </p>
+      </div>
+
+      <div
+        style="
+          position: relative;
+          width: 300px;
+          padding: 20px;
+          border: 1px solid #b3ed8b;
+          border-radius: 10px;
+          background-color: #b3ed8b;
+          margin-left: auto;
+          text-align: center;
+        "
+      >
+        <div
+          style="
+            position: absolute;
+            top: 30%;
+            left: -10px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #b3ed8b;
+          "
+        ></div>
+
+        <p style="font-size: 22px; font-weight: 700">一對一線上諮詢室</p>
+        <p style="font-size: 15px">
+          進行課程後,有相關問題,可透過文字和授課老師進行簡單諮詢
+        </p>
+      </div>
+
+      <div
+        style="
+          background-color: #caf4f4;
+          display: flex;
+          flex-direction: column;
+          padding: 40px;
+          border-radius: 50px;
+          gap: 5px;
+        "
+      >
+        <div>完成課程後，可獲得</div>
+        <strong style="font-size: 23px"
+          >電子版完課證書<img
+            decoding="async"
+            src="https://pic.pimg.tw/vr3205/49a7e10dcf545.gif"
+            alt="9.gif"
+        /></strong>
+        <div>讓您在工作領域上，專業更加分</div>
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <p
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            上課方法
+          </p>
+        </div>
+
+        <p style="font-size: 14px; font-weight: 500; line-height: 20px">
+          ●
+          這是一堂錄製好的課程，您可以利用手機、平板、電腦，在有空的時間，連上網路，即可觀看課程。<br />●
+          透過大人觀看課程，了解遊戲的執行方式後，利用生活常見物品，帶領孩子進行遊戲。小孩不需觀看課程，減少接觸3C的機會。<br />●
+          用生活常見物品，就可以輕鬆執行，亦可搭配專業的口肌訓練教具，來讓效果加倍。
+        </p>
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <p
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            課程介紹
+          </p>
+        </div>
+
+        <div style="display: flex; justify-content: space-around">
+          <img
+            decoding="async"
+            width="417"
+            height="386"
+            src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_14-1.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_14-1.png         417w,
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_14-1-300x278.png 300w
+            "
+            style="width: 30%; height: auto"
+          />
+          <img
+            decoding="async"
+            src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_15.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_15.png         662w,
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_15-300x175.png 300w
+            "
+            style="width: 50%; height: auto"
+          />
+        </div>
+
+        <div
+          style="
+            background-color: #dcfffe;
+            width: 90%;
+            border-radius: 50px;
+            margin-left: auto;
+            padding: 20px;
+            margin-bottom: 30px;
+            width: 80%;
+          "
+        >
+          <p
+            style="
+              text-align: center;
+              font-size: 15px;
+              font-weight: 600;
+              margin-bottom: 20px;
+            "
+          >
+            口臉肌功能不足myofunctional disorders (OMDs)
+          </p>
+          <p style="font-size: 14px">
+            OMDs會導致口呼吸、過敏鼻塞、齒列不正、暴牙、戽斗、小下巴、發音不清楚、咀嚼慢、挑食、駝背、打鼾睡眠呼吸、睡眠呼吸中止、甚至專注力學習問題等。
+            <br />
+            主要的成因是，孩子因為飲食精緻化以及長期的不良口腔習慣，例如:
+            缺乏吃較硬食物的經驗、長期吸奶嘴、吸手指
+            而造成口臉部肌肉功能不夠成熟。
+          </p>
+        </div>
+
+        <div
+          style="
+            background-color: #ffdb9a;
+            width: 80%;
+            border-radius: 50px;
+            margin-right: auto;
+            padding: 20px;
+            margin-bottom: 30px;
+          "
+        >
+          <p
+            style="
+              text-align: center;
+              font-size: 15px;
+              font-weight: 600;
+              margin-bottom: 20px;
+            "
+          >
+            口呼吸問題
+          </p>
+          <p style="font-size: 14px">
+            根據國外研究統計，國小學童口呼吸比例55-60% (Felcar, J.
+            M.,2010)，而其中8-27%孩童會有睡眠呼吸障礙(如:
+            打呼、上呼吸道阻塞症候群)，甚至2%會有呼吸睡眠中止，而睡眠問題會連帶影響孩子分心、專注力欠佳、衝度控制不佳，以至於造成學業學習、人際互動問題。
+            <br />
+            家長應該在孩子9歲之前，進行適量的口肌訓練，避免孩子發生口臉肌功能不足所衍伸的相關問題。
+          </p>
+        </div>
+
+        <img
+          decoding="async"
+          width="878"
+          height="402"
+          src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_16.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_16.png         878w,
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_16-300x137.png 300w,
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_16-768x352.png 768w
+          "
+          style="width: 80%; height: auto"
+        />
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <p
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            老師的話
+          </p>
+        </div>
+
+        <img
+          decoding="async"
+          width="783"
+          height="343"
+          src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_25.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_25.png         783w,
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_25-300x131.png 300w,
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_25-768x336.png 768w
+          "
+          style="width: 80%; height: auto"
+        />
+
+        <div
+          style="
+            box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25);
+            border: 1px solid #b0b0b0;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: -7px;
+          "
+        >
+          <p>
+            在語言治療的10年職涯中，了解許多家長擔心孩子的臉型、牙齒排列，會影響孩子的自信心；而睡眠問題也可能導致專注力不足；更有家長因為孩子進食慢、挑食、流口水、發音不清楚，花了很多時間、金錢，幫孩子做牙齒矯正、上體適能課等，但是這些對問題的改善都十分有限。
+          </p>
+
+          <p>
+            近年來醫學界發現，預防相關問題，應從加強口部及臉部肌肉做起，語言治療師和牙醫師們也開始紛紛注意這個領域。透過口臉部感覺按摩
+            以及 功能導向的口臉部肌肉訓練活動，從根本解決問題。
+          </p>
+
+          <p>
+            所以，我設計這堂線上課程，讓大家跟著影片示範，利用好玩、有趣的遊戲活動，你就可以輕鬆減少孩子暴牙、臉型等上述問題。
+          </p>
+
+          <p>
+            我曾經遇到許多家長，在孩子出現齒列不正、口呼吸等問題時，才開始積極處理，往往都要花費甚鉅，且曠日費時，而且孩子還要承受矯正時的各種辛苦。因此，我非常希望所有家長，都可以學會這堂課的內容，未來或可省下數十萬元的矯正費用，讓孩子一生自信的微笑。
+          </p>
+        </div>
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <p
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            專家推薦
+          </p>
+        </div>
+
+        <div
+          style="
+            background-color: #fef2d2;
+            text-align: center;
+            border-radius: 50px;
+            padding: 20px;
+            font-weight: 500;
+          "
+        >
+          <img
+            decoding="async"
+            width="464"
+            height="376"
+            src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_38.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_38.png         464w,
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_38-300x243.png 300w
+            "
+            style="width: 80%; height: auto"
+          />
+
+          <div style="text-align: left">
+            嘴巴常呈現打開的狀況，會造成暴牙、打呼、睡眠呼吸中止、口臭。
+          </div>
+          <div style="text-align: left">可以藉由口腔肌肉動作訓練來改善。</div>
+        </div>
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <p
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            學員回饋
+          </p>
+        </div>
+
+        <div
+          style="
+            background-color: #d2feef;
+
+            border-radius: 50px;
+            padding: 20px;
+            font-weight: 500;
+            text-align: center;
+          "
+        >
+          <p
+            style="
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 30px;
+              display: flex;
+            "
+          >
+            學員 C小姐
+          </p>
+          <p style="margin-bottom: 30px; text-align: left">
+            女兒從小因鼻子過敏，引發口呼吸而導致嘴巴翹、齒列不正和駝背等問題,嘗試了咀嚼口香糖、口腔操、睡前貼嘴巴、空氣清淨器都沒有改善。
+            <br />
+            跟著「全方位口肌線上課程」，一個多月的練習後，女兒告訴我，她兩邊的鼻子非常通暢，臉型、嘴型都明顯改善誠摯推薦這堂課程！
+          </p>
+
+          <img
+            decoding="async"
+            width="380"
+            height="245"
+            src="https://kid-pro.com/wp-content/uploads/2023/05/口肌學員回饋1.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌學員回饋1.png         380w,
+              https://kid-pro.com/wp-content/uploads/2023/05/口肌學員回饋1-300x193.png 300w
+            "
+            style="width: 80%; height: auto"
+          />
+          <div
+            style="
+              background-color: #1e8c96;
+              width: fit-content;
+              padding: 3px 20px;
+              border-radius: 3px;
+              margin: auto;
+            "
+          >
+            <a
+              style="color: white; font-size: 13px; text-decoration: none"
+              href="https://www.facebook.com/100083616720313/posts/pfbid0BnCFKJQxAXMWHAYtz3nxnFHYStgjDncMJtK5FeJKw99dScVFVHVGHM9c1VSB6M2pl/?app=fbl"
+              >完整內容</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            課程中 包含什麼？
+          </div>
+        </div>
+
+        <h5
+          style="
+            color: #1e8c96;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+          "
+        >
+          3大口面部按摩
+        </h5>
+        <p style="font-size: 14px; margin-bottom: 10px">
+          腦神經孔按摩、臉部按摩及口腔按摩
+        </p>
+
+        <h5
+          style="
+            color: #1e8c96;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+          "
+        >
+          6大口面肌肉訓練
+        </h5>
+        <p style="font-size: 14px; margin-bottom: 10px">
+          呼吸運動、唇頰運動、舌頭運動、咀嚼運動、吞嚥運動、姿勢運動
+        </p>
+
+        <table
+          style="
+            border: 1px solid #2496a0;
+            border-collapse: collapse;
+            font-size: 14px;
+          "
+        >
+          <thead
+            style="border-bottom: 1px solid #2496a0; background-color: #e9fafa"
+          >
+            <tr>
+              <th scope="row" colspan="3">對孩子的幫助</th>
+              <th>遊戲數量</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr style="border-bottom: 1px solid #2496a0">
+              <th
+                scope="row"
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                3大口面部按摩
+              </th>
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                <p style="text-align: left">
+                  腦神經孔按摩<br />臉部按摩<br />口腔按摩
+                </p>
+              </th>
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                <p style="text-align: left">
+                  ● 預防或減少口腔觸覺敏感，造成挑食、不肯刷牙<br />●
+                  改善鈍感，避免流口水、咀嚼弱
+                </p>
+              </th>
+              <th style="font-weight: 400">3</th>
+            </tr>
+
+            <tr>
+              <th
+                scope="col"
+                rowspan="7"
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                6大肌肉群訓練
+              </th>
+            </tr>
+
+            <tr style="border-bottom: 1px solid #aaebeb">
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                呼吸運動
+              </th>
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                  text-align: left;
+                "
+              >
+                ● 預防鼻塞、鼻過敏
+              </th>
+              <th style="font-weight: 400">7</th>
+            </tr>
+
+            <tr style="border-bottom: 1px solid #aaebeb">
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                唇頰運動
+              </th>
+
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                  text-align: left;
+                "
+              >
+                ●協助美觀唇形發展<br />●幫助咬字更清晰<br />●改善流口水、嘴巴開開
+              </th>
+
+              <th style="font-weight: 400; padding: 10px">13</th>
+            </tr>
+
+            <tr style="border-bottom: 1px solid #aaebeb">
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                舌頭運動
+              </th>
+
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                  text-align: left;
+                "
+              >
+                ●為發出舌尖音(ㄉㄊㄗㄘㄙ)、捲舌音(ㄓㄔㄕㄖ)做準備<br />●改善打呼問題<br />●打好咀嚼能力的基礎
+              </th>
+
+              <th style="font-weight: 400; padding: 10px">11</th>
+            </tr>
+
+            <tr style="border-bottom: 1px solid #aaebeb">
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                咀嚼運動
+              </th>
+
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                  text-align: left;
+                "
+              >
+                ●促進臉型美觀的發展<br />●促進咬字清晰度<br />●促進咀嚼能力
+              </th>
+
+              <th style="font-weight: 400; padding: 10px">4</th>
+            </tr>
+
+            <tr style="border-bottom: 1px solid #aaebeb">
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                吞嚥運動
+              </th>
+
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                  text-align: left;
+                "
+              >
+                ●幫助孩子吞嚥<br />●進食更有效率<br />
+              </th>
+
+              <th style="font-weight: 400; padding: 10px">4</th>
+            </tr>
+
+            <tr>
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                "
+              >
+                姿勢運動
+              </th>
+
+              <th
+                style="
+                  border-right: 1px dotted #2496a0;
+                  font-weight: 400;
+                  padding: 10px;
+                  text-align: left;
+                "
+              >
+                ●增進背肌與核心腹肌的力量<br />●改善彎腰駝背<br />●改善不良站姿
+              </th>
+
+              <th style="font-weight: 400; padding: 10px">11</th>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size: 14px; padding: 5px">
+          每個遊戲都有依據年齡的不同，設計不同難度的關卡，總共有53個活動，讓2-12歲的孩子，都能適用
+        </p>
+      </div>
+
+      <div
+        style="
+          border: 1px solid #2496a0;
+          border-radius: 5px;
+          color: #4b718e;
+          font-size: 14px;
+        "
+      >
+        <input type="checkbox" class="expand-checkbox" id="expand-toggle1" />
+        <label
+          class="expand-label"
+          for="expand-toggle1"
+          style="
+            background-color: #2496a0;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            gap: 5px;
+            border-top-right-radius: 3px;
+            border-top-left-radius: 3px;
+          "
+        >
+          <div class="triangle"></div>
+          <div style="color: white; font-size: 14px">單元介紹</div>
+        </label>
+        <div class="expand-content">
+          <div>● 課程使用說明片</div>
+
+          <div>
+            <strong>第零章：認識口腔臉部肌肉功能及訓練概論</strong><br />
+            ● 口腔肌肉功能的重要性<br />● 口腔-臉部肌肉功能檢測法<br />●
+            口呼吸是什麼？對孩子的影響<br />● 我的孩子有口呼吸嗎？ 口呼吸檢測法
+          </div>
+
+          <div>
+            <strong>第一章：口面部按摩</strong>
+            <br />● 為何要處理口面部感覺與如何觀察口面部感知覺能力?<br />●
+            認識口面肌感覺異常的類型以及成因<br />●
+            這套口面部按摩適合什麼樣的人<br />● 腦神經孔按摩<br />● 臉部按摩<br />●
+            口腔按摩<br />● 居家小遊戲
+          </div>
+
+          <div>
+            <strong>第二章：呼吸運動訓練遊戲</strong><br />● 活動1 輕輕呼吸<br />●
+            活動2 通鼻呼吸<br />● 活動3 捏鼻子搖頭呼吸<br />● 活動4
+            吹煙斗笛運動<br />● 活動5 居家小遊戲
+          </div>
+
+          <div>
+            <strong>第三章：咀嚼活動</strong><br />● 活動1 咬咀嚼管<br />● 活動2
+            鱷魚拔河<br />● 活動3 鯊魚來了<br />● 活動4 派對主廚
+          </div>
+
+          <div>
+            <strong>第四章：嘴唇活動</strong><br />● 活動1 我會爆米花<br />●
+            活動2 我是老婆婆<br />● 活動3 我是小河豚<br />● 活動4 我是大齒怪<br />●
+            活動5 我是大吊車<br />● 活動6 我是小倉鼠<br />● 活動7 大嘴巴鐵人競賽
+          </div>
+
+          <div>
+            <strong>第五章：舌頭活動</strong><br />● 活動1 舌頭大力士要回家<br />●
+            活動2 舌頭響板<br />● 活動3 舌頭洗天花板<br />● 活動4 舌頭吸盤<br />●
+            活動5 舌頭衝浪板<br />● 活動6 舌頭擀麵棍<br />● 活動7 舌頭頂湯匙<br />●
+            活動8 居家遊戲
+          </div>
+
+          <div>
+            <strong>第六章：吞嚥活動</strong><br />● 活動1 舌頭小幫浦<br />●
+            活動2 舌頭融化糖果<br />● 活動3 吸管喝水<br />● 活動4 吞嚥小提醒
+          </div>
+
+          <div>
+            <strong>第七章：姿勢活動</strong><br />● 活動1 小蜘蛛貼牆站<br />●
+            活動2 小蜘蛛坐太空椅<br />● 活動3 牆角仰臥起坐<br />● 活動4
+            小飛機<br />● 活動5 小獅子娃娃<br />● 活動6 居家小遊戲
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          color: #2496a0;
+          font-weight: 500;
+          font-size: 18px;
+        "
+      >
+        口臉部訓練工具組
+      </div>
+
+      <img
+        decoding="async"
+        width="541"
+        height="413"
+        src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_39.png"
+        alt=""
+        srcset="
+          https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_39.png         541w,
+          https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_39-300x229.png 300w
+        "
+        sizes="(max-width: 541px) 100vw, 541px"
+        style="width: 100%; height: auto"
+      />
+
+      <p style="font-size: 14px">
+        本課程包含「口臉部功能訓練工具組」，將寄送至您指定的地址。<br />課程中，大部分的活動可用一般生活常見用品進行訓練<br />但其中10個遊戲，需要透過專業的口臉部訓練工具組來進行<br />工具組內容包含：
+      </p>
+
+      <div style="font-size: 14px; display: flex">
+        <p style="flex: 1">
+          1. 口腔按摩棉棒 x 6<br />2. 紅T咀嚼管 x 1<br />3. 3號牙膠棒 x 2<br />4.
+          造型吸管 x 10<br />5. 唇墊 x 3
+        </p>
+
+        <p style="flex: 1">
+          6. 閉唇訓練器 x 10<br />7. 矯正用橡皮筋 x 1(包)<br />8. 棉捲 x
+          50(條)<br />9. 棉線 x 1(捆)
+        </p>
+      </div>
+      <img
+        decoding="async"
+        width="466"
+        height="135"
+        src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_23.png"
+        alt=""
+        srcset="
+          https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_23.png        466w,
+          https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_23-300x87.png 300w
+        "
+        sizes="(max-width: 466px) 100vw, 466px"
+        style="width: 100%; height: auto"
+      />
+
+      <div>
+        <p
+          style="
+            color: #1e8c96;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 5px;
+          "
+        >
+          線上一對一 文字諮詢室
+        </p>
+        <p style="font-size: 14px">
+          上課過程中，有任何問題，不管是執行遊戲、孩子的表現，都可以透過文字，來和團隊中專業的治療師，直接進行諮詢
+        </p>
+
+        <img
+          decoding="async"
+          width="718"
+          height="294"
+          src="https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_34.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_34.png         718w,
+            https://kid-pro.com/wp-content/uploads/2023/05/口肌線上課程網頁_34-300x123.png 300w
+          "
+          sizes="(max-width: 718px) 100vw, 718px"
+          style="width: 100%; height: auto"
+        />
+
+        <div
+          style="
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+          "
+        >
+          <iframe
+            src="https://player.vimeo.com/video/840301181?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479?&amp;autoplay=1"
+            frameborder="0"
+            allowfullscreen="1"
+            allow="autoplay;encrypted-media;"
+            data-gtm-yt-inspected-18="true"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+          ></iframe>
+        </div>
+      </div>
+
+      <div style="position: relative">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+          <p
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 15px;
+              font-weight: 600;
+            "
+          >
+            講師介紹
+          </p>
+        </div>
+        <img
+          decoding="async"
+          width="428"
+          height="420"
+          src="https://kid-pro.com/wp-content/uploads/2021/06/HahowPage_Wang2.png"
+          class="attachment-large size-large wp-image-35762"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/06/HahowPage_Wang2.png         428w,
+            https://kid-pro.com/wp-content/uploads/2021/06/HahowPage_Wang2-300x294.png 300w,
+            https://kid-pro.com/wp-content/uploads/2021/06/HahowPage_Wang2-64x64.png    64w
+          "
+          sizes="(max-width: 428px) 100vw, 428px"
+          style="width: 100%; height: auto"
+        />
+
+        <div
+          style="
+            color: #1e8c96;
+            font-size: 26px;
+            text-align: center;
+            font-weight: 500;
+            padding: 10px 0px;
+          "
+        >
+          王亦群 語言×職能治療師
+        </div>
+
+        <div style="text-align: center; color: #33658a; font-weight: 500">
+          亦口童聲創辦人 X 博士聽語所
+        </div>
+
+        <div style="font-size: 24px; color: #33658a; margin: 20px 0">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' font-size='20px' width='1.25em' height='1em' viewBox='0 0 640 512'%3E%3C!-- Icon from All by undefined - undefined --%3E%3Cpath fill='%2333658a' d='M337.8 5.4c-10.8-7.2-24.8-7.2-35.6 0L166.3 96H48c-26.5 0-48 21.5-48 48v320c0 26.5 21.5 48 48 48h208v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h208c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48H473.7zM96 192h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16m400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16zM96 320h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16m400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16zM232 176a88 88 0 1 1 176 0a88 88 0 1 1-176 0m88-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-16v-16c0-8.8-7.2-16-16-16'/%3E%3C/svg%3E"
+            alt="Icon"
+            style="margin-left: 10px"
+          />
+          證照
+          <div
+            style="
+              width: 110px;
+              height: 2px;
+              background-color: #33658a;
+              margin-bottom: 1px;
+              margin-top: 2px;
+            "
+          ></div>
+          <div
+            style="width: 110px; height: 2px; background-color: #33658a"
+          ></div>
+        </div>
+
+        <div
+          style="
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+          "
+        >
+          <div style="color: #2396a0">美國口肌協會 口面肌功能治療證照</div>
+          <div style="color: #2396a0">美國Coulson機構 口面肌肉學訓練證照</div>
+          <div style="color: #2396a0">OPT口腔定位法 階段一證照</div>
+          <div style="color: #2396a0">OPT口腔定位法 階段二證照</div>
+          <div>國家高等考試語言治療師證照/ 職能治療師證書</div>
+          <div>嬰兒按摩講師證照培訓班</div>
+          <div>口肌功能治療證書</div>
+          <div>頭頸部淋巴按摩證書</div>
+          <div>纖維內視鏡吞嚥評估證書</div>
+          <div>OPT口腔定位治療證照</div>
+          <div
+            class="carousel-container"
+            style="display: flex; flex-direction: column"
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                justify-content: center;
+              "
+            >
+              <div
+                class="left-arrow"
+                onclick="changeImage(-1)"
+                style="color: #efefef; cursor: pointer"
+              >
+                &#10094;
+              </div>
+              <div
+                class="carousel"
+                style="display: flex; transition: transform 0.5s ease-in-out"
+              >
+                <img
+                  src="https://kid-pro.com/wp-content/uploads/2023/05/王老師口肌課網頁證書素材.png"
+                  alt=""
+                  style="width: 280px; height: 196px; align-self: center"
+                />
+                <img
+                  src="https://kid-pro.com/wp-content/uploads/2023/05/messageImage_1684967904355.png"
+                  alt=""
+                  style="
+                    width: 280px;
+                    height: 196px;
+                    align-self: center;
+                    display: none;
+                  "
+                />
+                <img
+                  src="https://kid-pro.com/wp-content/uploads/2023/05/OPT口腔定位法-階段一證照.png"
+                  alt=""
+                  style="
+                    width: 280px;
+                    height: 196px;
+                    align-self: center;
+                    display: none;
+                  "
+                />
+                <img
+                  src="https://kid-pro.com/wp-content/uploads/2023/05/messageImage_1684967871537.png"
+                  alt=""
+                  style="
+                    width: 280px;
+                    height: 196px;
+                    align-self: center;
+                    display: none;
+                  "
+                />
+              </div>
+              <div
+                class="right-arrow"
+                onclick="changeImage(1)"
+                style="color: #efefef; cursor: pointer"
+              >
+                &#10095;
+              </div>
+            </div>
+            <div class="dots" style="margin-top: 10px; text-align: center">
+              <div
+                class="dot"
+                style="
+                  display: inline-block;
+                  width: 10px;
+                  height: 10px;
+                  margin: 0 5px;
+                  border-radius: 50%;
+                  background-color: #717171;
+                  cursor: pointer;
+                "
+              ></div>
+              <div
+                class="dot"
+                style="
+                  display: inline-block;
+                  width: 10px;
+                  height: 10px;
+                  margin: 0 5px;
+                  border-radius: 50%;
+                  background-color: #bbb;
+                  cursor: pointer;
+                "
+              ></div>
+              <div
+                class="dot"
+                style="
+                  display: inline-block;
+                  width: 10px;
+                  height: 10px;
+                  margin: 0 5px;
+                  border-radius: 50%;
+                  background-color: #bbb;
+                  cursor: pointer;
+                "
+              ></div>
+              <div
+                class="dot"
+                style="
+                  display: inline-block;
+                  width: 10px;
+                  height: 10px;
+                  margin: 0 5px;
+                  border-radius: 50%;
+                  background-color: #bbb;
+                  cursor: pointer;
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 24px; color: #33658a; margin: 20px 0">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' font-size='20px' width='1.25em' height='1em' viewBox='0 0 640 512'%3E%3C!-- Icon from All by undefined - undefined --%3E%3Cpath fill='%2333658a' d='M337.8 5.4c-10.8-7.2-24.8-7.2-35.6 0L166.3 96H48c-26.5 0-48 21.5-48 48v320c0 26.5 21.5 48 48 48h208v-96c0-35.3 28.7-64 64-64s64 28.7 64 64v96h208c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48H473.7zM96 192h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16m400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16zM96 320h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16m400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16zM232 176a88 88 0 1 1 176 0a88 88 0 1 1-176 0m88-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-16v-16c0-8.8-7.2-16-16-16'/%3E%3C/svg%3E"
+              alt="Icon"
+              style="margin-left: 10px"
+            />
+            學歷
+            <div
+              style="
+                width: 110px;
+                height: 2px;
+                background-color: #33658a;
+                margin-bottom: 1px;
+                margin-top: 2px;
+              "
+            ></div>
+            <div
+              style="width: 110px; height: 2px; background-color: #33658a"
+            ></div>
+          </div>
+
+          <p style="color: black; font-size: 16px">
+            台北教育大學 語言治療學程 碩士
+          </p>
+          <p style="color: black; font-size: 16px">
+            長庚大學 職能治療學系 學士
+          </p>
+        </div>
+
+        <div>
+          <div style="font-size: 24px; color: #33658a; margin: 20px 0">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' font-size='20px' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from All by undefined - undefined --%3E%3Cpath fill='%2333658a' d='M4 22q-.825 0-1.412-.587T2 20V8q0-.825.588-1.412T4 6h4V4q0-.825.588-1.412T10 2h4q.825 0 1.413.588T16 4v2h4q.825 0 1.413.588T22 8v12q0 .825-.587 1.413T20 22zm6-16h4V4h-4zm1 9v2q0 .425.288.713T12 18t.713-.288T13 17v-2h2q.425 0 .713-.288T16 14t-.288-.712T15 13h-2v-2q0-.425-.288-.712T12 10t-.712.288T11 11v2H9q-.425 0-.712.288T8 14t.288.713T9 15z'/%3E%3C/svg%3E"
+              alt="Icon"
+              style="margin-left: 10px"
+            />
+            現任
+            <div
+              style="
+                width: 110px;
+                height: 2px;
+                background-color: #33658a;
+                margin-bottom: 1px;
+                margin-top: 2px;
+              "
+            ></div>
+            <div
+              style="width: 110px; height: 2px; background-color: #33658a"
+            ></div>
+          </div>
+
+          <p style="color: black; font-size: 16px">亦口童聲創辦人</p>
+          <p style="color: black; font-size: 16px">博士聽語治療所 語言治療師</p>
+        </div>
+
+        <div>
+          <div style="font-size: 24px; color: #33658a; margin: 20px 0">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' font-size='20px' width='1em' height='1em' viewBox='0 0 15 15'%3E%3C!-- Icon from All by undefined - undefined --%3E%3Cpath fill='%2333658a' d='m7.5 0l-2 2v2h4V2zm-2 4.5L4 6h7L9.5 4.5zM2 6.5a1 1 0 0 0-1 1V13h2V7.5a1 1 0 0 0-1-1m2 0V13h7V6.5zm9 0a1 1 0 0 0-1 1V13h2V7.5a1 1 0 0 0-1-1'/%3E%3C/svg%3E"
+              alt="Icon"
+              style="margin-left: 10px"
+            />
+            經歷
+            <div
+              style="
+                width: 110px;
+                height: 2px;
+                background-color: #33658a;
+                margin-bottom: 1px;
+                margin-top: 2px;
+              "
+            ></div>
+            <div
+              style="width: 110px; height: 2px; background-color: #33658a"
+            ></div>
+          </div>
+
+          <p style="color: black; font-size: 16px">國泰醫院 語言治療師</p>
+          <p style="color: black; font-size: 16px">新光醫院 語言治療師</p>
+          <p style="color: black; font-size: 16px">新光醫院 職能治療師</p>
+        </div>
+
+        <div>
+          <div style="font-size: 24px; color: #33658a; margin: 20px 0">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' font-size='20px' width='1em' height='1em' viewBox='0 0 512 512'%3E%3C!-- Icon from All by undefined - undefined --%3E%3Cpath d='M48 270.9l118.9 44.6L181.7 464 256 360l104 104L464 48 48 270.9zm294.9 126L260 313.4 374.9 152 193.6 289.8 124.9 265l291-156.2-73 288.1z' fill='%2333658a'/%3E%3C/svg%3E"
+              alt="Icon"
+              style="margin-left: 10px"
+            />
+            擅長領域
+            <div
+              style="
+                width: 160px;
+                height: 2px;
+                background-color: #33658a;
+                margin-bottom: 1px;
+                margin-top: 2px;
+              "
+            ></div>
+            <div
+              style="width: 160px; height: 2px; background-color: #33658a"
+            ></div>
+          </div>
+
+          <p
+            style="
+              color: black;
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2018/08/tick-ok-check-correct-okay-confirm-icon-yes-300x300.png"
+              alt=""
+              width="20"
+              height="20"
+            />
+            兒童語言發展及溝通訓練
+          </p>
+          <p
+            style="
+              color: black;
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2018/08/tick-ok-check-correct-okay-confirm-icon-yes-300x300.png"
+              alt=""
+              width="20"
+              height="20"
+            />
+            構音矯正
+          </p>
+          <p
+            style="
+              color: black;
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2018/08/tick-ok-check-correct-okay-confirm-icon-yes-300x300.png"
+              alt=""
+              width="20"
+              height="20"
+            />
+            咀嚼與吞嚥訓練
+          </p>
+
+          <p
+            style="
+              color: black;
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2018/08/tick-ok-check-correct-okay-confirm-icon-yes-300x300.png"
+              alt=""
+              width="20"
+              height="20"
+            />
+
+            口腔肌功能訓練
+          </p>
+        </div>
+
+        <div class="carousel-container">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              justify-content: center;
+            "
+          >
+            <div
+              class="left-arrow"
+              onclick="changeImage(-1)"
+              style="color: #efefef"
+            >
+              &#10094;
+            </div>
+            <div
+              class="carousel"
+              style="display: flex; transition: transform 0.5s ease-in-out"
+            >
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/80265.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/201988_190813_0064.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/messageImage_1685054054842.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/57650859_10214597826684319_2551037035670405120_n.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/S__43040816.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/S__43040817.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/S__43040827.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/S__43040829.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/S__43040839.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/S__43073651.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/S__43040845.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2023/05/80265.jpg"
+                alt=""
+                style="height: 244px; max-width: 100%; align-self: center"
+              />
+            </div>
+            <div
+              class="right-arrow"
+              onclick="changeImage(1)"
+              style="color: #efefef"
+            >
+              &#10095;
+            </div>
+          </div>
+          <div class="dots" style="margin-top: 10px; text-align: center">
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #717171;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+            <div
+              class="dot"
+              style="
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #bbb;
+                cursor: pointer;
+              "
+            ></div>
+          </div>
+          <p style="font-size: 400; font-size: 14px">
+            有10年臨床經驗的王亦群語言治療師，取得美國口臉肌治療證照後，已擁有超過5年以上的口肌訓練專科臨床經驗，針對口呼吸、齒列臉型不正、睡眠呼吸障礙、發音不清楚、餵食/進食困難的孩童及成人進行訓練。
+            <br />
+            同時，王亦群老師也是第一位以語言治療師身分，到牙醫公會、牙醫診所、治療師公會、電視節目(黃琮寧愛+好醫師、健康2.0)、醫院、廣播、學校、機構、線上課程等，擔任醫師、牙醫師、治療師、教師、保母以及家長的口臉肌功能課程教學及培訓講師，為台灣口臉肌訓練的權威專家。
+          </p>
+        </div>
+
+        <div>
+          <div
+            style="
+              font-size: 25px;
+              background-color: #fa9600;
+              color: white;
+              padding: 10px;
+              text-align: center;
+              margin: 20px 0px;
+            "
+          >
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.88em' height='1em' viewBox='0 0 448 512'%3E%3C!-- Icon from All by undefined - undefined --%3E%3Cpath fill='white' d='M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7L54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z'/%3E%3C/svg%3E"
+              alt=""
+            />
+            成就
+          </div>
+
+          <div style="border: 1px solid #32658a; border-radius: 5px">
+            <input
+              type="checkbox"
+              class="expand-checkbox"
+              id="expand-toggle3"
+            />
+            <label
+              for="expand-toggle3"
+              class="expand-label"
+              style="
+                color: #32658a;
+                font-weight: 700;
+                font-size: 20px;
+                padding: 10px;
+                border-bottom: 1px solid #32658a;
+              "
+            >
+              講座課程 🔽
+            </label>
+            <div class="expand-content" style="gap: 0">
+              <div style="color: #1e8796; font-size: 20px; font: 700">
+                擔任多場講座、專業課程講師，以下僅舉出部分為例：
+              </div>
+              <ul
+                style="margin-left: 20px; font-size: 14px; margin-bottom: 20px"
+              >
+                <li>兒童口呼吸的成因及簡易肌功能運</li>
+                <li>不正確的呼吸方</li>
+                <li>口腔機能與構音訓練策略研習</li>
+                <li>想了解肌功能失調對家中寶貝的影響嗎</li>
+                <li>口肌運動及睡眠</li>
+                <li>肌功能訓練-兒童吞嚥口腔問題處置</li>
+                <li>肌功能訓練-改善口呼吸</li>
+                <li>寶寶進食與按摩</li>
+                <li>如何誘發學齡前兒童口語能力/宜蘭特教中心</li>
+                <li>多重障礙兒童需求評估-談專業間合作模式/新北市教育局</li>
+                <li>如何和寶貝一起親子共讀呢?</li>
+                <li>
+                  《華語學齡兒童溝通及語言能力測驗》暨兒童口語敘事能力教學研習&nbsp;
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="border: 1px solid #32658a; border-radius: 5px">
+            <input
+              type="checkbox"
+              class="expand-checkbox"
+              id="expand-toggle2"
+            />
+            <label
+              for="expand-toggle2"
+              class="expand-label"
+              style="
+                color: #32658a;
+                font-weight: 700;
+                font-size: 20px;
+                padding: 10px;
+                border-bottom: 1px solid #32658a;
+              "
+            >
+              出版內容 🔽
+            </label>
+            <div class="expand-content" style="gap: 0">
+              <div style="color: #1e8796; font-size: 20px; font: 700">
+                發表多篇研究成果：
+              </div>
+              <ol style="font-size: 14px; margin-bottom: 20px">
+                <li>華語學齡兒童溝通及語言能力測驗(TCLA)編制者</li>
+                <li>
+                  國泰醫院院刊醫學報導
+                  <ul style="list-style-type: disc; margin-left: 20px">
+                    <li>好姿勢讓你有好聲音</li>
+                    <li>愛你在心口難開-淺談牙關緊閉</li>
+                    <li>語音發展歷程及簡易居家活動</li>
+                    <li>檢查舌繫帶</li>
+                  </ul>
+                </li>
+                <li>
+                  專題採訪報導
+                  <ul style="list-style-type: disc; margin-left: 20px">
+                    <li>《媽媽寶寶》孩子講話臭奶呆，原來是舌繫帶太緊</li>
+                    <li>《Bunny托育》一歲寶寶發展該注意什麼</li>
+                    <li>《健康HiNet生活誌》兒童構音異常把握黃金期治療</li>
+                    <li>
+                      《未來Family親子》學齡前：親子快樂共讀，為語文打<br />好基礎
+                    </li>
+                    <li>《兒童週報》別再張口呼呼大睡</li>
+                    <li>
+                      《健康2.0》會打呼又不敢動手術 三個微運動強化口咽<br />肌力免開刀
+                    </li>
+                    <li>《蘋果新聞》2歲前戒奶嘴，有助寶寶口腔發展</li>
+                    <li>《蘋果新聞》親餵口腔訓練，助寶寶牙長好不挑食</li>
+                    <li>《聯合》幫寶寶臉部按摩，降低肌肉敏感吃得好</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function initializeCarousel(carouselContainer) {
+      const images = carouselContainer.querySelectorAll(".carousel img");
+      const dots = carouselContainer.querySelectorAll(".dots .dot");
+      const leftArrow = carouselContainer.querySelector(".left-arrow");
+      const rightArrow = carouselContainer.querySelector(".right-arrow");
+
+      let currentIndex = 0; // 每個輪播圖擁有自己獨立的 currentIndex
+
+      // 顯示指定的圖片
+      function showImage(index) {
+        images.forEach((img, i) => {
+          img.style.display = i === index ? "block" : "none"; // 只顯示當前索引的圖片
+        });
+        updateDots(index); // 更新圓點
+      }
+
+      // 更新圓點顯示
+      function updateDots(index) {
+        dots.forEach((dot, i) => {
+          dot.style.backgroundColor = i === index ? "#717171" : "#bbb"; // 設置圓點顏色
+        });
+      }
+
+      // 設置圓點點擊事件
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          currentIndex = index; // 更新當前圖片索引
+          showImage(currentIndex); // 顯示選中的圖片
+        });
+      });
+
+      // 控制圖片切換的函數
+      function changeImage(direction) {
+        currentIndex =
+          (currentIndex + direction + images.length) % images.length; // 循環切換
+        showImage(currentIndex);
+      }
+
+      // 設置箭頭點擊事件
+      leftArrow.addEventListener("click", () => {
+        changeImage(-1); // 向左切換圖片
+      });
+
+      rightArrow.addEventListener("click", () => {
+        changeImage(1); // 向右切換圖片
+      });
+
+      // 自動切換圖片每 3 秒
+      setInterval(() => {
+        changeImage(1); // 每 3 秒自動向右切換圖片
+      }, 3000);
+
+      // 初始顯示圖片
+      showImage(currentIndex);
+    }
+
+    // 初始化頁面上的所有輪播圖
+    document
+      .querySelectorAll(".carousel-container")
+      .forEach((carouselContainer) => {
+        initializeCarousel(carouselContainer); // 自動為每個carousel初始化
+      });
+
+    const modal = document.getElementById("myModal");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.getElementsByClassName("close-btn")[0];
+
+    // 點擊按鈕打開 Modal
+    openModalBtn.onclick = function () {
+      modal.style.display = "block"; // 顯示 Modal
+    };
+
+    // 點擊關閉按鈕關閉 Modal
+    closeBtn.onclick = function () {
+      modal.style.display = "none"; // 隱藏 Modal
+    };
+
+    // 點擊 Modal 背景（非內容區域）時關閉 Modal
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   // 取得所有的toggle按鈕
+    //   const buttons = document.querySelectorAll(".toggle-btn");
+
+    //   // 為每個按鈕設置點擊事件
+    //   buttons.forEach((button) => {
+    //     button.addEventListener("click", function () {
+    //       const targetId = button.getAttribute("data-target"); // 取得對應的content ID
+    //       const content = document.getElementById(targetId);
+
+    //       // 切換顯示或隱藏
+    //       if (
+    //         content.style.display === "none" ||
+    //         content.style.display === ""
+    //       ) {
+    //         content.style.display = "block";
+    //       } else {
+    //         content.style.display = "none";
+    //       }
+    //     });
+    //   });
+    // });
+  </script>
+</html>

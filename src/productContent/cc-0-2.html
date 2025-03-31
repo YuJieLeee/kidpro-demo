@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .expand-checkbox {
+        display: none;
+      }
+
+      .expand-label {
+        background-color: #33658a;
+        color: white;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-bottom: 6px solid white;
+        transition: transform 0.3s ease;
+      }
+
+      .expand-content {
+        overflow: hidden;
+        max-height: 0;
+        padding: 0 10px;
+        transition: all 0.5s ease;
+      }
+
+      .expand-checkbox:checked + .expand-label + .expand-content {
+        display: block;
+        padding: 10px;
+        max-height: 1000px;
+      }
+
+      .expand-checkbox:checked + .expand-label .triangle {
+        transform: rotate(180deg);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        position: relative;
+      }
+
+      .close-btn {
+        color: black;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        padding: 2px 5px 4px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-btn:hover,
+      .close-btn:focus {
+        color: #ffc83c;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid #ffc83c;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        color: #2f4858;
+        padding: 10px;
+        line-height: 24px;
+      "
+    >
+      <a href="https://kid-pro.com/product/lec-simple-consultation-service/">
+        <img
+          width="640"
+          height="235"
+          src="https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png         640w,
+            https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2-300x110.png 300w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="width: 100%; height: auto"
+        />
+      </a>
+
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          height: 0;
+          overflow: hidden;
+        "
+      >
+        <iframe
+          src="https://player.vimeo.com/video/575370458?autoplay=1&amp;version=3&amp;enablejsapi=1"
+          frameborder="0"
+          allowfullscreen="1"
+          allow="autoplay;encrypted-media;"
+          data-gtm-yt-inspected-18="true"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+        ></iframe>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            課程資訊
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <div
+            style="display: flex; align-items: center; gap: 5px; width: 175px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-109634 size-full"
+            >
+              <source
+                type="image/webp"
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png.webp
+                "
+              />
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+
+            <span style="font-weight: 700; font-size: 13px">開課日期</span>
+            <span style="font-size: 12px">已開課</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 175px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-125540 size-full"
+            >
+              <source
+                type="image/webp"
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png.webp
+                "
+              />
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">課程長度</span>
+            <span style="font-size: 14px">12小時20分</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 10px">
+            <picture decoding="async" class="alignnone wp-image-125542">
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/05/massage_unlimited.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">觀看期限</span>
+            <span style="font-size: 14px"
+              >無期限
+              <span
+                id="openModalBtn"
+                style="font-size: 8px; color: #fa9600; cursor: pointer"
+              >
+                （說明）
+              </span></span
+            >
+
+            <div id="myModal" class="modal">
+              <div
+                class="modal-content"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  font-size: 20px;
+                "
+              >
+                <div class="close-btn">&times;</div>
+
+                <div
+                  style="
+                    text-align: center;
+                    line-height: 25px;
+                    font-weight: 500;
+                  "
+                >
+                  消費者權益保障<br />
+
+                  《無限期觀看說明》
+                </div>
+                <div>非信用卡付款：（∞）</div>
+                <div style="text-align: center">享無限期觀看權益。</div>
+                <div>信用卡付款：（１＋∞）</div>
+                <div style="text-align: center; color: #f26419">
+                  【消費者亦享無限期觀看權益】
+                </div>
+                <div style="line-height: 25px">
+                  惟根據國際信用卡組織規定，產品及服務交付期限為一個月內，因此本公司僅可聲明保障一個月內使用期限。本公司針對信用卡付費之消費者，贈送後續『無限期觀看』權益。此贈送之權益無涉信用卡公司。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 175px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-125541 size-full"
+            >
+              <source
+                type="image/webp"
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png.webp
+                "
+              />
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">總單元數</span>
+            <span style="font-size: 14px">29章67節</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 175px"
+          >
+            <picture decoding="async" class="alignnone wp-image-109218">
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_stdt.png.webp"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">課程學員</span>
+            <span style="font-size: 14px">7915人</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 175px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-109219 size-full"
+            >
+              <img
+                decoding="async"
+                src="	https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_watch.png.webp"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">觀看方式</span>
+            <span style="font-size: 14px">透過網站</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            課程特色
+          </div>
+        </div>
+        <ul style="margin-left: -10px; font-size: 14px">
+          <li>
+            <strong
+              ><span style="text-decoration: underline">師資陣容</span
+              >：</strong
+            ><strong>四位醫學領域育兒專家</strong>共同企劃。
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">內容廣泛</span
+              >：</strong
+            >涵蓋<strong>父母心理</strong>、<strong>語言萌發</strong>、<strong>動作發展</strong>、<strong>進食喝水</strong>、<strong>副食品</strong>、<strong>幼兒情緒</strong>、<strong>嬰兒按摩</strong>。
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">影片示範</span
+              >：</strong
+            >運用實際示範影片，完整呈現。
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">線上諮詢</span
+              >：</strong
+            >課程中有疑問可以與老師直接線上發問。
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">分齡課程</span
+              >：</strong
+            ><span style="font-weight: 400">根據「</span><b>月齡分段</b><b>」</b
+            ><span style="font-weight: 400"
+              >的課程設計，孩子長到哪看到哪。</span
+            >
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">因材施教</span
+              >：</strong
+            ><span style="font-weight: 400">根據</span
+            ><b>不同特質寶寶給予不同的教養建議</b
+            ><span style="font-weight: 400">，非千篇一律。</span>
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">科學證實</span
+              >：</strong
+            ><span style="font-weight: 400">投入大量人力物力，進行考證</span
+            ><b>文獻、論文。</b>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            課程涵蓋
+          </div>
+        </div>
+
+        <img
+          decoding="async"
+          width="640"
+          height="315"
+          src="https://kid-pro.com/wp-content/uploads/2021/05/cover2.gif"
+          class="attachment-medium_large size-medium_large wp-image-114520"
+          alt=""
+          style="width: 100%; height: auto; margin-bottom: 10px"
+        />
+
+        <img
+          decoding="async"
+          width="640"
+          height="850"
+          src="https://kid-pro.com/wp-content/uploads/2021/05/NEW4_number_TC-1.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_number_TC-1.png         640w,
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_number_TC-1-226x300.png 226w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="width: 100%; height: auto; margin-bottom: 10px"
+        />
+
+        <img
+          decoding="async"
+          width="640"
+          height="286"
+          src="https://kid-pro.com/wp-content/uploads/2021/05/NEW5_frame_TC.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW5_frame_TC.png         640w,
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW5_frame_TC-300x134.png 300w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="width: 100%; height: auto"
+        />
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            適用對象
+          </div>
+        </div>
+        <ul style="font-size: 14px">
+          <li style="font-weight: 400" aria-level="1">
+            <strong>0-2歲孩子的父母、照顧者</strong>
+          </li>
+          <li style="font-weight: 400" aria-level="1">
+            <strong>托嬰幼教工作者</strong>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            課程介紹
+          </div>
+        </div>
+
+        <div
+          style="
+            background-color: #f3f3f3;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+          "
+        >
+          <div
+            style="
+              color: #1e8c96;
+              font-size: 18px;
+              font-weight: 700;
+              margin-bottom: 20px;
+            "
+          >
+            恬兒老師的一段話
+          </div>
+          <div style="background-color: #f2f2f2; padding: 15px">
+            　　我是KidPro團隊的小兒職能治療師–黃暐恬，在台大醫院15年的臨床經驗，幫助2000多個家庭的過程中發現，大部分人都是當了爸媽，才開始學著怎麼當爸媽，但是以前在學校，並沒有一堂課，教我們這些。<br /><br />
+            　　更有許多孩子，其實只是因為家長沒有抓到他的個性和特質，給予他合適的引導方式，而在0-2歲發展黃金期，開始出現了許多教養上的困擾。<br /><br />
+          </div>
+          <input type="checkbox" id="expand-toggle4" class="expand-checkbox" />
+          <label
+            style="
+              width: 100%;
+              text-align: right;
+              display: block;
+              cursor: pointer;
+              background-color: transparent;
+              color: black;
+            "
+            class="expand-label"
+            for="expand-toggle4"
+            >（......點選看更多▼）</label
+          >
+          <div class="expand-content">
+            　　其實我們需要的，只是一個系統性、科學化的育兒方法。所以我把在台大的經驗，加上自己身為兩名孩子母親的經驗，和團隊製作了「0-2歲父母必修課」，把所有紮實的理論與實用技巧不藏私整理給大家，幫助您在最短的時間內有系統的掌握照顧寶寶的方法。<br /><br />
+            　　職能治療師、臨床心理師、語言治療師，最擅長利用遊戲及各種專業手法，融合醫學實證、臨床經驗，分析孩子的狀況，並給予最適合的遊戲難度或引導手法，讓孩子在快樂的氛圍下持續進步。<br /><br />
+            　　在這堂課中，我們投入的大量的人力與物力，盡可能的將新手父母或是幼保人員需要知道的知識，透過影片、動畫、資訊設計的手法來呈現，並大量的查證文獻、論文來確保內容正確性，更要求讓課程設計深入淺出，確保每分鐘都是滿滿的乾貨。<br /><br />　　線上課程開課後，我們看到很多父母，幼保人員都願意花這麼多時間，認真地觀看我們的課程，真的非常感動，因為我們知道這些都是愛的力量！而我們相信這份愛，將來一定能在我們的孩子身上一代一代的傳承下去。
+          </div>
+        </div>
+
+        <img
+          decoding="async"
+          width="640"
+          height="310"
+          src="https://kid-pro.com/wp-content/uploads/2021/05/gold.gif"
+          class="attachment-medium_large size-medium_large wp-image-113274"
+          alt=""
+          style="width: 100%; height: auto"
+        />
+
+        <div
+          style="
+            background-color: #f8f8f8;
+            font-size: 14px;
+            padding: 18px;
+            margin-bottom: 20px;
+          "
+        >
+          <div style="font-weight: 600; font-size: 18px; color: #1e8c96">
+            0-2歲是孩子腦神經發展黃金時期
+          </div>
+          <div>
+            0-2歲是孩子腦神經發展的黃金時期；在這個時期，促進大腦發展有三大要素：
+          </div>
+          <div
+            style="
+              font-weight: 600;
+              font-size: 18px;
+              color: #1e8c96;
+              text-align: center;
+              margin: 10px 0;
+            "
+          >
+            「營養」、「陪伴」、「刺激」
+          </div>
+
+          <div
+            style="
+              margin-left: 10px;
+              margin-bottom: 20px;
+              background-color: #fbfbfb;
+              padding: 10px;
+            "
+          >
+            <div style="font-weight: 600; font-size: 18px; margin-bottom: 10px">
+              「營養」
+            </div>
+            <div>
+              　　我們將會告訴您副食品的選擇及搭配，提供充足的營養，減少未來孩子挑食機會。如何調整副食品、喝水等環節，幫助寶寶口腔肌肉發展，替未來語言、進食打基礎。<br />　　除了充足的「營養」，父母更容易忘記扮演了提供「刺激」與「陪伴」的重要角色。
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-left: 10px;
+              margin-bottom: 20px;
+              background-color: #fbfbfb;
+            "
+          >
+            <div style="font-weight: 600; font-size: 18px; margin-bottom: 10px">
+              「陪伴」
+            </div>
+            <div>
+              　　這個時期是孩子在發展信任感與自主感的關鍵時期。孩子未來是退縮、低自信、不信任，還是勇於挑戰、不怕挫折，這個時期照顧者對孩子的教養態度，將會是關鍵！我們將教會您如何與孩子建立信任感，未來更容易發展出健全人格。
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-left: 10px;
+              margin-bottom: 20px;
+              background-color: #fbfbfb;
+            "
+          >
+            <div style="font-weight: 600; font-size: 18px; margin-bottom: 10px">
+              「刺激」
+            </div>
+            <div>
+              　　
+              我們將教您兒童治療師們最擅長的手法，或透過遊戲，來提供孩子足夠且適當的「刺激」。並且告訴您正確的發展進程及相關理論，透過遊戲或手法中來觀察、判斷、修正給予的刺激量，難易度。是真正的「寓教於樂」，也是您與孩子最珍貴的時光！
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            background-color: #fbfbfb;
+            font-size: 12px;
+            margin-bottom: 20px;
+            padding: 10px;
+          "
+        >
+          <img
+            decoding="async"
+            width="641"
+            height="560"
+            src="https://kid-pro.com/wp-content/uploads/2021/05/NEW4_content_TC-1.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/05/NEW4_content_TC-1.png         641w,
+              https://kid-pro.com/wp-content/uploads/2021/05/NEW4_content_TC-1-300x262.png 300w
+            "
+            sizes="(max-width: 641px) 100vw, 641px"
+            style="width: 100%; height: auto; margin-bottom: 20px"
+          />
+
+          <img
+            decoding="async"
+            width="976"
+            height="400"
+            src="https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpA_top.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpA_top.png         976w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpA_top-300x123.png 300w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpA_top-768x315.png 768w
+            "
+            sizes="(max-width: 976px) 100vw, 976px"
+            style="width: 100%; height: auto; margin-bottom: 20px"
+          />
+
+          <div>
+            帶大家了解如何觀察寶寶的表現+搭配相對應的引導方式及遊戲來啟動發展潛能，年齡每6個月切分為一個單元，每3個月為一個階段，讓您快速找到孩子相對應的發展時間點來切入。
+          </div>
+          <div style="font-size: 13px">
+            這個章節中，你可以學到哪些發展細節的引導技巧呢?
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            【大動作篇】
+          </div>
+          <div>
+            頭部控制、趴姿、翻身、坐姿、爬行、站立、行走、丟球、上下樓梯、踢球<br />▶提升孩子的：視動整合、平衡能力、動作計畫、肌力、前庭系統、雙側動作整合
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            【精細動作+感官篇】
+          </div>
+          <div>
+            眼球追視伸手碰物、抓握、手指捏取動作、進階手指動作、初階手眼協調、玩具操作能力、組合能力、手腕手指靈活協調度
+            、工具操作能力<br />▶提升孩子的：視動整合、操作能力、觸覺的統合，為未來的進食、書寫能力，開始打基礎
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            【概念學習篇】
+          </div>
+          <div>
+            因果概念、物體恆存、容器概念
+            、模仿、拿筆塗鴉、指認物品、組合概念、指認圖片、形狀配對、顏色分類概念<br />▶幫助孩子奠定以上學習力的基礎，讓孩子後續的學習不卡關
+          </div>
+        </div>
+
+        <div style="font-size: 12px; background-color: #fbfbfb; padding: 10px">
+          <img
+            decoding="async"
+            width="976"
+            height="276"
+            src="https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpB_top.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpB_top.png         976w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpB_top-300x85.png  300w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpB_top-768x217.png 768w
+            "
+            sizes="(max-width: 976px) 100vw, 976px"
+            style="width: 100%; height: auto"
+          />
+          <div>
+            除了寶寶語言的萌發技巧在這階段很重要以外，其實口腔舌頭的動作，也會影響孩子說話的清晰度及進食效率，所以這個章節中，也會教大家如何觀察舌頭動作、口腔按摩5招，來一起為語言、進食能力打基礎！
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ① 寶寶何時會說話？ 1歲前寶寶語言發展
+          </div>
+          <div style="font-weight: 500">
+            0-1歲的寶寶，甚麼時候該會：<br />發出聲音、說單字，如何和大人溝通表達?
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ② 1歲前寶寶語言萌發遊戲
+          </div>
+          <div style="font-weight: 500">來萌發孩子的語言能力</div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ③ 開始說人話? 1-2歲寶寶語言發展
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ④ 如何讓寶寶愛說話? 1-2歲寶寶語言萌發遊戲
+          </div>
+          <div style="font-weight: 500">
+            合適的遊戲 X 正確的引導方式<br />讓孩子喜歡開口說話
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ⑤ 5招易上手寶寶口腔按摩
+          </div>
+          <div style="font-weight: 500">
+            寶寶的口腔+舌頭動作發展 大解析<br />分享5招易上手口腔內外按摩方法
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ⑥ 1歲以上寶寶嘴巴常常開開的 萌萌的?還是母湯？
+          </div>
+          <div style="font-weight: 500">嘴巴開開對寶寶的影響</div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ⑦ 寶寶口肌居家訓練活動
+          </div>
+          <div style="font-weight: 500">
+            寶寶口肌居家訓練活動<br />增進 進食品質及說話清晰度<br />合適的遊戲
+            X 正確的引導方式
+          </div>
+        </div>
+
+        <div style="font-size: 12px; background-color: #fbfbfb; padding: 10px">
+          <img
+            decoding="async"
+            width="976"
+            height="400"
+            src="https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpC_top.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpC_top.png         976w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpC_top-300x123.png 300w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpC_top-768x315.png 768w
+            "
+            sizes="(max-width: 976px) 100vw, 976px"
+            style="width: 100%; height: auto"
+          />
+          <div style="margin-bottom: 10px">
+            孩子在吃飯這件事要有主動性、坐得住，並不是要等會吃飯以後才培養，而是要從孩子副食品時期，就要開始打基礎。這一章，依據發展理論+行為理論+環境任務調整，教授大家，如何讓孩子從一歲前，就開始培養進食的主動性的撇步。
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ① 寶寶副食品給予時機及種類
+          </div>
+          <div style="font-weight: 500">
+            離乳食品的餵食時機+個年齡的食物種類挑選
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ② 進食、喝水能力 發展時間點
+          </div>
+          <div style="font-weight: 500">
+            掌握吃喝發展時間點，自然誘發孩子主動性
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ③ 如何培養孩子獨立進食喝水能力 0-1歲篇
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ④ 如何培養孩子獨立進食喝水能力 1-2歲篇
+          </div>
+          <div style="font-weight: 500">
+            依照每個年齡階段的發展+食物種類+食具選擇+引導方式=誘發孩子進食的主動性
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ⑤ 孩子不好好進食喝水 如何破解
+          </div>
+          <div style="font-weight: 500">
+            坐不住! 丟餐具食物! 挑食! 用手抓! 到處灑!<br />孩子不好好吃飯的19種狀況題，如何解套?
+          </div>
+        </div>
+
+        <div
+          style="
+            font-size: 12px;
+            background-color: #fbfbfb;
+            padding: 10px;
+            margin-bottom: 20px;
+          "
+        >
+          <img
+            decoding="async"
+            width="976"
+            height="464"
+            src="https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpD_top.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpD_top.png         976w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpD_top-300x143.png 300w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpD_top-768x365.png 768w
+            "
+            sizes="(max-width: 976px) 100vw, 976px"
+            style="width: 100%; height: auto"
+          />
+          <div>
+            <div>
+              這年齡的孩子，語言表達有限，情緒調節還不夠成熟，常常會發脾氣、哭鬧，甚至打人和丟東西，若找不到原因和方法，不但讓照顧者不知不覺也跟著發脾氣更可能讓孩子無形中學習到錯誤的情緒表達方式，影響未來情緒行為的發展。
+            </div>
+
+            <div style="color: #33658a; font-size: 13px; font-weight: 600">
+              ① 理解你的孩子，讓你更有自信的照顧他
+            </div>
+            <div style="font-weight: 500">
+              分成4個年齡階段，帶您了解<br />
+              <div style="display: flex; justify-content: space-between">
+                <div>◾ 新生兒時期</div>
+                <div>◾ 1歲前</div>
+                <div>◾ 1-2歲</div>
+                <div>◾ 2歲</div>
+              </div>
+              這些時期的發展歷程與特色，讓照顧者能更有自信的因應，<br />不再害怕被孩子的各種小宇宙爆炸波及。
+            </div>
+            <div style="color: #33658a; font-size: 13px; font-weight: 600">
+              ② 抓到孩子的特色-談9大氣質向度
+            </div>
+            <div style="font-weight: 500">
+              有的孩子很固執、有的甚麼都好?是不正常嗎?<br />從孩子的九大氣質向度，帶您了解，孩子百百種，你該如何見招拆招。
+            </div>
+            <div style="color: #33658a; font-size: 13px; font-weight: 600">
+              ③ 不太說話，怎麼看懂孩子的表達
+            </div>
+            <div style="font-weight: 500">
+              哭?鬧?打人?
+              <br />透過獨家創立的ABRR行為分法，教您翻譯0-2歲孩子在表達甚麼?為什麼會有這些行為?
+            </div>
+            <div style="color: #33658a; font-size: 13px; font-weight: 600">
+              ④ 孩子氣噗噗、大哭、打人，怎麼辦？
+            </div>
+            <div style="font-weight: 500">
+              <div style="display: flex; gap: 0 10px; flex-wrap: wrap">
+                <div style="flex-shrink: 0">◾ 傾聽、描述、同理</div>
+                <div style="flex-shrink: 0">◾ 溫柔而堅定</div>
+                <div style="flex-shrink: 0">◾ 態度一致</div>
+                <div style="flex-shrink: 0">◾ 承擔自然後果</div>
+                <div style="flex-shrink: 0">◾ 提供有限選擇</div>
+                <div style="flex-shrink: 0">◾ 一起想解決辦法</div>
+              </div>
+              列出常見的14種鬧脾氣狀況，搭配前3個單元的內容<br />告訴您不同的原因，該用那些對應的方式來直接運用在生活實際例子
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; background-color: #fbfbfb; padding: 10px">
+          <img
+            decoding="async"
+            width="976"
+            height="276"
+            src="https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpE_top.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpE_top.png         976w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpE_top-300x85.png  300w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpE_top-768x217.png 768w
+            "
+            sizes="(max-width: 976px) 100vw, 976px"
+            style="width: 100%; height: auto"
+          />
+          <div>
+            本章節，讓您掌握這時期孩子的行為特色，以及搭配父母的心理狀況劇，帶領大家運用自我修復3步驟，找出自己壓力的排解方向，修復自己，
+            並以有效溝通的4步驟為緊繃的家庭關係找到解套方法！
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ① 父母心，玻璃心：父母親的育兒挫折
+          </div>
+          <div style="font-weight: 500">
+            為什麼帶孩子的我，變得易怒、想哭、常覺得自己好失敗？
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ② 我，如何定義我自己：談談照顧者角色的定位和疲憊修復技巧
+          </div>
+          <div style="font-weight: 500">
+            搭配父母的心理狀況劇，帶領大家運用<br />
+            <div style="display: flex">
+              <div>◾ 覺察</div>
+              <div>◾ 認知調整</div>
+              <div>◾ 採取實際行動</div>
+            </div>
+            3步驟修復自己！
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ③ 重建家庭舞曲：與伴侶和家人建立良好的溝通，掌握舒適的界線
+          </div>
+          <div style="font-weight: 500; margin-bottom: 20px">
+            藉由發生在您身邊的各種家庭小劇場，實際帶大家學習<br />◾
+            家人之間界限的重要性+如何掌握<br />◾ 建立有效溝通的4步驟
+          </div>
+        </div>
+
+        <div style="font-size: 12px; background-color: #fbfbfb; padding: 10px">
+          <img
+            decoding="async"
+            width="976"
+            height="340"
+            src="https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpF_top.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpF_top.png         976w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpF_top-300x105.png 300w,
+              https://kid-pro.com/wp-content/uploads/2022/03/NEW5_chpF_top-768x268.png 768w
+            "
+            sizes="(max-width: 976px) 100vw, 976px"
+            style="width: 100%; height: auto"
+          />
+          <div>
+            嬰兒按摩，除了可以增加親子之間的親密感外，還可以幫忙舒緩寶寶一些身體上的不適。而且，您知道嬰兒按摩不是隨時都可以進行的嗎?
+          </div>
+
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ① 按摩前的準備：按摩益處、按摩油選擇
+          </div>
+          <div style="font-weight: 500">
+            ◾ 按摩對於家長，以及寶寶的四大益處<br />◾
+            按摩油選擇的五大準則介紹<br />◾ 如何判斷寶寶是否合適按摩
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ② 舒緩嬰幼兒哭鬧按摩法-長牙鼻塞篇
+          </div>
+          <div style="font-weight: 500">
+            ◾ 臉部按摩的益處<br />◾ 緩解鼻塞長牙的哭鬧的簡單2式按摩手法
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ③ 舒緩嬰幼兒哭鬧按摩法-腸絞痛、便秘特輯
+          </div>
+          <div style="font-weight: 500">
+            ◾ 預防腸脹氣的按摩頻率<br />◾ 按摩時機選擇<br />◾
+            緩解便秘的簡單四式好上手
+          </div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ④ 促進嬰幼兒感覺統合按摩實作(手部、腿部）
+          </div>
+          <div style="font-weight: 500">◾ 腿部10招<br />◾ 手部8式按摩法</div>
+          <div style="color: #33658a; font-size: 13px; font-weight: 600">
+            ⑤ 全身性舒緩按摩入門
+          </div>
+          <div style="font-weight: 500; margin-bottom: 20px">
+            ◾ 全身性的舒緩運動(促進感覺統合)
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            獨家設計
+          </div>
+        </div>
+        <div style="background-color: #f3f3f3; padding: 18px">
+          <img
+            decoding="async"
+            width="640"
+            height="335"
+            src="https://kid-pro.com/wp-content/uploads/2022/02/NEW4_ability_TC.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/02/NEW4_ability_TC.png         640w,
+              https://kid-pro.com/wp-content/uploads/2022/02/NEW4_ability_TC-300x157.png 300w
+            "
+            sizes="(max-width: 640px) 100vw, 640px"
+            style="width: 100%; height: auto"
+          />
+          <div style="font-size: 12px; margin-bottom: 20px">
+            在台灣，很多家長在兒童健康手冊上都有看過「衛教紀錄表」與「發展連續圖」。Kid-Pro團隊設計的「發展核心能力檢核表」除了詳細的介紹不同月齡的孩子應該具備什麼樣的能力，根據孩子在哪個月齡，可以做出什麼動作，發出哪些聲音。供父母判斷之外。<br />更重要的是，讓您知道在不同的月齡，可以搭配課程裡不同的遊戲，誘發孩子的發展，達到發展里程碑。
+          </div>
+
+          <img
+            decoding="async"
+            width="640"
+            height="170"
+            src="https://kid-pro.com/wp-content/uploads/2021/05/abrr-2.gif"
+            class="attachment-medium_large size-medium_large wp-image-225916"
+            alt=""
+            style="width: 100%; height: auto"
+          />
+
+          <div style="font-size: 12px">
+            Kid-Pro團隊獨創的ABRR分析法，幫助您快速掌握孩子鬧脾氣等行為的原因，搭配課程裡的23個行為處理技巧，幫助您讀懂孩子情緒，減輕您育兒上的挫折與壓力。
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 10px 15px;
+              font-weight: 600;
+            "
+          >
+            單元介紹
+          </div>
+        </div>
+
+        <div
+          style="
+            border-radius: 5px;
+            border: 1px solid #33658a;
+            font-size: 14px;
+            margin-bottom: 10px;
+          "
+        >
+          <input type="checkbox" id="expand-toggle1" class="expand-checkbox" />
+          <label for="expand-toggle1" class="expand-label">
+            0-1歲寶寶父母必修課
+          </label>
+
+          <div class="expand-content">
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第一章 上課前，你要知道的事
+              </div>
+              <div style="margin-left: 5px">▪ 發展里程碑，怎麼看?</div>
+              <div style="margin-left: 5px">▪ 發展核心力檢核表 怎麼使用？</div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第二章 0-6月 細動作+感官+認知概念學習
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 0-6個月【 細動作+感官+概念】發展關鍵
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 0-6個月【 細動作+感官+概念】遊戲+引導要訣
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第三章 0-6月 大動作發展章節
+              </div>
+              <div style="margin-left: 5px">▪ 0-6個月【 大動作】發展關鍵</div>
+              <div style="margin-left: 5px">
+                ▪ 0-6個月【 大動作】遊戲+引導要訣
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第四章 4-6月 進食能力培養
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 4-6個月大 副食品餵食時機點+種類挑選原則
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 4-6月 進食喝水能力發展關鍵+引導要訣
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第五章 6-12月 細動作+感官+認知概念學習 基礎篇
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 6-12月【 細動作+感官+概念】發展關鍵
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 6-12月【 細動作+感官+概念】遊戲+引導要訣 基礎篇
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第六章 6-12月 大動作發展 基礎篇
+              </div>
+              <div style="margin-left: 5px">▪ 6-8個月【大動作】發展關鍵</div>
+              <div style="margin-left: 5px">
+                ▪ 6-8個月【大動作】遊戲+引導要訣 基礎篇
+              </div>
+              <div style="margin-left: 5px">▪ 9-12個月【大動作】發展關鍵</div>
+              <div style="margin-left: 5px">
+                ▪ 9-12個月【 大動作】遊戲+引導要訣 基礎篇
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第九章 0-12月 寶寶進食喝水 狀況題破解篇
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 0-12月 寶寶進食喝水 狀況題破解篇
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第九章 0-12月 寶寶進食喝水 狀況題破解篇
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 0-12月 寶寶進食喝水 狀況題破解篇
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第十章 0-1歲 寶寶語言+口腔動作萌發
+              </div>
+              <div style="margin-left: 5px">▪ 0-1歲寶寶語言發展</div>
+              <div style="margin-left: 5px">▪ 0-1歲寶寶語言萌發遊戲</div>
+              <div style="margin-left: 5px">▪ 5招易上手寶寶口腔按摩</div>
+              <div style="margin-left: 5px">
+                ▪ 寶寶嘴巴常常開開的 是萌呆？ 淺談口呼吸
+              </div>
+              <div style="margin-left: 5px">▪ 寶寶口腔功能訓練 居家遊戲</div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第十一章 0-1歲 情緒行為篇
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 理解0-1歲孩子，讓你更有自信的照顧他
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 小老闆鬧情緒怎麼解-狀況題大解析
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第十二章 育兒育到懷疑人生—父母情緒壓力調適
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 父母心，玻璃心：父母親的育兒挫折
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 我，如何定義我自己：談談照顧者角色的定位和疲憊修復技巧
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 重建家庭舞曲：與伴侶和家人建立良好的溝通，掌握舒適的界線
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            border-radius: 5px;
+            border: 1px solid #33658a;
+            font-size: 14px;
+            margin-bottom: 10px;
+          "
+        >
+          <input type="checkbox" id="expand-toggle2" class="expand-checkbox" />
+          <label for="expand-toggle2" class="expand-label">
+            <div class="triangle"></div>
+            1-2歲寶寶父母必修課
+          </label>
+
+          <div class="expand-content">
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第一章 上課前，你要知道的事
+              </div>
+              <div style="margin-left: 5px">▪ 發展里程碑，怎麼看?</div>
+              <div style="margin-left: 5px">▪ 發展核心力檢核表 怎麼使用？</div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第二章 12-18個月 細動作+認知概念學習
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 12-18個月 精細動作+認知學習 發展關鍵時間點
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 12-18個月 精細動作+認知學習 引導要訣+遊戲
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第三章 12-18個月 大動作發展
+              </div>
+              <div style="margin-left: 5px">▪ 12-18個月【大動作】發展關鍵</div>
+              <div style="margin-left: 5px">
+                ▪ 12-18個月【大動作】遊戲+引導要訣
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第四章 12-18月 進食能力培養
+              </div>
+              <div style="margin-left: 5px">▪ 12-18個月 食物種類選擇原則</div>
+              <div style="margin-left: 5px">
+                ▪ 12-18個月 進食喝水能力發展關鍵時間點
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 12-18個月 如何培養孩子獨立進食喝水能力
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第五章 18-24個月 精細動作+認知概念學習
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 18-24個月 精細動作+認知學習 發展關鍵時間點
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 18-24個月 精細動作+認知學習 引導要訣+遊戲
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第六章 18-24個月 大動作發展
+              </div>
+              <div style="margin-left: 5px">▪ 12-18個月 食物種類選擇原則</div>
+              <div style="margin-left: 5px">▪ 18-24個月【大動作】發展關鍵</div>
+              <div style="margin-left: 5px">
+                ▪ 18-24個月【大動作】 引導要訣+遊戲
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第七章 18-24個月 進食喝水能力培養
+              </div>
+              <div style="margin-left: 5px">▪ 18-24個月 食物種類挑選原則</div>
+              <div style="margin-left: 5px">
+                ▪ 18-24個月 進食喝水能力發展關鍵時間點
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 18-24個月 如何培養孩子獨立進食喝水能力
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第八章 12-24個月 吃飯喝水狀況多 如何破解
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 12-24個月 吃飯喝水狀況多 如何破解
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第九章 如何萌發孩子的【語言】發展潛能
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 開始說人話？ 1-2歲寶寶語言發展
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 如何讓寶寶愛說話？ 1-2歲寶寶語言萌發遊戲
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 寶寶嘴巴常常開開的，萌萌的？還是母湯？
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 5招易上手寶寶口腔按摩－適用於0-2歲
+              </div>
+              <div style="margin-left: 5px">
+                ▪增強孩子口腔肌力的撇步 1-2歲篇
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第十章 12-24個月 情緒行為篇
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 理解你的孩子，讓你更有自信的照顧他
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 抓到孩子的特色－談9大氣質向度
+              </div>
+              <div style="margin-left: 5px">▪ 不太說話，怎麼看懂孩子的表達</div>
+              <div style="margin-left: 5px">▪ 小老闆溝通術</div>
+              <div style="margin-left: 5px">
+                ▪ 小老闆鬧情緒怎麼解－狀況題大解析
+              </div>
+            </div>
+
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第十一章 育兒育到懷疑人生—父母情緒壓力調適
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 父母心，玻璃心：父母親的育兒挫折
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 我，如何定義我自己：談談照顧者角色的定位和疲憊修復技巧
+              </div>
+              <div style="margin-left: 5px">
+                ▪ 重建家庭舞曲：與伴侶和家人建立良好的溝通，掌握舒適的界線
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="border-radius: 5px; border: 1px solid #33658a; font-size: 14px"
+        >
+          <input type="checkbox" id="expand-toggle3" class="expand-checkbox" />
+          <label for="expand-toggle3" class="expand-label">
+            <div class="triangle"></div>
+            0-2歲嬰兒按摩
+          </label>
+
+          <div class="expand-content">
+            <div style="padding: 12px 10px">
+              <div style="color: #2f4858; font-weight: 700">
+                第1章 按摩前的準備：按摩益處、按摩油選擇
+              </div>
+              <div style="color: #2f4858; font-weight: 700">
+                第2章 舒緩嬰幼兒哭鬧按摩法─長牙鼻塞篇
+              </div>
+              <div style="color: #2f4858; font-weight: 700">
+                第3章 舒緩嬰幼兒哭鬧按摩法─腸絞痛、便秘特輯
+              </div>
+              <div style="color: #2f4858; font-weight: 700">
+                第4章 促進嬰幼兒感覺統合按摩實作-腿部、手部
+              </div>
+              <div style="color: #2f4858; font-weight: 700">
+                第5章 全身性舒緩按摩入門
+              </div>
+              <div style="color: #2f4858; font-weight: 700">
+                第6章 繪本搭配按摩的秘技
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 10px 15px;
+              font-weight: 600;
+            "
+          >
+            課程特色
+          </div>
+        </div>
+
+        <div
+          style="
+            color: #33658a;
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+          "
+        >
+          線上課程vs實體講座
+        </div>
+
+        <table style="border: 1px solid #bababa; border-collapse: collapse">
+          <thead>
+            <tr>
+              <th
+                style="background-color: #aaebeb; border: 1px solid #bababa"
+              ></th>
+              <th
+                style="
+                  border: 1px solid #bababa;
+                  background-color: #9b9b9b;
+                  font-size: 20px;
+                  padding: 15px;
+                "
+              >
+                12小時以上育兒課程 實體講座
+              </th>
+              <th
+                style="
+                  border: 1px solid #bababa;
+                  background-color: #fa9600;
+                  font-size: 20px;
+                  padding: 15px;
+                "
+              >
+                嬰幼兒父母必修課 線上課程
+              </th>
+            </tr>
+          </thead>
+          <tbody style="font-size: 14px; text-align: center">
+            <tr>
+              <th
+                scope="row"
+                style="
+                  background-color: #aaebeb;
+                  padding: 15px;
+                  border: 1px solid #bababa;
+                "
+              >
+                直接費用
+              </th>
+              <td style="border: 1px solid #bababa; font-weight: 700">
+                NT$12,000 以上***
+              </td>
+              <td style="font-weight: 700; background-color: #fff8e5">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    decoding="async"
+                    src="https://kid-pro.com/wp-content/uploads/2021/05/trophy.gif"
+                    class="uael-col-img--left"
+                    title="trophy"
+                    alt="trophy"
+                    width="30px"
+                  />
+
+                  <span style="font-size: 16px; text-decoration: line-through"
+                    >NT$8,800</span
+                  >
+                  <span>NT$5,280</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th
+                scope="row"
+                style="
+                  background-color: #aaebeb;
+                  padding: 15px;
+                  border: 1px solid #bababa;
+                "
+              >
+                染疫風險
+              </th>
+
+              <td style="border: 1px solid #bababa; background-color: #f2f2f2">
+                高
+              </td>
+              <td style="border: 1px solid #bababa; background-color: #fff0c8">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    decoding="async"
+                    src="https://kid-pro.com/wp-content/uploads/2021/05/trophy.gif"
+                    class="uael-col-img--left"
+                    title="trophy"
+                    alt="trophy"
+                    width="30px"
+                  /><span>無</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th
+                scope="row"
+                style="
+                  background-color: #aaebeb;
+                  padding: 15px;
+                  border: 1px solid #bababa;
+                "
+              >
+                觀看次數
+              </th>
+
+              <td style="border: 1px solid #bababa">1次</td>
+
+              <td style="border: 1px solid #bababa; background-color: #fff8e5">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    decoding="async"
+                    src="https://kid-pro.com/wp-content/uploads/2021/05/trophy.gif"
+                    class="uael-col-img--left"
+                    title="trophy"
+                    alt="trophy"
+                    width="30px"
+                  /><span>不限</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th
+                scope="row"
+                style="
+                  background-color: #aaebeb;
+                  padding: 15px;
+                  border: 1px solid #bababa;
+                "
+              >
+                時空限制
+              </th>
+              <td style="border: 1px solid #bababa; background-color: #f2f2f2">
+                定時、定點
+              </td>
+
+              <td style="background-color: #fff0c8; border: 1px solid #bababa">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    decoding="async"
+                    src="https://kid-pro.com/wp-content/uploads/2021/05/trophy.gif"
+                    class="uael-col-img--left"
+                    title="trophy"
+                    alt="trophy"
+                    width="30px"
+                  /><span>隨時、隨地</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th
+                scope="row"
+                style="
+                  background-color: #aaebeb;
+                  padding: 15px;
+                  border: 1px solid #bababa;
+                "
+              >
+                家人共學
+              </th>
+              <td style="border: 1px solid #bababa">個人成長</td>
+              <td style="border: 1px solid #bababa; background-color: #fff8e5">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    decoding="async"
+                    src="https://kid-pro.com/wp-content/uploads/2021/05/trophy.gif"
+                    class="uael-col-img--left"
+                    title="trophy"
+                    alt="trophy"
+                    width="30px"
+                  /><span>全家共學</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th
+                scope="row"
+                style="
+                  background-color: #aaebeb;
+                  padding: 15px;
+                  border: 1px solid #bababa;
+                "
+              >
+                影片示範
+              </th>
+
+              <td style="border: 1px solid #bababa; background-color: #f2f2f2">
+                概念為主
+              </td>
+
+              <td style="background-color: #fff0c8; border: 1px solid #bababa">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    decoding="async"
+                    src="https://kid-pro.com/wp-content/uploads/2021/05/trophy.gif"
+                    class="uael-col-img--left"
+                    title="trophy"
+                    alt="trophy"
+                    width="30px"
+                  /><span>完整概念＋手法</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th
+                scope="row"
+                style="
+                  background-color: #aaebeb;
+                  padding: 15px;
+                  border: 1px solid #bababa;
+                "
+              >
+                其他成本
+              </th>
+              <td style="border: 1px solid #bababa">
+                將小孩請保母照顧<br />
+                花費30000-48000元*<br />
+                交通費4800元不等**
+              </td>
+              <td style="border: 1px solid #bababa; background-color: #fff8e5">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    decoding="async"
+                    src="https://kid-pro.com/wp-content/uploads/2021/05/trophy.gif"
+                    class="uael-col-img--left"
+                    title="trophy"
+                    alt="trophy"
+                    width="30px"
+                  /><span>無</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="font-size: 14px; margin-bottom: 20px">
+          * 以2021年台灣專業保母每小時250元~400元台幣計算。<br />
+          ** 以台灣計程車來回車資400元計算。<br />
+          *** 以平均一堂課1000元台幣計算。
+        </div>
+
+        <img
+          decoding="async"
+          width="640"
+          height="425"
+          src="https://kid-pro.com/wp-content/uploads/2021/05/NEW4_iceberg_TC.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_iceberg_TC.png         640w,
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_iceberg_TC-300x199.png 300w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="width: 100%; height: auto"
+        />
+
+        <div style="font-size: 14px; padding: 0 10px; margin-bottom: 20px">
+          很多孩子的本質都很優秀，但卻因為家長或照顧者不知道如何引導孩子，常常使得孩子發展潛能被埋沒，這實在是非常可惜的事！<br />
+          許多人都相信，孩子能夠「自然而然」的發展出生活必要的能力。這句話沒有錯，但是，什麼是自然而然呢？孩子在成長過程中需要接受到許多外界的刺激，在孩子探索世界的過程裡藉此觸發他們的能力發展。<br />
+          為了孩子的安全，環境裡自然的刺激變少了，能夠萌發孩子各種肢體、感覺能力的刺激下降了。現在的「自然而然」和過去變得不大一樣。<br />
+          安全和成長是可以並存的。<br />
+          在這門課裡，我們設計了許多有科學根據的遊戲，讓您可以透過陪伴孩子遊戲，在日常生活之中安全的感受到孩子一天比一天更活潑、健康、茁壯！
+        </div>
+
+        <img
+          decoding="async"
+          width="640"
+          height="425"
+          src="https://kid-pro.com/wp-content/uploads/2021/05/NEW4_cry_TC.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_cry_TC.png         640w,
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_cry_TC-300x199.png 300w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="width: 100%; height: auto"
+        />
+
+        <div style="font-size: 14px; padding: 0 10px; margin-bottom: 20px">
+          寶寶又哭哭了！可能是甚麼原因呢？明明才剛餵過奶，也換過尿布，沒有太冷、也沒有太熱啊！<br />
+          除了這些常見的原因，還有哪些幼兒發展上的原因呢？0-2歲寶寶父母必修課，讓你把這些知識一網打盡，滿足寶寶需求，不再為了搞不懂寶寶怎麼了而發脾氣。
+        </div>
+
+        <img
+          decoding="async"
+          width="640"
+          height="560"
+          src="https://kid-pro.com/wp-content/uploads/2021/05/NEW4_situation_TC.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_situation_TC.png         640w,
+            https://kid-pro.com/wp-content/uploads/2021/05/NEW4_situation_TC-300x263.png 300w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="width: 100%; height: auto"
+        />
+        <div style="font-size: 14px; padding: 0 10px">
+          0-2歲寶寶父母必修課，可以幫助你解決當下的疑惑。系統化的知識編排，還能幫助你提早準備，掌握寶寶的發展進度，更全面的陪伴寶寶的發展。
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 10px 15px;
+              font-weight: 600;
+            "
+          >
+            試看課程
+          </div>
+        </div>
+
+        <div
+          class="video-container"
+          style="
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+          "
+        >
+          <iframe
+            src="https://player.vimeo.com/video/575168277?loop=0&amp;title=1&amp;portrait=1&amp;byline=1&amp;muted=0&amp;color&amp;autopause=0&amp;autoplay=1#t="
+            frameborder="0"
+            allowfullscreen="1"
+            allow="autoplay; encrypted-media;"
+            data-gtm-yt-inspected-18="true"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+          ></iframe>
+        </div>
+
+        <img
+          decoding="async"
+          width="1536"
+          height="308"
+          src="https://kid-pro.com/wp-content/uploads/2021/06/0-2Online-course_join.jpg"
+          class="attachment-2048x2048 size-2048x2048 wp-image-39688"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/06/0-2Online-course_join.jpg          1536w,
+            https://kid-pro.com/wp-content/uploads/2021/06/0-2Online-course_join-300x60.jpg    300w,
+            https://kid-pro.com/wp-content/uploads/2021/06/0-2Online-course_join-1024x205.jpg 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/06/0-2Online-course_join-768x154.jpg   768w
+          "
+          sizes="(max-width: 1536px) 100vw, 1536px"
+          style="width: 100%; height: auto"
+        />
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 10px 15px;
+              font-weight: 600;
+            "
+          >
+            合作單位
+          </div>
+        </div>
+        <div
+          style="
+            background-color: #fff;
+            display: flex;
+            padding: 8px;
+            border: 1px solid #1f8c96;
+            border-radius: 5px;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 20px;
+              padding: 20px;
+              font-family: Arial, sans-serif;
+            "
+          >
+            <div style="text-align: center; width: 200px">
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2021/09/LOGO_mombaby_cradle_QRC-768x768.png.webp"
+                alt="羽筑母嬰"
+                style="width: 100%; border-radius: 10px"
+              />
+              <p>羽筑母嬰</p>
+            </div>
+            <div style="text-align: center; width: 200px">
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2021/10/S__34292785.png"
+                alt="洄恩產後護理之家"
+                style="width: 100%; border-radius: 10px"
+              />
+              <p>洄恩產後護理之家</p>
+            </div>
+            <div style="text-align: center; width: 200px">
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2021/10/cheasure-768x768.png"
+                alt="馨生產後護理之家"
+                style="width: 100%; border-radius: 10px"
+              />
+              <p>馨生產後護理之家</p>
+            </div>
+            <div style="text-align: center; width: 200px">
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2021/10/bluebear-3.png"
+                alt="藍田貝兒產後護理之家"
+                style="width: 100%; border-radius: 10px"
+              />
+              <p>藍田貝兒產後護理之家</p>
+            </div>
+            <div style="text-align: center; width: 200px">
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2021/10/LC-2.png"
+                alt="樂心產後護理之家"
+                style="width: 100%; border-radius: 10px"
+              />
+              <p>樂心產後護理之家</p>
+            </div>
+            <div style="text-align: center; width: 200px">
+              <img
+                src="https://kid-pro.com/wp-content/uploads/2021/11/Gemcare_logo-910x1024.png"
+                alt="人之初產後護理之家"
+                style="width: 100%; border-radius: 10px"
+              />
+              <p>人之初產後護理之家</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const modal = document.getElementById("myModal");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.getElementsByClassName("close-btn")[0];
+
+    // 點擊按鈕打開 Modal
+    openModalBtn.onclick = function () {
+      modal.style.display = "flex"; // 顯示 Modal
+    };
+
+    // 點擊關閉按鈕關閉 Modal
+    closeBtn.onclick = function () {
+      modal.style.display = "none"; // 隱藏 Modal
+    };
+
+    // 點擊 Modal 背景（非內容區域）時關閉 Modal
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</html>

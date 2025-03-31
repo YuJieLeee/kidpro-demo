@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .expand-checkbox {
+      display: none;
+    }
+
+    .expand-label {
+      display: block;
+      background-color: #f26419;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .expand-content {
+      overflow: hidden;
+      display: flex;
+      max-height: 0;
+      transition: all 0.5s ease;
+      font-size: 14px;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0px 10px;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-left: 6px solid white;
+      transition: transform 0.3s ease;
+    }
+
+    .expand-checkbox:checked + .expand-label + .expand-content {
+      max-height: 2000px;
+      padding: 12px 10px;
+    }
+
+    .expand-checkbox:checked + .expand-label .triangle {
+      transform: rotate(90deg);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .close-btn {
+      color: black;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+      padding: 2px 5px 4px 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: #ffc83c;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid #ffc83c;
+    }
+    @keyframes bounceInOut {
+      0% {
+        transform: translateY(30px) scaleY(0.3);
+        opacity: 0;
+      }
+      30% {
+        transform: translateY(0) scaleY(1);
+        opacity: 1;
+      }
+      60% {
+        transform: translateY(0) scaleY(1);
+        opacity: 1;
+      }
+      70% {
+        transform: translateY(2px) scaleY(0.8);
+        opacity: 1;
+      }
+      80% {
+        transform: scaleY(1);
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    .bouncing-text {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: bold;
+      color: #fa9600;
+      animation: bounceInOut 1.5s ease infinite;
+    }
+  </style>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        color: #2f4858;
+        padding: 10px;
+        line-height: 24px;
+      "
+    >
+      <a href="https://kid-pro.com/product/lec-simple-consultation-service/">
+        <img
+          width="640"
+          height="235"
+          src="https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png         640w,
+            https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2-300x110.png 300w
+          "
+          sizes="(max-width: 640px) 100vw, 640px"
+          style="width: 100%; height: auto"
+        />
+      </a>
+
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          height: 0;
+          overflow: hidden;
+        "
+      >
+        <iframe
+          src="https://player.vimeo.com/video/656493636?autoplay=1&amp;version=3&amp;enablejsapi=1"
+          frameborder="0"
+          allowfullscreen="1"
+          allow="autoplay;encrypted-media;"
+          data-gtm-yt-inspected-19="true"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+        ></iframe>
+      </div>
+
+      <ul style="font-size: 12px; color: #666666; margin-left: 40px">
+        <li>
+          國內教具免運費，另有
+          <a
+            href="/oral-2-12_freight"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            style="color: #666666"
+          >
+            海外方案
+          </a>
+        </li>
+        <li>完成付款後，可立即觀看課程</li>
+      </ul>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            課程資訊
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 190px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-109634 size-full"
+            >
+              <source
+                type="image/webp"
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png.webp
+                "
+              />
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+
+            <span style="font-weight: 700; font-size: 13px">開課日期</span>
+            <span style="font-size: 14px">已開課</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 190px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-125540 size-full"
+            >
+              <source
+                type="image/webp"
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png.webp
+                "
+              />
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">課程長度</span>
+            <span style="font-size: 14px">4小時40分</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 190px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-125541 size-full"
+            >
+              <source
+                type="image/webp"
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png.webp
+                "
+              />
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">總單元數</span>
+            <span style="font-size: 14px">7章21節</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 190px"
+          >
+            <picture decoding="async" class="alignnone wp-image-109218">
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_stdt.png.webp"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">課程學員</span>
+            <span style="font-size: 14px">3636人</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 190px"
+          >
+            <picture
+              decoding="async"
+              class="alignnone wp-image-109219 size-full"
+            >
+              <img
+                decoding="async"
+                src="	https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_watch.png.webp"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">觀看方式</span>
+            <span style="font-size: 14px">透過網站</span>
+          </div>
+
+          <div
+            style="display: flex; align-items: center; gap: 10px; width: 190px"
+          >
+            <picture decoding="async" class="alignnone wp-image-125542">
+              <img
+                decoding="async"
+                src="https://kid-pro.com/wp-content/uploads/2022/05/massage_unlimited.png"
+                alt=""
+                width="30"
+                height="30"
+              />
+            </picture>
+            <span style="font-weight: 700; font-size: 13px">觀看期限</span>
+            <span style="font-size: 14px"
+              >無期限
+              <span id="openModalBtn" style="font-size: 8px; color: #fa9600">
+                （說明）
+              </span></span
+            >
+
+            <div id="myModal" class="modal">
+              <div
+                class="modal-content"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  font-size: 20px;
+                "
+              >
+                <div class="close-btn">&times;</div>
+
+                <div
+                  style="
+                    text-align: center;
+                    line-height: 25px;
+                    font-weight: 500;
+                  "
+                >
+                  消費者權益保障<br />
+
+                  《無限期觀看說明》
+                </div>
+                <div>非信用卡付款：（∞）</div>
+                <div style="text-align: center">享無限期觀看權益。</div>
+                <div>信用卡付款：（１＋∞）</div>
+                <div style="text-align: center; color: #f26419">
+                  【消費者亦享無限期觀看權益】
+                </div>
+                <div style="line-height: 25px">
+                  惟根據國際信用卡組織規定，產品及服務交付期限為一個月內，因此本公司僅可聲明保障一個月內使用期限。本公司針對信用卡付費之消費者，贈送後續『無限期觀看』權益。此贈送之權益無涉信用卡公司。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            style="
+              font-size: 18px;
+              color: #000000;
+              background: #ffffff;
+              width: fit-content;
+              padding: 0px 15px;
+              font-weight: 600;
+            "
+          >
+            課程特色
+          </div>
+        </div>
+        <ul style="font-size: 14px; margin: 0; padding-left: 15px">
+          <li style="font-weight: 700">
+            <span style="text-decoration: underline">內容廣泛</span>：5大注意力
+            +
+            3大執行功能、注意力生活中5大解方、執行功能生活15訓練法、36個關卡訓練遊戲
+          </li>
+          <li style="font-weight: 700">
+            <span style="text-decoration: underline">課程內含</span
+            >：專屬教具、執行功能發展年齡對照表、注意力行為觀察表
+          </li>
+          <li>
+            <span style="text-decoration: underline; font-weight: 700"
+              >影片示範</span
+            >：運用實際示範影片，完整呈現。
+          </li>
+          <li>
+            <span style="text-decoration: underline; font-weight: 700"
+              >諮詢服務</span
+            >：課程中有疑問可以傳送訊息向老師發問。
+          </li>
+          <li>
+            <span style="text-decoration: underline; font-weight: 700"
+              >科學證實</span
+            >：投入大量人力物力，進行考證<b>文獻、論文。</b>
+          </li>
+        </ul>
+      </div>
+
+      <div style="font-size: 12px; text-align: center">
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+        </div>
+        <div style="padding: 12px">
+          <div style="color: #28c8c8">
+            根據研究文獻，注意力、執行功能的發展黃金期落在
+          </div>
+          <div class="bouncing-text">3歲~12歲</div>
+          <div style="color: #28c8c8">
+            這段時間，注意力、執行功能的培養及訓練，<br />為發展成熟度的關鍵
+          </div>
+          <div class="bouncing-text">每天10分鐘</div>
+          <div style="color: #28c8c8">
+            ，從遊戲、從生活中，奠定注意力良好基礎
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              height: 3px;
+              width: 100%;
+              background: #28c8c8;
+              z-index: -1;
+            "
+          ></div>
+        </div>
+      </div>
+
+      <div>
+        <img
+          decoding="async"
+          width="1536"
+          height="763"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_01-1.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_01-1.png          1536w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_01-1-300x149.png   300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_01-1-1024x509.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_01-1-768x382.png   768w
+          "
+          sizes="(max-width: 1536px) 100vw, 1536px"
+          style="width: 100%; height: auto; margin-bottom: 5px"
+        />
+
+        <img
+          decoding="async"
+          width="1536"
+          height="601"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_02.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82376"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_02.png          1536w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_02-300x117.png   300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_02-1024x401.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_02-768x301.png   768w
+          "
+          sizes="(max-width: 1536px) 100vw, 1536px"
+          style="width: 100%; height: auto; margin-bottom: 5px"
+        />
+
+        <img
+          decoding="async"
+          width="1536"
+          height="919"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_07.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82380"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_07.png          1536w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_07-300x179.png   300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_07-1024x613.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_07-768x460.png   768w
+          "
+          sizes="(max-width: 1536px) 100vw, 1536px"
+          style="width: 100%; height: auto; margin-bottom: 5px"
+        />
+
+        <img
+          decoding="async"
+          width="1537"
+          height="616"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_08.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82381"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_08.png          1537w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_08-300x120.png   300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_08-1024x410.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_08-768x308.png   768w
+          "
+          sizes="(max-width: 1537px) 100vw, 1537px"
+          style="width: 100%; height: auto; margin-bottom: 5px"
+        />
+
+        <img
+          decoding="async"
+          width="1536"
+          height="467"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_09.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82382"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_09.png          1536w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_09-300x91.png    300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_09-1024x311.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_09-768x234.png   768w
+          "
+          sizes="(max-width: 1536px) 100vw, 1536px"
+          style="width: 100%; height: auto; margin-bottom: 5px"
+        />
+
+        <img
+          decoding="async"
+          width="1536"
+          height="467"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_10.png"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_10.png          1536w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_10-300x91.png    300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_10-1024x311.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_10-768x234.png   768w
+          "
+          sizes="(max-width: 1536px) 100vw, 1536px"
+          style="width: 100%; height: auto; margin-bottom: 5px"
+        />
+
+        <div>
+          <b style="color: #33658a; font-size: 15px"
+            >在臨床服務的這18年，家長、老師最常反映的就是:孩子很容易分心，沒耐心，或是拖拖拉拉、做事沒效率、草率急躁又粗心、忘東忘西，結果弄得常發脾氣。</b
+          >
+        </div>
+        <div style="font-size: 14px; margin: 5px 0">
+          你知道原因除了可能有注意力問題以外，其實也有可能是因為大腦執行功能(Executive
+          Function)不夠成熟。
+          甚至有很多孩子注意力其實沒太大問題，但後天訓練刺激不足，或可能是教養策略不適合孩子的特質。
+        </div>
+        <div style="font-size: 14px">
+          而根據文獻研究結果，注意力和執行功能的<span style="color: #f26419"
+            ><b>黃金發展期</b></span
+          >
+          就在<span style="color: #f26419"><b>3歲到小學</b></span
+          >這段時間，所以這堂課讓您在家中、教室中，透過影片了解帶領孩子進行訓練遊戲的方法，並附上專用的教具，幫助您奠定孩子好的注意力+執行功能能力基礎，改善孩子這些問題，儲備未來學習及生活的競爭力。
+        </div>
+
+        <div style="margin-top: 10px">
+          <b style="color: #33658a; font-size: 15px">適合對象</b>
+
+          <div>
+            <div>
+              <span style="color: #f26419">幼兒園至小學高年級</span
+              >孩子的家長、幼教相關人員
+            </div>
+          </div>
+          <div style="font-size: 14px">
+            <li>想培養、儲備孩子注意力+執行功能發展</li>
+            <li>
+              想改善孩子以下狀況－注意力較弱、容易分心、沒耐心
+              <div style="margin-left: 10px">
+                －急躁、衝動、忘東忘西<br />－做事拖拖拉拉、沒效率、沒計畫
+              </div>
+            </li>
+            <li>注意力缺損過動症</li>
+            <li>自閉症</li>
+          </div>
+
+          <b style="color: #33658a; font-size: 15px">運用場域</b>
+          <div style="font-size: 14px">
+            <li>家庭</li>
+            <li>教室</li>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <img
+          decoding="async"
+          width="1537"
+          height="321"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_03.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82533"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_03.png          1537w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_03-300x63.png    300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_03-1024x214.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_03-768x160.png   768w
+          "
+          sizes="(max-width: 1537px) 100vw, 1537px"
+          style="width: 100%; height: auto"
+        />
+        <div style="font-weight: 400; font-size: 14px; margin-bottom: 10px">
+          研究文獻中指出，全世界大約有5-12%的孩子，有注意力缺損過動症的診斷，這還不包含那些注意力稍弱，沒有達到診斷標準的孩子，所以一個班級裡，至少就會有2-3名以上的孩子會有注意力問題。
+        </div>
+        <div style="font-weight: 400; font-size: 14px">
+          而執行功能不但深深地影響了孩子在生活中的大小事，舉凡出門前不拖拉，整理書包不會落東落西，更有眾多文獻指出，執行功能會影響孩子的學業學習成效，尤其是在:數學、自然、寫作、閱讀能力，所以這個詞對一般大眾很陌生，但和孩子生活中各種表現緊密相關，大家卻不知道，問題背後的原因，是執行功能在作祟。
+        </div>
+      </div>
+
+      <div style="padding: 10px 15px 10px 15px; background-color: #f6ae2d26">
+        <b style="color: #2386a0; font-size: 17px"
+          >注意力夠長就好？ 五大注意力 缺一不可！</b
+        ><br />
+        <b style="font-size: 14px"
+          >根據學者Sohlberg與Matee所提出的「注意力臨床模式」，
+          注意力其實還分成五大類：</b
+        ><br />
+        <div style="display: flex; flex-direction: column; gap: 5px">
+          <div style="font-size: 13px">
+            <b style="color: #f26419; font-size: 15px">持續性注意力</b
+            ><span>（sustained attention）</span><br /><span>
+              持續時間要長到可把任務做完，例如：寫完作業、吃完飯。
+            </span>
+          </div>
+          <div style="font-size: 13px">
+            <b style="color: #f26419; font-size: 15px">選擇性注意力</b
+            ><span>（selective attention）</span><br /><span>
+              選擇對的目標來注意，要對抗干擾，例如：不被電視聲、桌上的東西吸引而分心。
+            </span>
+          </div>
+          <div style="font-size: 13px">
+            <b style="color: #f26419; font-size: 15px">交替性注意力</b
+            ><span>（alternating attention）</span><br /><span>
+              注意力要再多個目標上來回轉換不當機，例如：一下看黑板，一下抄筆記，速度快不停滯，或看到別的地方去。
+            </span>
+          </div>
+          <div style="font-size: 13px">
+            <b style="color: #f26419; font-size: 15px">同時性注意力</b
+            ><span>（divided attention）</span><br /><span>
+              可以一心多用，例如：一邊聽老師講課，同時要抄筆記。
+            </span>
+          </div>
+          <div style="font-size: 13px">
+            <b style="color: #f26419; font-size: 15px">集中性注意力</b
+            ><span>（focused attention）</span><br /><span>
+              可以注意突然出現的人事物，不會反應太慢或沒注意到，或太過敏感，導致無法專注。
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 17px; margin-top: -10px; font-weight: 700">
+        必須五大類都夠成熟，才能有好的注意力；<br />而這堂課程，一次包含了這五大注意力訓練。
+      </div>
+
+      <div>
+        <img
+          decoding="async"
+          width="1537"
+          height="321"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_04.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82540"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_04.png          1537w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_04-300x63.png    300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_04-1024x214.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_04-768x160.png   768w
+          "
+          sizes="(max-width: 1537px) 100vw, 1537px"
+          style="width: 100%; height: auto"
+        />
+
+        <div style="font-size: 14px">
+          指的是腦部在執行一連串複雜的任務事件，直到完成目標的能力，在過程中包含需要組織計畫、執行、監控、改變策略，維持注意力…等，直到任務完成。<br />生活中大大小小的任務，不管是起床後刷牙洗臉穿衣服準時上學、寫作文、自己完成作業都會運用到執行功能。
+        </div>
+
+        <div style="padding: 10px 15px 10px 15px; background-color: #f6ae2d26">
+          <b style="color: #2386a0; font-size: 17px">而執行功能的三大核心</b
+          ><br />
+
+          <div style="display: flex; flex-direction: column; gap: 5px">
+            <div style="font-size: 13px">
+              <b style="color: #f26419; font-size: 15px">工作記憶</b
+              ><br /><span> 避免忘東忘西、忘記剛剛計畫好的步驟。 </span>
+            </div>
+            <div style="font-size: 13px">
+              <b style="color: #f26419; font-size: 15px">抑制功能</b
+              ><br /><span>
+                對抗干擾誘惑，先想再做，避免急躁、沒計畫、瞎忙、一直講不聽、重複犯錯。
+              </span>
+            </div>
+            <div style="font-size: 13px">
+              <b style="color: #f26419; font-size: 15px">認知彈性</b
+              ><br /><span>
+                增加應變能力、問題解決、遇到突發狀況的適應力，避免遇到卡關就放棄、不知所措、發脾氣。
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 17px; margin-top: -10px; font-weight: 700">
+        這堂課程，也涵蓋了這三大核心。
+      </div>
+
+      <div>
+        <img
+          decoding="async"
+          width="1537"
+          height="321"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_05.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82563"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_05.png          1537w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_05-300x63.png    300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_05-1024x214.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_05-768x160.png   768w
+          "
+          sizes="(max-width: 1537px) 100vw, 1537px"
+          style="width: 100%; height: auto"
+        />
+        <div style="display: flex; flex-direction: column; gap: 5px">
+          <div style="font-size: 14px">
+            臨床研究實證也發現，學齡前孩子透過注意力、執行功能訓練後，觀察他們前額葉以及額葉頂區的腦波形式，證實經過後天的教育和訓練，可以改善注意力和執行功能。
+          </div>
+          <div style="font-size: 14px">
+            且不只是透過課程訓練，其實生活中的教養策略和訓練，更是重要，像是Dawson
+            和Guare等學者就指出，注意力和執行功能，其實藉生活的訓練策略，在生活中改變孩子的行為慣性，也很重要。
+          </div>
+          <div style="font-size: 14px">
+            所以我們的課程，不只有遊戲訓練課程和教具，還有
+            <li style="color: #27acb8; margin-left: 15px">
+              分心、急躁、坐不住，生活中9大解方
+            </li>
+            <li style="color: #27acb8; margin-left: 15px">
+              做事沒效率、忘東忘西、常當機
+            </li>
+            讓孩子的基礎能力打好之外，也能將生活表現實質改善。
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 14px">
+        <img
+          decoding="async"
+          width="1537"
+          height="321"
+          src="https://kid-pro.com/wp-content/uploads/2021/10/massage_06.png"
+          class="attachment-2048x2048 size-2048x2048 wp-image-82582"
+          alt=""
+          srcset="
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_06.png          1537w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_06-300x63.png    300w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_06-1024x214.png 1024w,
+            https://kid-pro.com/wp-content/uploads/2021/10/massage_06-768x160.png   768w
+          "
+          sizes="(max-width: 1537px) 100vw, 1537px"
+          style="width: 100%; height: auto"
+        />
+        <div style="margin-bottom: 10px">
+          在臨床上，職能治療師服務的對象中，就包含注意力缺損過動症(ADHD)，而且其實有非常多的孩子，並沒有得到ADHD的診斷，可能只是輕微的注意力發展比較弱，甚至是注意力沒問題，但有其他的因素干擾，讓生活中被注意力表現不好而困擾。
+          而職能治療師的工作，就是評估分析出孩子有注意力問題感擾的原因，究竟是甚麼，而且不管原因為何，都能透過訓練課程，還有生活中客製化的教養建議，來雙管齊下，改善或促進孩子的注意力表現。
+        </div>
+        <div>
+          所以本課程，是由擁有臺大醫院15年臨床經驗的黃暐恬(恬兒)職能治療師，以及KidPro的職能治療師團隊共同該發設計，且還會告訴大家，怎麼在遊戲過程中、生活中，孩子行為的觀察重點，更能掌握孩子在注意力+執行功能的發展狀況。
+        </div>
+      </div>
+
+      <div>
+        <div style="color: #1e8c96; font-size: 19px; font-weight: 700">
+          課程詳細內容
+        </div>
+
+        <div>
+          <div
+            style="
+              background-color: #f26419;
+              color: white;
+              padding: 4px 10px;
+              border-radius: 5px;
+              margin: 5px 0;
+            "
+          >
+            <div>A. 理論+生活教養策略</div>
+          </div>
+          <ul style="margin: 0; font-size: 14px">
+            <li>了解注意力、執行功能對孩子的影響</li>
+            <li>如何觀察孩子注意力、執行功能的發展</li>
+            <li>如何找出孩子不專注的原因</li>
+            <li>注意力困擾的生活中9大解方</li>
+            <li>執行功能困擾的生活訓練15個方法</li>
+          </ul>
+        </div>
+
+        <div>
+          <div
+            style="
+              background-color: #f26419;
+              color: white;
+              padding: 4px 10px;
+              border-radius: 5px;
+              margin: 5px 0;
+            "
+          >
+            <div>B. 12個遊戲訓練課程</div>
+          </div>
+          <ul style="margin: 0; font-size: 14px">
+            <li>大人透過影片了解訓練遊戲的執行方法，帶領孩子進入遊戲</li>
+            <li>訓練5大注意力+執行功能3大要素</li>
+            <li>隨課程附上專屬教具，不用另外準備道具</li>
+            <li>
+              遊戲方式包含視覺、聽覺、動作的執行，更貼近孩子生活中執行的任務形式
+            </li>
+            <li>
+              36個關卡，依訓練手法原則設計，逐關變難，在破關的過程中，能力自然提昇
+            </li>
+            <li>
+              幼兒園至小學高年級孩子皆適用，可依照孩子發展年齡，找做適合的訓練難度
+            </li>
+            <li>可單人、多人玩</li>
+            <li>提供孩子卡關時的引導要訣，幫助孩子一起Level up!</li>
+            <li>
+              提供行為觀察重點:讓您在遊戲中、生活中，了解可以觀察孩子哪些表現，掌握孩子發展狀況
+            </li>
+          </ul>
+        </div>
+
+        <div style="border: 1px solid #f26419; border-radius: 5px">
+          <input type="checkbox" class="expand-checkbox" id="expand-toggle1" />
+          <label for="expand-toggle1" class="expand-label">
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <div style="width: fit-content">
+                C. 課程詳細單元內容（點開可看詳情）
+              </div>
+              <div class="triangle"></div>
+            </div>
+          </label>
+          <div class="expand-content">
+            <div>
+              <div style="font-weight: 600">零、前言</div>
+              0-1 注意力、執行功能，到底有多重要？<br />
+              0-2 進行訓練遊戲前，你一定要知道的事
+            </div>
+
+            <div>
+              <div style="font-weight: 600">一.注意力</div>
+              1-1 五大注意力，對生活的影響<br />
+              1-2 孩子沒耐心、愛分心，就是注意力的錯？<br />
+              <span class="note" style="font-size: 11px; color: #888"
+                >&nbsp;－另外影響注意力的七大因素：年齡不同、氣質、生活經驗、教養、活動任務問題、動機、感覺統合、執行功能</span
+              ><br />
+              1-3 我的孩子是過動？還是皮？還是在灰色地帶？<br />
+              <span class="note" style="font-size: 11px; color: #888"
+                >&nbsp;－過動的成因、流行率、過動的診斷標準、過動和皮怎麼區分、種類的分布比率、懷疑有過動怎麼辦？</span
+              ><br />
+              1-4 孩子分心、急躁、坐不住，生活中9大解方
+            </div>
+
+            <div>
+              <div style="font-weight: 600">
+                二.執行功能-工作記憶、認知彈性、抑制功能
+              </div>
+              2-1 執行功能是什麼？對孩子有什麼重大影響？<br />
+              2-2 執行功能的三大要素<br />
+              2-3 做事沒效率、忘東忘西、常當機，生活訓練15個方法
+            </div>
+
+            <div>
+              <div style="font-weight: 600">
+                三.持續性注意力＋執行功能訓練遊戲
+              </div>
+              3-1 聽聽搶地盤<br />
+              3-2 水果記憶高手<br />
+              3-3 水果盤大師
+            </div>
+
+            <div>
+              <div style="font-weight: 600">
+                四.選擇性注意力＋執行功能訓練遊戲
+              </div>
+              4-1 拆彈專家<br />
+              4-2 冰淇淋銷售高手<br />
+              4-3 座標大搜查
+            </div>
+
+            <div>
+              <div style="font-weight: 600">
+                五.交替性注意力＋執行功能訓練遊戲
+              </div>
+              5-1 水果顏色對對碰<br />
+              5-2 冰淇淋小偵探<br />
+              5-3 解密小達人
+            </div>
+
+            <div>
+              <div style="font-weight: 600">
+                六.同時性注意力＋執行功能訓練遊戲
+              </div>
+              6-1 聲音密探<br />
+              6-2 一心二用我最行<br />
+              6-3 碳烤冰淇淋
+            </div>
+
+            <span class="note" style="font-size: 11px; color: #888"
+              >附註：第三～六章的遊戲中，皆包含集中性注意力的訓練</span
+            >
+          </div>
+        </div>
+
+        <div>
+          <div
+            style="
+              background-color: #f26419;
+              color: white;
+              padding: 4px 10px;
+              border-radius: 5px;
+              margin: 5px 0;
+            "
+          >
+            <div>D. VIP一對一諮詢</div>
+          </div>
+          <div style="font-size: 14px">
+            在執行遊戲課程中、運用生活教養策略時，若遇到問題，也可透過線上文字的一對一VIP諮詢室，讓治療師幫您做初步的解答。
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 3px;
+                width: 100%;
+                background: #28c8c8;
+                z-index: -1;
+              "
+            ></div>
+          </div>
+          <div
+            style="
+              font-size: 22px;
+              font-weight: 600;
+              padding: 15px;
+              text-align: center;
+            "
+          >
+            試看課程
+          </div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 3px;
+                width: 100%;
+                background: #28c8c8;
+                z-index: -1;
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%; /* 16:9 aspect ratio */
+          height: 0;
+          overflow: hidden;
+        "
+      >
+        <iframe
+          src="https://player.vimeo.com/video/636826732?loop=0&amp;title=1&amp;portrait=1&amp;byline=1&amp;muted=0&amp;color&amp;autopause=0&amp;autoplay=1#t="
+          frameborder="0"
+          allowfullscreen="1"
+          allow="autoplay;encrypted-media;"
+          data-gtm-yt-inspected-19="true"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+        ></iframe>
+      </div>
+      <div>
+        <div style="padding: 15px 0; display: flex">
+          <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+        </div>
+        <h2
+          style="
+            color: #000;
+            font-weight: 600;
+            margin: 0;
+            text-align: center;
+            font-size: 21px;
+          "
+        >
+          關於講師
+        </h2>
+        <div style="padding: 15px 0; display: flex">
+          <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 20px">
+          <div style="background-color: #fafafa; padding: 5px">
+            <h2
+              style="
+                font-size: 19px;
+                font-weight: 600;
+                line-height: 25px;
+                text-align: center;
+              "
+            >
+              黃暐恬 職能治療師
+            </h2>
+            <p
+              style="
+                color: #4c4c4c;
+                font-size: 14px;
+                line-height: 24px;
+                margin-top: 0;
+                margin-bottom: 24px;
+              "
+            >
+              18年臨床經驗，幫助近2000名孩子家長在教養上的困擾。擔任台大醫院兒童職能治療新人培育計畫課程主任，培訓超過500名職能治療師。自2018年7月成立「恬兒職能治療師-醫學領域的兒童發展專家」粉絲團，透過網路分享育兒知識，至今已累積超過7萬追蹤者。開設線上課程4個月，賣出近5000堂，學員評價五顆星。講座經常滿額，一位難求！
+            </p>
+
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                margin-bottom: 24px;
+              "
+            >
+              <img
+                decoding="async"
+                width="428"
+                height="440"
+                src="https://kid-pro.com/wp-content/uploads/2021/06/HahowPage_Lois2.png"
+                class="attachment-large size-large wp-image-35735"
+                alt=""
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2021/06/HahowPage_Lois2.png         428w,
+                  https://kid-pro.com/wp-content/uploads/2021/06/HahowPage_Lois2-292x300.png 292w
+                "
+                sizes="(max-width: 428px) 100vw, 428px"
+                style="max-width: 100%; height: auto"
+              />
+            </div>
+
+            <div
+              style="
+                font-size: 19px;
+                color: #fff;
+                background-color: #fa9600;
+                padding: 3px;
+              "
+            >
+              KidPro醫學級兒童發展教育團隊創辦人
+            </div>
+            <div
+              style="
+                font-size: 15px;
+                color: #fa9600;
+                margin: 5px 0;
+                font-weight: 400;
+              "
+            >
+              學歷：台灣大學醫學院職能治療學系
+            </div>
+            <h3
+              style="
+                font-size: 16px;
+                margin: 0;
+                color: #33658a;
+                font-weight: 400;
+              "
+            >
+              <strong>經歷</strong>
+            </h3>
+            <ul
+              style="
+                margin-top: 0;
+
+                padding: 0;
+                font-size: 12px;
+                line-height: 2em;
+                color: #4e4e4e;
+                list-style-type: none;
+              "
+            >
+              <li>◾ 台大醫院早療中心 兒童職能治療師 15年臨床經驗</li>
+              <li>◾ 臺大、成大、中山、高醫、輔大職能治療系臨床指導教師</li>
+              <li>◾ 台大醫院兒童職能治療新人培育計畫課程主任</li>
+              <li>◾ 「2017年全國優良職能治療師」菁英獎</li>
+              <li>◾ 文大推廣部 0-6歲兒童發展系列課程 講師</li>
+              <li>◾ 桂格媽媽教室 五感啟蒙教育 講師</li>
+              <li>◾ 多場月子中心、專業訓練課程講師</li>
+            </ul>
+
+            <h3
+              style="
+                font-size: 16px;
+                margin: 0;
+                color: #33658a;
+                font-weight: 400;
+              "
+            >
+              <strong>證照</strong>
+            </h3>
+            <ul
+              style="
+                margin-top: 0;
+
+                padding: 0;
+                font-size: 12px;
+                line-height: 2em;
+                color: #4e4e4e;
+                list-style-type: none;
+              "
+            >
+              <li>◾ 國家高等考試職能治療師證書</li>
+              <li>◾ 衛福部職能治療高級臨床教師認證 師</li>
+            </ul>
+
+            <h3
+              style="
+                font-size: 16px;
+                margin: 0;
+                color: #33658a;
+                font-weight: 400;
+              "
+            >
+              <strong>擅長領域</strong>
+            </h3>
+            <div
+              style="
+                margin-top: 0;
+                padding: 0;
+                font-size: 12px;
+                line-height: 2em;
+                color: #4e4e4e;
+                display: flex;
+                flex-wrap: wrap;
+              "
+            >
+              <div>◾ 動作認知發展促進</div>
+              <div>◾ 心理情緒行為處理</div>
+              <div>◾ 感覺統合評估+訓練+治療</div>
+              <div>◾ 家長教養諮詢</div>
+              <div>◾ 注意力評估+訓練</div>
+              <div>◾ 視知覺評估+訓練</div>
+              <div>◾ 玩具遊戲活動分析+教案設計</div>
+            </div>
+
+            <a
+              href="https://kid-pro.com/about-lois/"
+              target="_blank"
+              style="color: #f26419; text-decoration: none"
+            >
+              <div
+                style="
+                  margin-top: 10px;
+                  cursor: pointer;
+                  border: 1px solid #f26419;
+                  padding: 2px 4px;
+                  width: 93px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 14px;
+                  gap: 5px;
+                  margin-left: auto;
+                "
+              >
+                <div>了解更多</div>
+                <div
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    background-color: #f26419;
+                    display: inline-flex;
+                    border-radius: 50px;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      width: 0;
+                      height: 0;
+                      border-top: 5px solid transparent;
+                      border-bottom: 5px solid transparent;
+                      border-left: 8px solid white;
+                    "
+                  ></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div style="background-color: #fafafa; padding: 5px">
+            <h2
+              style="
+                font-size: 19px;
+                font-weight: 600;
+                line-height: 25px;
+                text-align: center;
+              "
+            >
+              張文馨 職能治療師
+            </h2>
+
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                margin-bottom: 24px;
+              "
+            >
+              <img
+                decoding="async"
+                width="429"
+                height="441"
+                src="https://kid-pro.com/wp-content/uploads/2021/10/massage_Emily.png"
+                class="attachment-large size-large wp-image-82681"
+                alt=""
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2021/10/massage_Emily.png         429w,
+                  https://kid-pro.com/wp-content/uploads/2021/10/massage_Emily-292x300.png 292w
+                "
+                sizes="(max-width: 429px) 100vw, 429px"
+                style="max-width: 100%; height: auto"
+              />
+            </div>
+
+            <div
+              style="
+                font-size: 19px;
+                color: #fff;
+                background-color: #fa9600;
+                padding: 3px;
+              "
+            >
+              KidPro醫學級兒童發展教育團隊 職能治療師
+            </div>
+            <div
+              style="
+                font-size: 15px;
+                color: #fa9600;
+                margin: 5px 0;
+                font-weight: 400;
+              "
+            >
+              學歷：台灣大學醫學院職能治療學系
+            </div>
+
+            <h3
+              style="
+                font-size: 16px;
+                margin: 0;
+                color: #33658a;
+                font-weight: 400;
+              "
+            >
+              <strong>證照</strong>
+            </h3>
+            <ul
+              style="
+                margin-top: 0;
+
+                padding: 0;
+                font-size: 12px;
+                line-height: 2em;
+                color: #4e4e4e;
+                list-style-type: none;
+              "
+            >
+              <li>國家高等考試職能治療師證書</li>
+            </ul>
+
+            <h3
+              style="
+                font-size: 16px;
+                margin: 0;
+                color: #33658a;
+                font-weight: 400;
+              "
+            >
+              <strong>擅長領域</strong>
+            </h3>
+            <div
+              style="
+                margin-top: 0;
+                padding: 0;
+                font-size: 12px;
+                line-height: 2em;
+                color: #4e4e4e;
+                display: flex;
+                flex-wrap: wrap;
+              "
+            >
+              <div>◾ 兒童早療評估及介入</div>
+              <div>◾ 兒童情緒行為評估與訓練</div>
+              <div>◾ 兒童專注力評估與訓練</div>
+              <div>◾ 兒童視知覺訓練</div>
+              <div>◾ 社交與人際互動訓練</div>
+            </div>
+
+            <a
+              href="https://kid-pro.com/about-emily/"
+              target="_blank"
+              style="color: #f26419; text-decoration: none"
+            >
+              <div
+                style="
+                  cursor: pointer;
+                  border: 1px solid #f26419;
+                  padding: 2px 4px;
+                  width: 93px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 14px;
+                  gap: 5px;
+                  margin-left: auto;
+                  margin-top: 10px;
+                "
+              >
+                <div>了解更多</div>
+                <div
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    background-color: #f26419;
+                    display: inline-flex;
+                    border-radius: 50px;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      width: 0;
+                      height: 0;
+                      border-top: 5px solid transparent;
+                      border-bottom: 5px solid transparent;
+                      border-left: 8px solid white;
+                    "
+                  ></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div style="background-color: #fafafa; padding: 5px">
+            <h2
+              style="
+                font-size: 19px;
+                font-weight: 600;
+                line-height: 25px;
+                text-align: center;
+              "
+            >
+              戴涵妮 職能治療師
+            </h2>
+
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                margin-bottom: 24px;
+              "
+            >
+              <img
+                decoding="async"
+                width="429"
+                height="441"
+                src="https://kid-pro.com/wp-content/uploads/2021/10/massage_Honey.png"
+                class="attachment-large size-large wp-image-82696"
+                alt=""
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2021/10/massage_Honey.png         429w,
+                  https://kid-pro.com/wp-content/uploads/2021/10/massage_Honey-292x300.png 292w
+                "
+                sizes="(max-width: 429px) 100vw, 429px"
+                style="max-width: 100%; height: auto"
+              />
+            </div>
+
+            <div
+              style="
+                font-size: 19px;
+                color: #fff;
+                background-color: #fa9600;
+                padding: 3px;
+              "
+            >
+              KidPro醫學級兒童發展教育團隊 職能治療師
+            </div>
+            <div
+              style="
+                font-size: 15px;
+                color: #fa9600;
+                margin: 5px 0;
+                font-weight: 400;
+              "
+            >
+              學歷：成功大學醫學院 職能治療學系
+            </div>
+
+            <h3
+              style="
+                font-size: 16px;
+                margin: 0;
+                padding: 0;
+                color: #33658a;
+                font-weight: 400;
+              "
+            >
+              <strong>證照</strong>
+            </h3>
+            <ul
+              style="
+                margin-top: 0;
+
+                padding: 0;
+                font-size: 12px;
+                line-height: 2em;
+                color: #4e4e4e;
+                list-style-type: none;
+              "
+            >
+              <li>國家高等考試職能治療師證書</li>
+            </ul>
+
+            <h3
+              style="
+                font-size: 16px;
+                margin: 0;
+                color: #33658a;
+                font-weight: 400;
+              "
+            >
+              <strong>擅長領域</strong>
+            </h3>
+            <div
+              style="
+                margin-top: 0;
+                padding: 0;
+                font-size: 12px;
+                line-height: 2em;
+                color: #4e4e4e;
+                display: flex;
+                flex-wrap: wrap;
+              "
+            >
+              <div>◾ 兒童早療評估及介入</div>
+              <div>◾ 兒童情緒行為評估與訓練</div>
+              <div>◾ 兒童專注力評估與訓練</div>
+              <div>◾ 兒童視知覺訓練</div>
+              <div>◾ 社交與人際互動訓練</div>
+            </div>
+
+            <a
+              href="https://kid-pro.com/about-honey/"
+              target="_blank"
+              style="color: #f26419; text-decoration: none"
+            >
+              <div
+                style="
+                  cursor: pointer;
+                  border: 1px solid #f26419;
+                  padding: 2px 4px;
+                  width: 93px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 14px;
+                  gap: 5px;
+                  margin-left: auto;
+                  margin-top: 10px;
+                "
+              >
+                <div>了解更多</div>
+                <div
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    background-color: #f26419;
+                    display: inline-flex;
+                    border-radius: 50px;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      width: 0;
+                      height: 0;
+                      border-top: 5px solid transparent;
+                      border-bottom: 5px solid transparent;
+                      border-left: 8px solid white;
+                    "
+                  ></div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="color: #2f4858; font-size: 18px; font-weight: 600">
+          文獻出處
+        </div>
+        <ol style="font-size: 12px">
+          <li>
+            Rueda, M. R., Rothbart, M. K., McCandliss, B. D., Saccomanno, L.,
+            &amp; Posner, M. I. (2005). From The Cover: Training, maturation,
+            and genetic influences on the development of executive attention.
+            Proceedings of the National Academy of Sciences, 102(41),
+            14931–14936.
+          </li>
+          <li>
+            Ahn, R. R., Miller, L. J., Milberger, S., &amp; McIntosh, D. N.
+            (2004). Prevalence of parents’ perceptions of sensory processing
+            disorders among kindergarten children. American Journal of
+            Occupational Therapy, 58, 287–293.
+          </li>
+
+          <li>
+            Hooper, S. R., Swartz, C. W., Wakely, M. B., de Kruif, R. E. L.,
+            &amp; Montgomery, J. W. (2002). Executive Functions in Elementary
+            School Children With and Without Problems in Written Expression.
+            Journal of Learning Disabilities, 35(1), 57–68.
+          </li>
+          <li>
+            St Clair-Thompson, H. L., &amp; Gathercole, S. E. (2006). Executive
+            functions and achievements in school: Shifting, updating,
+            inhibition, and working memory. Quarterly Journal of Experimental
+            Psychology, 59(4), 745–759.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+  <script>
+    const modal = document.getElementById("myModal");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.getElementsByClassName("close-btn")[0];
+
+    // 點擊按鈕打開 Modal
+    openModalBtn.onclick = function () {
+      modal.style.display = "flex"; // 顯示 Modal
+    };
+
+    // 點擊關閉按鈕關閉 Modal
+    closeBtn.onclick = function () {
+      modal.style.display = "none"; // 隱藏 Modal
+    };
+
+    // 點擊 Modal 背景（非內容區域）時關閉 Modal
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</html>

@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        position: relative;
+      }
+
+      .close-btn {
+        color: black;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        padding: 2px 5px 4px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-btn:hover,
+      .close-btn:focus {
+        color: #ffc83c;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid #ffc83c;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        color: #2f4858;
+        padding: 10px;
+        line-height: 24px;
+      "
+    >
+      <a href="https://kid-pro.com/product/lec-simple-consultation-service/">
+        <picture class="attachment-large size-large wp-image-346816">
+          <source
+            type="image/webp"
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png.webp         640w,
+              https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2-300x110.png.webp 300w
+            "
+            sizes="(max-width: 640px) 100vw, 640px"
+          />
+          <img
+            src="https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png"
+            alt=""
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2.png         640w,
+              https://kid-pro.com/wp-content/uploads/2022/04/簡易評估行銷圖_手機橫幅-2-300x110.png 300w
+            "
+            sizes="(max-width: 640px) 100vw, 640px"
+            style="max-width: 100%; height: auto"
+          />
+        </picture>
+      </a>
+
+      <iframe
+        src="https://player.vimeo.com/video/536242831?autoplay=1&amp;version=3&amp;enablejsapi=1"
+        frameborder="0"
+        allowfullscreen="1"
+        allow="autoplay;encrypted-media;"
+        data-gtm-yt-inspected-19="true"
+        style="width: 100%; height: auto"
+      ></iframe>
+
+      <div
+        style="
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 3px;
+            width: 100%;
+            background: #28c8c8;
+            z-index: -1;
+          "
+        ></div>
+
+        <h3
+          style="
+            font-size: 18px;
+            padding: 15px;
+            color: #000000;
+            background: #ffffff;
+            font-weight: bold;
+            width: fit-content;
+            margin: 0;
+          "
+        >
+          課程資訊
+        </h3>
+      </div>
+
+      <div style="padding: 10px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            line-height: 32px;
+          "
+        >
+          <picture decoding="async" style="height: 30px">
+            <source
+              type="image/webp"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png.webp
+              "
+            />
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_course_start.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+
+          <strong>開課日期</strong>
+          &nbsp;&nbsp;已開課
+        </div>
+
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            line-height: 32px;
+          "
+        >
+          <picture decoding="async" style="height: 30px">
+            <source
+              type="image/webp"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png.webp
+              "
+            />
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/05/massage_time.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+
+          <strong>課程長度</strong>
+          &nbsp;&nbsp;4時30分
+        </div>
+
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            line-height: 32px;
+          "
+        >
+          <picture decoding="async" style="height: 30px">
+            <source
+              type="image/webp"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png.webp
+              "
+            />
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/05/massage_chapter.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+
+          <strong>總單元數</strong>
+          &nbsp;&nbsp;8章22節
+        </div>
+
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            line-height: 32px;
+          "
+        >
+          <picture decoding="async" style="height: 30px">
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_stdt.png.webp"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+
+          <strong>課程學員</strong>
+          &nbsp;&nbsp;5043人
+        </div>
+
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            line-height: 32px;
+          "
+        >
+          <picture decoding="async" style="height: 30px">
+            <img
+              decoding="async"
+              src="	https://kid-pro.com/wp-content/uploads/2022/02/icon40x40_watch.png.webp"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+
+          <strong>觀看方式</strong>
+          &nbsp;&nbsp;透過網路
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px">
+          <picture decoding="async" class="alignnone wp-image-125542">
+            <img
+              decoding="async"
+              src="https://kid-pro.com/wp-content/uploads/2022/05/massage_unlimited.png"
+              alt=""
+              width="30"
+              height="30"
+            />
+          </picture>
+          <span style="font-weight: 700; font-size: 13px">觀看期限</span>
+          <span style="font-size: 14px"
+            >無期限
+            <span
+              id="openModalBtn"
+              style="font-size: 8px; color: #fa9600; cursor: pointer"
+            >
+              （說明）
+            </span></span
+          >
+
+          <div id="myModal" class="modal">
+            <div
+              class="modal-content"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                font-size: 20px;
+              "
+            >
+              <div class="close-btn">&times;</div>
+
+              <div
+                style="text-align: center; line-height: 25px; font-weight: 500"
+              >
+                消費者權益保障<br />
+
+                《無限期觀看說明》
+              </div>
+              <div>非信用卡付款：（∞）</div>
+              <div style="text-align: center">享無限期觀看權益。</div>
+              <div>信用卡付款：（１＋∞）</div>
+              <div style="text-align: center; color: #f26419">
+                【消費者亦享無限期觀看權益】
+              </div>
+              <div style="line-height: 25px">
+                惟根據國際信用卡組織規定，產品及服務交付期限為一個月內，因此本公司僅可聲明保障一個月內使用期限。本公司針對信用卡付費之消費者，贈送後續『無限期觀看』權益。此贈送之權益無涉信用卡公司。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 3px;
+            width: 100%;
+            background: #28c8c8;
+            z-index: -1;
+          "
+        ></div>
+
+        <h3
+          style="
+            font-size: 18px;
+            padding: 15px;
+            color: #000000;
+            background: #ffffff;
+            font-weight: bold;
+            width: fit-content;
+            margin: 0;
+          "
+        >
+          課程特色
+        </h3>
+      </div>
+
+      <div>
+        <ul style="padding: 0 20px; font-size: 14px">
+          <li>
+            <strong
+              ><span style="text-decoration: underline">內容廣泛</span
+              >：七感胎教</strong
+            >、<strong>七感統合的重要性+遊戲。<br /></strong>
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">影片示範</span
+              >：</strong
+            >運用實際示範影片，完整呈現。
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">諮詢服務</span
+              >：</strong
+            >課程中有疑問可以傳送訊息向老師發問。
+          </li>
+          <li>
+            <strong
+              ><span style="text-decoration: underline">科學證實</span
+              >：</strong
+            ><span style="font-weight: 400">投入大量人力物力，進行考證</span
+            ><b>文獻、論文。</b>
+          </li>
+        </ul>
+      </div>
+
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+      <h2
+        style="
+          color: #000;
+          font-weight: 600;
+          margin: 0;
+          text-align: center;
+          font-size: 21px;
+        "
+      >
+        關於講師
+      </h2>
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+
+      <h2
+        style="
+          font-size: 19px;
+          color: #1e8c96;
+          font-weight: 600;
+          line-height: 25px;
+          text-align: center;
+        "
+      >
+        黃暐恬 職能治療師
+      </h2>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 24px;
+          margin-top: 0;
+          margin-bottom: 24px;
+        "
+      >
+        18年臨床經驗，幫助近2000名孩子家長在教養上的困擾。擔任台大醫院兒童職能治療新人培育計畫課程主任，培訓超過500名職能治療師。自2018年7月成立「恬兒職能治療師-醫學領域的兒童發展專家」粉絲團，透過網路分享育兒知識，至今已累積超過7萬追蹤者。開設線上課程4個月，賣出近5000堂，學員評價五顆星。講座經常滿額，一位難求！
+      </p>
+
+      <div>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <picture
+            decoding="async"
+            class="attachment-large size-large wp-image-34427"
+          >
+            <source
+              type="image/webp"
+              data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png.webp 428w, https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2-292x300.png.webp 292w"
+              sizes="(max-width: 428px) 100vw, 428px"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png.webp         428w,
+                https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2-292x300.png.webp 292w
+              "
+            />
+            <img
+              style="
+                height: auto;
+                max-width: 100%;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+              "
+              decoding="async"
+              width="428"
+              height="440"
+              src="https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png"
+              alt=""
+              data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png 428w, https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2-292x300.png 292w"
+              data-lazy-sizes="(max-width: 428px) 100vw, 428px"
+              data-lazy-src="https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png"
+              data-ll-status="loaded"
+              class="entered lazyloaded"
+              sizes="(max-width: 428px) 100vw, 428px"
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png         428w,
+                https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2-292x300.png 292w
+              "
+            /><noscript
+              ><img
+                decoding="async"
+                width="428"
+                height="440"
+                src="https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png"
+                alt=""
+                srcset="
+                  https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2.png         428w,
+                  https://kid-pro.com/wp-content/uploads/2021/03/Page_Lin2-292x300.png 292w
+                "
+                sizes="(max-width: 428px) 100vw, 428px"
+            /></noscript>
+          </picture>
+        </div>
+      </div>
+
+      <h1
+        style="
+          font-size: 15px;
+          color: #fff;
+          background-color: #fa9600;
+          text-align: center;
+        "
+      >
+        KidPro醫學級兒童發展教育團隊創辦人
+      </h1>
+      <h2
+        style="font-size: 15px; color: #fa9600; margin: 0px; font-weight: 400"
+      >
+        學歷&nbsp;&nbsp;台灣大學醫學院職能治療學系
+      </h2>
+      <h3 style="font-size: 14px; margin: 0; color: #1e8c96; font-weight: 400">
+        <strong>經歷</strong>
+      </h3>
+      <ul
+        style="
+          margin-left: 20px;
+          margin-top: 0;
+          margin-bottom: 40px;
+          padding: 0;
+          font-size: 14px;
+          line-height: 2em;
+          color: #4e4e4e;
+        "
+      >
+        <li style="list-style-type: square">
+          台大醫院早療中心 兒童職能治療師 15年臨床經驗
+        </li>
+        <li style="list-style-type: square">
+          臺大、成大、中山、高醫、輔大職能治療系臨床指導教師
+        </li>
+        <li style="list-style-type: square">
+          台大醫院兒童職能治療新人培育計畫課程主任
+        </li>
+        <li style="list-style-type: square">
+          「2017年全國優良職能治療師」菁英獎
+        </li>
+        <li style="list-style-type: square">
+          文大推廣部 0-6歲兒童發展系列課程 講師
+        </li>
+        <li style="list-style-type: square">桂格媽媽教室 五感啟蒙教育 講師</li>
+        <li style="list-style-type: square">多場月子中心、專業訓練課程講師</li>
+      </ul>
+
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+      <h2
+        style="
+          color: #000;
+          font-weight: 600;
+          margin: 0;
+          text-align: center;
+          font-size: 21px;
+        "
+      >
+        課程介紹
+      </h2>
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+      <div>
+        <picture decoding="async" style="width: 100%">
+          <source
+            type="image/webp"
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png.webp 1024w, https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-300x88.png.webp 300w, https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-768x225.png.webp 768w, https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer.png.webp 1366w"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png.webp 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-300x88.png.webp    300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-768x225.png.webp   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer.png.webp          1366w
+            "
+          />
+          <img
+            decoding="async"
+            width="1024"
+            height="301"
+            src="https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png"
+            alt=""
+            style="
+              height: auto;
+              max-width: 100%;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+            "
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png 1024w, https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-300x88.png 300w, https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-768x225.png 768w, https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer.png 1366w"
+            data-lazy-sizes="(max-width: 1024px) 100vw, 1024px"
+            data-lazy-src="https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png"
+            data-ll-status="loaded"
+            class="entered lazyloaded"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-300x88.png    300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-768x225.png   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer.png          1366w
+            "
+          /><noscript
+            ><img
+              decoding="async"
+              width="1024"
+              height="301"
+              src="https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png"
+              alt=""
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-1024x301.png 1024w,
+                https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-300x88.png    300w,
+                https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer-768x225.png   768w,
+                https://kid-pro.com/wp-content/uploads/2021/03/Explanatory_text-3_difficult_mobileComputer.png          1366w
+              "
+              sizes="(max-width: 1024px) 100vw, 1024px"
+          /></noscript>
+        </picture>
+      </div>
+
+      <h2 style="color: #1e8c96; font-size: 18px; font-weight: 500; margin: 0">
+        您是否記得這世界曾經如此陌生，<br />覺得孩子這麼難搞？<br />可能是感覺統合的問題。
+      </h2>
+
+      <div
+        style="
+          font-size: 14px;
+          color: #4c4c4c;
+          line-height: 25px;
+          margin-top: 6px;
+        "
+      >
+        <div>
+          還記得超級英雄剛得到超能力的樣子嗎？總是不懂得控制自己，跑得太快，跳得太高，把東西拉壞。看得太清楚、聽得太敏銳，覺得這個世界好亮好吵，感到害怕，想把感覺關掉卻做不到。直到訓練好一陣子才漸漸適應自己的超能力。
+        </div>
+        <div style="line-height: 0.5em">&nbsp;</div>
+        <div>
+          0到2歲的孩子剛來到這個世界上，也像忽然得到超能力一樣，一邊急速成長發育，一邊認識這個世界。對於色彩、氣味、聲音，都感到陌生。對於溫度、觸感都覺得不熟悉，甚至覺得太過刺激。
+        </div>
+        <div style="line-height: 0.5em">&nbsp;</div>
+        <div>
+          所以有些孩子，容易分心、反應慢，莫名其妙的逃避或哭鬧：踩在草地或沙地上就不舒服、穿上某些衣服就扭來扭去、新衣服一定要把標籤剪掉；總是跌跌撞撞、動作魯莽；極度討厭肢體碰觸。這些，都可能是感覺統合失調所造成的。
+        </div>
+        <br />
+      </div>
+
+      <div style="margin: 10px 0">
+        <picture
+          decoding="async"
+          class="attachment-large size-large wp-image-28296"
+        >
+          <source
+            type="image/webp"
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png.webp 1024w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-300x120.png.webp 300w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-768x308.png.webp 768w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone.png.webp 1366w"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png.webp 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-300x120.png.webp   300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-768x308.png.webp   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone.png.webp          1366w
+            "
+          />
+          <img
+            decoding="async"
+            width="1024"
+            height="410"
+            src="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png"
+            alt=""
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png 1024w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-300x120.png 300w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-768x308.png 768w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone.png 1366w"
+            data-lazy-sizes="(max-width: 1024px) 100vw, 1024px"
+            data-lazy-src="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png"
+            data-ll-status="loaded"
+            class="entered lazyloaded"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            style="
+              height: auto;
+              max-width: 100%;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+            "
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-300x120.png   300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-768x308.png   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone.png          1366w
+            "
+          /><noscript
+            ><img
+              decoding="async"
+              width="1024"
+              height="410"
+              src="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png"
+              alt=""
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-1024x410.png 1024w,
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-300x120.png   300w,
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone-768x308.png   768w,
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_stimulus_phone.png          1366w
+              "
+              sizes="(max-width: 1024px) 100vw, 1024px"
+          /></noscript>
+        </picture>
+      </div>
+
+      <h2 style="color: #1e8c96; font-size: 19px; font-weight: 600; margin: 0">
+        感覺統合 到底是什麼？
+      </h2>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 25px;
+          font-weight: 400;
+          margin-top: 6px;
+          margin-bottom: 24px;
+        "
+      >
+        感覺統合，這個詞我們常常聽到，那到底是什麼呢？其實我們身邊的環境中，充斥著前庭覺、本體覺、觸覺，以及視聽嗅味覺，感覺統合讓我們大腦可以處理環境中這些豐富的七感，把不需要的過濾掉，也不會覺得有些感覺訊息像洪水般地太過刺激，或覺得有些感覺刺激口味太淡，而去尋求更強烈的感官刺激。正常的感覺統合過程，讓孩子更輕鬆的專注、學習，更靈活的動作，也不會因為無法適應、處理身邊的感官刺激，而顯得情緒不安、不舒服。
+      </p>
+
+      <h2 style="color: #1e8c96; font-size: 19px; font-weight: 600; margin: 0">
+        3C育兒動太少，台灣每5個孩子可能就有1個有感覺統合的問題。
+      </h2>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 25px;
+          font-weight: 400;
+          margin-top: 6px;
+          margin-bottom: 24px;
+        "
+      >
+        你知道嗎？根據美國學者Miller等人在2006的研究指出，大約5-15%有感覺統合失調的問題，台灣的部分，在2009年吳慧珉教授的研究指出，<span
+          style="text-decoration: underline"
+          ><strong>約有21~28%的孩子有感覺統合失調。</strong></span
+        >而我們在臨床中也發現，這些感覺統合有問題的孩子，很多都是生活環境刺激不均衡，尤其現今社會環境，3C充斥、孩子動得太少，孩子越來越少有機會接收多樣感官刺激的統合。
+      </p>
+
+      <div style="margin-bottom: 10px">
+        <picture
+          decoding="async"
+          class="attachment-large size-large wp-image-28306"
+        >
+          <source
+            type="image/webp"
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png.webp 1024w, https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-300x107.png.webp 300w, https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-768x274.png.webp 768w, https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone.png.webp 1366w"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png.webp 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-300x107.png.webp   300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-768x274.png.webp   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone.png.webp          1366w
+            "
+          />
+          <img
+            decoding="async"
+            width="1024"
+            height="365"
+            src="https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png"
+            alt=""
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png 1024w, https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-300x107.png 300w, https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-768x274.png 768w, https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone.png 1366w"
+            data-lazy-sizes="(max-width: 1024px) 100vw, 1024px"
+            data-lazy-src="https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png"
+            data-ll-status="loaded"
+            class="entered lazyloaded"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            style="
+              height: auto;
+              max-width: 100%;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+            "
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-300x107.png   300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-768x274.png   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone.png          1366w
+            "
+          /><noscript
+            ><img
+              decoding="async"
+              width="1024"
+              height="365"
+              src="https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png"
+              alt=""
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-1024x365.png 1024w,
+                https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-300x107.png   300w,
+                https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone-768x274.png   768w,
+                https://kid-pro.com/wp-content/uploads/2021/03/DescriptionText3_70_phone.png          1366w
+              "
+              sizes="(max-width: 1024px) 100vw, 1024px"
+          /></noscript>
+        </picture>
+      </div>
+
+      <h2 style="color: #1e8c96; font-size: 19px; font-weight: 600; margin: 0">
+        把握孕期到2歲成長黃金期，用醫學級方法玩出感統力
+      </h2>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 25px;
+          font-weight: 400;
+          margin-top: 6px;
+          margin-bottom: 24px;
+        "
+      >
+        孩子的表達能力尚未發展完成時，要靠父母多多關懷注意。為了避免錯過成長黃金期，恬兒治療師設計了這堂課程。只要用對方法，透過身邊隨手可得的東西幫助刺激寶寶的七感感統發展。在成長黃金期，為發展專注力、生活自理、學習表現、人際互動與情緒管理等能力奠定良好基礎。我們準備了７０種玩法，你可以直接運用在家中、教室中。
+      </p>
+
+      <div style="margin-bottom: 10px">
+        <picture
+          decoding="async"
+          class="attachment-large size-large wp-image-28310"
+        >
+          <source
+            type="image/webp"
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png.webp 1024w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-300x249.png.webp 300w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-768x638.png.webp 768w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone.png.webp 1366w"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png.webp 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-300x249.png.webp   300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-768x638.png.webp   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone.png.webp          1366w
+            "
+          />
+          <img
+            decoding="async"
+            width="1024"
+            height="851"
+            src="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png"
+            alt=""
+            data-lazy-srcset="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png 1024w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-300x249.png 300w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-768x638.png 768w, https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone.png 1366w"
+            data-lazy-sizes="(max-width: 1024px) 100vw, 1024px"
+            data-lazy-src="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png"
+            data-ll-status="loaded"
+            class="entered lazyloaded"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            style="
+              height: auto;
+              max-width: 100%;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+            "
+            srcset="
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png 1024w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-300x249.png   300w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-768x638.png   768w,
+              https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone.png          1366w
+            "
+          /><noscript
+            ><img
+              decoding="async"
+              width="1024"
+              height="851"
+              src="https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png"
+              alt=""
+              srcset="
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-1024x851.png 1024w,
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-300x249.png   300w,
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone-768x638.png   768w,
+                https://kid-pro.com/wp-content/uploads/2021/03/ExplanatoryText3_teaching_phone.png          1366w
+              "
+              sizes="(max-width: 1024px) 100vw, 1024px"
+          /></noscript>
+        </picture>
+      </div>
+
+      <h2 style="color: #1e8c96; font-size: 19px; font-weight: 600; margin: 0">
+        過猶不及，怎麼樣才能玩得剛剛好呢？
+      </h2>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 25px;
+          font-weight: 400;
+          margin-top: 6px;
+          margin-bottom: 24px;
+        "
+      >
+        在遊戲中學習是一個普遍的觀念。感覺統合要玩得有效，就要看治療師的拿手好戲，透過「行為觀察」與調整「感覺輸入量」啦！掌握這兩個要領，才能真正地讓感覺統合遊戲玩出效果。
+      </p>
+
+      <h1
+        style="
+          padding: 0 16px;
+          background-color: #fa9600;
+          font-size: 19px;
+          color: #fff;
+          font-weight: 600;
+          text-align: center;
+          margin: 0;
+        "
+      >
+        感覺統合的能力是孩子學齡前最好的禮物
+      </h1>
+      <p style="color: #4c4c4c; font-size: 15px; font-weight: 400">
+        在臨床上我們可以發現，感覺統合發展的不夠健全，可能影響視知覺的發展，而造成認字寫字、空間幾何等學習上的困擾，寫字、用湯匙常常用力過大或過小。對於將來專注力發展、情緒管理，人際關係都可能產生不良的影響。身為父母的你，不可輕忽！
+      </p>
+
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+
+      <h2
+        style="font-size: 19px; font-weight: normal; color: #fa9600; margin: 0"
+      >
+        這個課程適合誰？
+      </h2>
+      <h2 style="color: #1e8c96; font-size: 15px; font-weight: normal">
+        1. 即將成為父母的您<br />
+        2. 從事托嬰幼教工作的您<br />
+        3. 想要增進育兒知識的您<br />
+        4. 想要送禮物給新手爸媽的您
+      </h2>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 25px;
+          font-weight: 400;
+          margin: 6px 0;
+        "
+      >
+        身為父母的您，這堂課可以幫助您利用身邊隨手可以取的的資源，一邊和寶寶互動，一邊觀察她的成長。
+      </p>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 25px;
+          font-weight: 400;
+          margin: 6px 0;
+        "
+      >
+        如果您是幼教專業人員，你更該收藏這堂課。在您自身的幼教專業上，疊加來自職能治療師的知識與技能。讓您的幼教專業增加了醫學級的眉角。從此之後，遊戲不只是遊戲，而是精密細膩的教養科學。
+      </p>
+      <p
+        style="
+          color: #4c4c4c;
+          font-size: 14px;
+          line-height: 25px;
+          font-weight: 400;
+          margin-top: 6px;
+          margin-bottom: 24px;
+        "
+      >
+        身為新手父母的親朋好友，是不是也常為了送禮傷腦筋呢？除了常見的母嬰用品之外，我們提供了另外一個選項。把這堂感統課程當作禮物送給新手父母吧，這也許會變成對於未來世界的餽贈。
+      </p>
+
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+      <h2
+        style="
+          color: #000;
+          font-weight: 600;
+          margin: 0;
+          text-align: center;
+          font-size: 21px;
+        "
+      >
+        課程章節
+      </h2>
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+
+      <h1
+        style="
+          font-size: 21px;
+          color: white;
+          background-color: #fa9600;
+          text-align: center;
+          line-height: 31px;
+          font-weight: 600;
+          margin: 0;
+        "
+      >
+        孕期
+      </h1>
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        "
+      >
+        第一章 孕期的七感胎教
+      </h2>
+      <div style="color: #4e4e4e; font-size: 13.68px; margin-bottom: 10px">
+        <span style="font-weight: 400"
+          >1-1&nbsp; 孕期寶寶七感發展與促進技巧－視覺、聽覺</span
+        ><br />
+        <span style="font-weight: 400"
+          >1-2&nbsp; 孕期寶寶七感發展與促進技巧－嗅覺、味覺</span
+        ><br />
+        <span style="font-weight: 400"
+          >1-3&nbsp; 孕期寶寶七感發展與促進技巧－觸覺、本體覺、前庭覺</span
+        >
+      </div>
+
+      <h1
+        style="
+          font-size: 21px;
+          color: white;
+          background-color: #fa9600;
+          text-align: center;
+          line-height: 31px;
+          font-weight: 600;
+          margin: 0;
+        "
+      >
+        出生後
+      </h1>
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        "
+      >
+        第二章 0-2歲寶寶的感覺統合
+      </h2>
+      <div style="color: #4e4e4e; font-size: 13.68px">
+        <span style="font-weight: 400"
+          >2-1 &nbsp; 感覺統合究竟是甚麼 ?對孩子有甚麼深遠的影響</span
+        ><br />
+      </div>
+
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        "
+      >
+        第三章 【觸覺】感統的重要性+遊戲
+      </h2>
+      <div style="color: #4e4e4e; font-size: 13.68px">
+        <span style="font-weight: 400"
+          >3-1 &nbsp; 何謂【觸覺】感統+感統障礙的表現</span
+        ><br />
+        <span style="font-weight: 400">3-2 &nbsp; 0-1歲的【觸覺】感統遊戲</span
+        ><br />
+        <span style="font-weight: 400">3-3 &nbsp; 1-2歲的【觸覺】感統遊戲</span
+        ><br />
+        <span style="font-weight: 400"
+          >3-4 &nbsp; 1-2歲的【觸覺】感統遊戲 (擴充遊戲)</span
+        ><br />
+      </div>
+
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        "
+      >
+        第四章 【前庭覺】感統的重要性+遊戲
+      </h2>
+
+      <div style="color: #4e4e4e; font-size: 13.68px">
+        <span style="font-weight: 400"
+          >4-1&nbsp; &nbsp;何謂【前庭覺】感統+感統障礙的表現</span
+        ><br />
+        <span style="font-weight: 400"
+          >4-2 &nbsp; 0-1歲的【前庭覺】感統遊戲</span
+        ><br />
+        <span style="font-weight: 400"
+          >4-3 &nbsp; 1-2歲的【前庭覺】感統遊戲</span
+        >
+      </div>
+
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        "
+      >
+        第五章 【本體覺】感統的重要性+遊戲
+      </h2>
+      <div style="color: #4e4e4e; font-size: 13.68px">
+        <span style="font-weight: 400"
+          >5-1&nbsp; &nbsp;何謂【本體覺】感統+感統障礙的表現</span
+        ><br />
+        <span style="font-weight: 400"
+          >5-2 &nbsp; 0-1歲的【本體覺】感統遊戲</span
+        ><br />
+        <span style="font-weight: 400"
+          >5-3 &nbsp; 1-2歲的【本體覺】感統遊戲</span
+        >
+      </div>
+
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        "
+      >
+        第六章 【聽覺】【視覺】感統的重要性+遊戲
+      </h2>
+      <div style="color: #4e4e4e; font-size: 13.68px">
+        <span style="font-weight: 400"
+          >6-1&nbsp; &nbsp;何謂【聽覺】【視覺】感統+感統障礙的表現</span
+        ><br />
+        <span style="font-weight: 400"
+          >6-2 &nbsp; 0-1歲的【聽覺】【視覺】感統遊戲</span
+        ><br />
+        <span style="font-weight: 400">6-3 &nbsp; 1-2歲的【聽覺】感統遊戲</span
+        ><br />
+        <span style="font-weight: 400">6-4 &nbsp; 1-2歲的【視覺】感統遊戲</span>
+      </div>
+
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+          font-weight: 600;
+        "
+      >
+        第七章 【嗅覺】【味覺】感統的重要性+遊戲
+      </h2>
+      <div style="color: #4e4e4e; font-size: 13.68px; font-weight: 400">
+        7-1&nbsp; &nbsp;何謂【嗅覺】【味覺】感統+感統障礙的表現<br />
+        7-2&nbsp; &nbsp;0-1歲的【嗅覺】【味覺】感統遊戲<br />
+        7-3&nbsp; &nbsp;1-2歲的【嗅覺】【味覺】感統遊戲<br />
+      </div>
+
+      <h2
+        style="
+          color: #1e8c96;
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 40px;
+          font-weight: 600;
+        "
+      >
+        第八章 【特輯】公園如何玩感統
+      </h2>
+
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+      <h2
+        style="
+          color: #000;
+          font-weight: 600;
+          margin: 0;
+          text-align: center;
+          font-size: 21px;
+        "
+      >
+        試看課程
+      </h2>
+
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+
+      <iframe
+        src="https://player.vimeo.com/video/553696342?loop=0&amp;title=1&amp;portrait=1&amp;byline=1&amp;muted=0&amp;color&amp;autopause=0&amp;autoplay=1#t="
+        frameborder="0"
+        allowfullscreen="1"
+        allow="autoplay;encrypted-media;"
+        data-gtm-yt-inspected-19="true"
+        style="width: 100%; height: auto"
+      ></iframe>
+
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+      <h2
+        style="
+          color: #000;
+          font-weight: 600;
+          margin: 0;
+          text-align: center;
+          font-size: 21px;
+        "
+      >
+        合作單位
+      </h2>
+      <div style="padding: 15px 0; display: flex">
+        <span style="width: 100%; border-top: 3px solid #28c8c8"></span>
+      </div>
+
+      <div
+        style="
+          background-color: #fff;
+          display: flex;
+          padding: 8px;
+          box-shadow: 3px 3px 10px -2px rgba(0, 0, 0, 0.5);
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+          "
+        >
+          <div style="text-align: center; width: 200px">
+            <img
+              src="https://kid-pro.com/wp-content/uploads/2021/09/LOGO_mombaby_cradle_QRC-768x768.png.webp"
+              alt="羽筑母嬰"
+              style="width: 100%; border-radius: 10px"
+            />
+            <p>羽筑母嬰</p>
+          </div>
+          <div style="text-align: center; width: 200px">
+            <img
+              src="https://kid-pro.com/wp-content/uploads/2021/10/S__34292785.png"
+              alt="洄恩產後護理之家"
+              style="width: 100%; border-radius: 10px"
+            />
+            <p>洄恩產後護理之家</p>
+          </div>
+          <div style="text-align: center; width: 200px">
+            <img
+              src="https://kid-pro.com/wp-content/uploads/2021/10/cheasure-768x768.png"
+              alt="馨生產後護理之家"
+              style="width: 100%; border-radius: 10px"
+            />
+            <p>馨生產後護理之家</p>
+          </div>
+          <div style="text-align: center; width: 200px">
+            <img
+              src="https://kid-pro.com/wp-content/uploads/2021/10/bluebear-3.png"
+              alt="藍田貝兒產後護理之家"
+              style="width: 100%; border-radius: 10px"
+            />
+            <p>藍田貝兒產後護理之家</p>
+          </div>
+          <div style="text-align: center; width: 200px">
+            <img
+              src="https://kid-pro.com/wp-content/uploads/2021/10/LC-2.png"
+              alt="樂心產後護理之家"
+              style="width: 100%; border-radius: 10px"
+            />
+            <p>樂心產後護理之家</p>
+          </div>
+          <div style="text-align: center; width: 200px">
+            <img
+              src="https://kid-pro.com/wp-content/uploads/2021/11/Gemcare_logo-910x1024.png"
+              alt="人之初產後護理之家"
+              style="width: 100%; border-radius: 10px"
+            />
+            <p>人之初產後護理之家</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const modal = document.getElementById("myModal");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.getElementsByClassName("close-btn")[0];
+
+    // 點擊按鈕打開 Modal
+    openModalBtn.onclick = function () {
+      modal.style.display = "flex"; // 顯示 Modal
+    };
+
+    // 點擊關閉按鈕關閉 Modal
+    closeBtn.onclick = function () {
+      modal.style.display = "none"; // 隱藏 Modal
+    };
+
+    // 點擊 Modal 背景（非內容區域）時關閉 Modal
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</html>
